@@ -12,6 +12,7 @@ import lib.base.backend.exception.data.BusinessException;
 import lib.base.backend.web.enumeratos.CrudOptionsEnum;
 import project.diet.control.beans.entity.Diet;
 import project.diet.control.beans.entity.DietFood;
+import project.diet.control.pojos.diet.DietCustomDetailResumePojo;
 import project.diet.control.pojos.diet.DietCustomResumePojo;
 import project.diet.control.pojos.diet.DietDataPojo;
 import project.diet.control.pojos.diet.DietFoodResumePojo;
@@ -20,10 +21,13 @@ import project.diet.control.pojos.diet.DietPojo;
 import project.diet.control.pojos.entity.DietEntityPojo;
 import project.diet.control.pojos.entity.RecipeEntityPojo;
 import project.diet.control.pojos.request.diet.AddEditDietRequestPojo;
+import project.diet.control.pojos.request.diet.GetDietCustomDetailListRequestPojo;
 import project.diet.control.pojos.request.diet.GetDietCustomRequestPojo;
 import project.diet.control.pojos.request.diet.RegisterDietBaseRequestPojo;
 import project.diet.control.pojos.response.diet.AddEditDietRespPojo;
 import project.diet.control.pojos.response.diet.GetDietBaseRespPojo;
+import project.diet.control.pojos.response.diet.GetDietCustomDetailListRespPojo;
+import project.diet.control.pojos.response.diet.GetDietCustomDetailRespPojo;
 import project.diet.control.pojos.response.diet.GetDietCustomListRespPojo;
 import project.diet.control.pojos.response.diet.GetDietCustomRespPojo;
 import project.diet.control.repository.DietRepositoryImpl;
@@ -186,5 +190,103 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		responsePojo.setDietCustom(dietDataPojo);
 		
 		return responsePojo;
+	}
+	
+	@Transactional
+	public GetDietCustomDetailListRespPojo executeGetDietsCustomDetail(GetDietCustomDetailListRequestPojo requestPojo) {
+		
+		List<DietCustomDetailResumePojo> dietCustomDetailPojos = new ArrayList<DietCustomDetailResumePojo>();
+		
+		Diet dietBase = dietRepository.getDietBase();
+		List<Diet> dietCustomList = dietRepository.getDietCustomList();
+		
+		DietEntityPojo dietBaseDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietBase);
+		
+		for (Diet dietCustom: dietCustomList) {
+			
+			RecipeEntityPojo recipeDietCustomEntityPojo = buildEntityToPojoUtil.generateRecipePojo(null, dietCustom.getRecipe());
+			DietEntityPojo dietCustomResumePojo = buildEntityToPojoUtil.generateDietPojo(null, dietCustom);
+			
+			List<DietFoodResumePojo> dietFoodDietCustomResumeEntityPojos = new ArrayList<DietFoodResumePojo>();
+			
+			for (DietFood dietFood: dietCustom.getDietFoods()) {
+				
+				DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood);
+				dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
+				dietFoodResumeEntityPojo.setPortions(dietFood.getPortions());
+				
+				dietFoodDietCustomResumeEntityPojos.add(dietFoodResumeEntityPojo);
+			}
+			
+			
+			DietEntityPojo dietCustomDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietCustom);
+			
+			DietEntityPojo totalDiet = new DietEntityPojo();
+			totalDiet.setTotalCalories(dietCustomDataPojo.getTotalCalories().add(dietBaseDataPojo.getTotalCalories()));
+			totalDiet.setTotalCarbohydrates(dietCustomDataPojo.getTotalCarbohydrates().add(dietBaseDataPojo.getTotalCarbohydrates()));
+			totalDiet.setTotalFat(dietCustomDataPojo.getTotalFat().add(dietBaseDataPojo.getTotalFat()));
+			totalDiet.setTotalProteins(dietCustomDataPojo.getTotalProteins().add(dietBaseDataPojo.getTotalProteins()));
+			totalDiet.setTotalQuantityGrams(dietCustomDataPojo.getTotalQuantityGrams().add(dietBaseDataPojo.getTotalQuantityGrams()));
+			
+			DietCustomDetailResumePojo dietDataPojo = new DietCustomDetailResumePojo();
+			dietDataPojo.setIdDietCustom(dietCustom.getIdRecipe());
+			dietDataPojo.setRecipe(recipeDietCustomEntityPojo);
+			dietDataPojo.setFoods(dietFoodDietCustomResumeEntityPojos);
+			dietDataPojo.setSubTotalDietBase(dietBaseDataPojo);
+			dietDataPojo.setSubTotalDietCustom(dietCustomDataPojo);
+			dietDataPojo.setTotalDiet(totalDiet);
+			
+			dietCustomDetailPojos.add(dietDataPojo);
+		}
+		
+		GetDietCustomDetailListRespPojo responsePojo = new GetDietCustomDetailListRespPojo();
+		responsePojo.setDietCustomDetailList(dietCustomDetailPojos);
+		
+		return responsePojo;
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public GetDietCustomDetailRespPojo executeGetDietCustomDetail(GetDietCustomRequestPojo requestPojo) {
+		
+		Diet dietBase = dietRepository.getDietBase();
+		Diet dietCustom = (Diet) genericCustomPersistance.findById(Diet.class, requestPojo.getId());
+		
+		DietEntityPojo dietBaseDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietBase);
+		RecipeEntityPojo recipeDietCustomEntityPojo = buildEntityToPojoUtil.generateRecipePojo(null, dietCustom.getRecipe());
+		DietEntityPojo dietCustomResumePojo = buildEntityToPojoUtil.generateDietPojo(null, dietCustom);
+		
+		List<DietFoodResumePojo> dietFoodDietCustomResumeEntityPojos = new ArrayList<DietFoodResumePojo>();
+		
+		for (DietFood dietFood: dietCustom.getDietFoods()) {
+			
+			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood);
+			dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
+			dietFoodResumeEntityPojo.setPortions(dietFood.getPortions());
+			
+			dietFoodDietCustomResumeEntityPojos.add(dietFoodResumeEntityPojo);
+		}
+			
+			
+		DietEntityPojo dietCustomDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietCustom);
+		
+		DietEntityPojo totalDiet = new DietEntityPojo();
+		totalDiet.setTotalCalories(dietCustomDataPojo.getTotalCalories().add(dietBaseDataPojo.getTotalCalories()));
+		totalDiet.setTotalCarbohydrates(dietCustomDataPojo.getTotalCarbohydrates().add(dietBaseDataPojo.getTotalCarbohydrates()));
+		totalDiet.setTotalFat(dietCustomDataPojo.getTotalFat().add(dietBaseDataPojo.getTotalFat()));
+		totalDiet.setTotalProteins(dietCustomDataPojo.getTotalProteins().add(dietBaseDataPojo.getTotalProteins()));
+		totalDiet.setTotalQuantityGrams(dietCustomDataPojo.getTotalQuantityGrams().add(dietBaseDataPojo.getTotalQuantityGrams()));
+		
+		GetDietCustomDetailRespPojo responsePojo = new GetDietCustomDetailRespPojo();
+		responsePojo.setIdDietCustom(dietCustom.getIdRecipe());
+		responsePojo.setRecipe(recipeDietCustomEntityPojo);
+		responsePojo.setFoods(dietFoodDietCustomResumeEntityPojos);
+		responsePojo.setSubTotalDietBase(dietBaseDataPojo);
+		responsePojo.setSubTotalDietCustom(dietCustomDataPojo);
+		responsePojo.setTotalDiet(totalDiet);
+		
+		return responsePojo;
+		
 	}
 }
