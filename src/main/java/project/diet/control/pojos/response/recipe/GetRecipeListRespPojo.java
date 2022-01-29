@@ -3,7 +3,6 @@ package project.diet.control.pojos.response.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import project.diet.control.pojos.entity.FoodEntityPojo;
 import project.diet.control.pojos.entity.RecipeEntityPojo;
 
 public class GetRecipeListRespPojo {

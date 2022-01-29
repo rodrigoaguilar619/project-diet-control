@@ -1,6 +1,5 @@
 package project.diet.control.pojos.response.recipe;
 
-import project.diet.control.pojos.entity.FoodEntityPojo;
 import project.diet.control.pojos.entity.RecipeEntityPojo;
 
 public class GetRecipeRespPojo {
