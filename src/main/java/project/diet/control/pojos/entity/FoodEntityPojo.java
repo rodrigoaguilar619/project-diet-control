@@ -10,6 +10,8 @@ public class FoodEntityPojo {
 	
 	private BigDecimal quantityGrams;
 	
+	private BigDecimal unityGrams;
+	
 	private BigDecimal calories;
 	
 	private BigDecimal carbohydrates;
@@ -46,6 +48,14 @@ public class FoodEntityPojo {
 
 	public void setQuantityGrams(BigDecimal quantityGrams) {
 		this.quantityGrams = quantityGrams;
+	}
+
+	public BigDecimal getUnityGrams() {
+		return unityGrams;
+	}
+
+	public void setUnityGrams(BigDecimal unityGrams) {
+		this.unityGrams = unityGrams;
 	}
 
 	public BigDecimal getCalories() {

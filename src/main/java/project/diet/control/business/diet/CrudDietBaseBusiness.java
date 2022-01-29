@@ -1,5 +1,6 @@
 package project.diet.control.business.diet;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,9 +69,10 @@ public class CrudDietBaseBusiness extends CrudDietBusiness {
 		
 		for (DietFood dietFood: dietBase.getDietFoods()) {
 			
-			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood);
+			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
 			dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
 			dietFoodResumeEntityPojo.setPortions(dietFood.getPortions());
+			dietFoodResumeEntityPojo.setUnities(dietFood.getUnities() != null ? dietFood.getUnities() : new BigDecimal(0.0));
 			
 			dietFoodResumeEntityPojos.add(dietFoodResumeEntityPojo);
 		}

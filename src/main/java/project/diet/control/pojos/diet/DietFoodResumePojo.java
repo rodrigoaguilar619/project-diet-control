@@ -9,6 +9,8 @@ public class DietFoodResumePojo extends FoodEntityPojo {
 	private Integer idDietFood;
 	
 	private BigDecimal portions;
+	
+	private BigDecimal unities;
 
 	public Integer getIdDietFood() {
 		return idDietFood;
@@ -24,5 +26,13 @@ public class DietFoodResumePojo extends FoodEntityPojo {
 
 	public void setPortions(BigDecimal portions) {
 		this.portions = portions;
+	}
+
+	public BigDecimal getUnities() {
+		return unities;
+	}
+
+	public void setUnities(BigDecimal unities) {
+		this.unities = unities;
 	}
 }

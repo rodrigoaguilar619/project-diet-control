@@ -32,6 +32,9 @@ public class DietFood implements Serializable {
 
 	@Column(name="total_proteins")
 	private BigDecimal totalProteins;
+	
+	@Column(name="unities")
+	private BigDecimal unities;
 
 	@Column(name="total_quantity_grams")
 	private BigDecimal totalQuantityGrams;
@@ -63,6 +66,14 @@ public class DietFood implements Serializable {
 
 	public void setPortions(BigDecimal portions) {
 		this.portions = portions;
+	}
+	
+	public BigDecimal getUnities() {
+		return unities;
+	}
+
+	public void setUnities(BigDecimal unities) {
+		this.unities = unities;
 	}
 
 	public BigDecimal getTotalCalories() {

@@ -12,6 +12,7 @@ public abstract class Food_ {
 
 	public static volatile SingularAttribute<Food, BigDecimal> carbohydrates;
 	public static volatile SingularAttribute<Food, BigDecimal> quantityGrams;
+	public static volatile SingularAttribute<Food, BigDecimal> unityGrams;
 	public static volatile SingularAttribute<Food, BigDecimal> price;
 	public static volatile SingularAttribute<Food, BigDecimal> proteins;
 	public static volatile SingularAttribute<Food, BigDecimal> fat;
@@ -24,6 +25,7 @@ public abstract class Food_ {
 
 	public static final String CARBOHYDRATES = "carbohydrates";
 	public static final String QUANTITY_GRAMS = "quantityGrams";
+	public static final String UNITY_GRAMS = "unityGrams";
 	public static final String PRICE = "price";
 	public static final String PROTEINS = "proteins";
 	public static final String FAT = "fat";

@@ -9,10 +9,12 @@ import lib.base.backend.persistance.GenericPersistence;
 import project.diet.control.beans.entity.Diet;
 import project.diet.control.beans.entity.DietFood;
 import project.diet.control.beans.entity.Food;
+import project.diet.control.beans.entity.NutritionGoal;
 import project.diet.control.beans.entity.Recipe;
 import project.diet.control.pojos.diet.DietPojo;
 import project.diet.control.pojos.entity.DietFoodEntityPojo;
 import project.diet.control.pojos.entity.FoodEntityPojo;
+import project.diet.control.pojos.entity.NutritionGoalEntityPojo;
 import project.diet.control.pojos.entity.RecipeEntityPojo;
 
 public class BuildPojoToEntityUtil {
@@ -36,6 +38,7 @@ public class BuildPojoToEntityUtil {
 		foodEntity.setPrice(foodEntityPojo.getPrice());
 		foodEntity.setCostCalorie(foodEntityPojo.getPrice().divide(foodEntityPojo.getCalories(), 2, RoundingMode.HALF_UP));
 		foodEntity.setCostProtein(foodEntityPojo.getProteins().compareTo(new BigDecimal(0.0)) == 0 ? new BigDecimal(0.0) : foodEntityPojo.getPrice().divide(foodEntityPojo.getProteins(), 2, RoundingMode.HALF_UP));
+		foodEntity.setUnityGrams(foodEntityPojo.getUnityGrams());
 		
 		return foodEntity;
 	}
@@ -115,7 +118,22 @@ public class BuildPojoToEntityUtil {
 		dietFoodEntity.setTotalCarbohydrates(totalCarbohydrates);
 		dietFoodEntity.setTotalFat(totalFats);
 		dietFoodEntity.setTotalQuantityGrams(totalGrams);
+		dietFoodEntity.setUnities(dietFoodEntityPojo.getUnities() != null ? dietFoodEntityPojo.getUnities() : new BigDecimal(0.0));
+		//dietFoodEntity.setUnities(food.getUnityGrams().compareTo(new BigDecimal(0.0)) != 0 ? (portions.multiply(food.getQuantityGrams())).divide(food.getUnityGrams(), 2) : new BigDecimal(0.0));
 		
 		return dietFoodEntity;
+	}
+	
+	public NutritionGoal generateNutritionGoalEntity(NutritionGoal nutritionGoalEntity, NutritionGoalEntityPojo nutritionGoalEntityPojo) {
+		
+		if (nutritionGoalEntity == null)
+			nutritionGoalEntity = new NutritionGoal();
+		
+		nutritionGoalEntity.setCalories(nutritionGoalEntityPojo.getCalories());
+		nutritionGoalEntity.setCarbohydrates(nutritionGoalEntityPojo.getCarbohydrates());
+		nutritionGoalEntity.setFat(nutritionGoalEntityPojo.getFat());
+		nutritionGoalEntity.setProteins(nutritionGoalEntityPojo.getProteins());
+		
+		return nutritionGoalEntity;
 	}
 }

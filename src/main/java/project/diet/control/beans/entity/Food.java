@@ -40,6 +40,9 @@ public class Food implements Serializable {
 
 	@Column(name="quantity_grams")
 	private BigDecimal quantityGrams;
+	
+	@Column(name="unity_grams")
+	private BigDecimal unityGrams;
 
 	//bi-directional many-to-one association to DietFood
 	@OneToMany(mappedBy="food")
@@ -126,6 +129,14 @@ public class Food implements Serializable {
 
 	public void setQuantityGrams(BigDecimal quantityGrams) {
 		this.quantityGrams = quantityGrams;
+	}
+
+	public BigDecimal getUnityGrams() {
+		return unityGrams;
+	}
+
+	public void setUnityGrams(BigDecimal unityGrams) {
+		this.unityGrams = unityGrams;
 	}
 
 	public List<DietFood> getDietFoods() {

@@ -18,6 +18,7 @@ public abstract class DietFood_ {
 	public static volatile SingularAttribute<DietFood, BigDecimal> totalQuantityGrams;
 	public static volatile SingularAttribute<DietFood, Food> food;
 	public static volatile SingularAttribute<DietFood, BigDecimal> portions;
+	public static volatile SingularAttribute<DietFood, BigDecimal> unities;
 
 	public static final String TOTAL_CARBOHYDRATES = "totalCarbohydrates";
 	public static final String TOTAL_FAT = "totalFat";
@@ -27,7 +28,8 @@ public abstract class DietFood_ {
 	public static final String TOTAL_PROTEINS = "totalProteins";
 	public static final String TOTAL_QUANTITY_GRAMS = "totalQuantityGrams";
 	public static final String FOOD = "food";
-	public static final String PORTIONS = "portions";
+	public static final String UNITIES = "unitites";
+	
 
 }
 

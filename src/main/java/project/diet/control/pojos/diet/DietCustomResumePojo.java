@@ -10,6 +10,8 @@ public class DietCustomResumePojo {
 	
 	private DietEntityPojo subTotalDietCustom;
 	
+	private DietEntityPojo nutritionalGoals;
+	
 	List<DietFoodResumePojo> foodsDietBase;
 	
 	public DietEntityPojo getSubTotalDietBase() {
@@ -34,6 +36,14 @@ public class DietCustomResumePojo {
 
 	public void setFoodsDietBase(List<DietFoodResumePojo> foodsDietBase) {
 		this.foodsDietBase = foodsDietBase;
+	}
+
+	public DietEntityPojo getNutritionalGoals() {
+		return nutritionalGoals;
+	}
+
+	public void setNutritionalGoals(DietEntityPojo nutritionalGoals) {
+		this.nutritionalGoals = nutritionalGoals;
 	}
 	
 	

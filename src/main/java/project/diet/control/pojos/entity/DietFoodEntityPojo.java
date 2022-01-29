@@ -7,6 +7,8 @@ public class DietFoodEntityPojo {
 	private Integer id;
 	
 	private BigDecimal portions;
+	
+	private BigDecimal unities;
 
 	public Integer getId() {
 		return id;
@@ -23,4 +25,14 @@ public class DietFoodEntityPojo {
 	public void setPortions(BigDecimal portions) {
 		this.portions = portions;
 	}
+
+	public BigDecimal getUnities() {
+		return unities;
+	}
+
+	public void setUnities(BigDecimal unities) {
+		this.unities = unities;
+	}
+
+	
 }

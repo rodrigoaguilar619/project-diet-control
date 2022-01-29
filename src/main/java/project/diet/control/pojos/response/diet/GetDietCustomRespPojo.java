@@ -2,6 +2,7 @@ package project.diet.control.pojos.response.diet;
 
 import project.diet.control.pojos.diet.DietCustomResumePojo;
 import project.diet.control.pojos.diet.DietDataPojo;
+import project.diet.control.pojos.entity.DietEntityPojo;
 
 public class GetDietCustomRespPojo extends DietCustomResumePojo {
 	

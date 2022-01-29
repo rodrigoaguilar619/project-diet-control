@@ -12,6 +12,7 @@ import lib.base.backend.exception.data.BusinessException;
 import lib.base.backend.web.enumeratos.CrudOptionsEnum;
 import project.diet.control.beans.entity.Diet;
 import project.diet.control.beans.entity.DietFood;
+import project.diet.control.beans.entity.NutritionGoal;
 import project.diet.control.pojos.diet.DietCustomDetailResumePojo;
 import project.diet.control.pojos.diet.DietCustomResumePojo;
 import project.diet.control.pojos.diet.DietDataPojo;
@@ -133,6 +134,9 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		
 		Diet dietBase = dietRepository.getDietBase();
 		Diet dietCustom = requestPojo.getId() != null ? (Diet) genericCustomPersistance.findById(Diet.class, requestPojo.getId()) : new Diet();
+
+		List<NutritionGoal> nutritionGoals = genericCustomPersistance.findAll(NutritionGoal.class);
+		NutritionGoal nutritionGoal = nutritionGoals != null && nutritionGoals.size() > 0 ? nutritionGoals.get(0) : null;
 		
 		if (requestPojo.getId() == null) {
 			
@@ -147,14 +151,24 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		
 		DietEntityPojo dietBaseDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietBase);
 		DietEntityPojo dietCustomDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietCustom);
+		DietEntityPojo nutritionalGoalsDataPojo = null;
+		
+		if (nutritionGoal != null) {
+			nutritionalGoalsDataPojo = new DietEntityPojo();
+			nutritionalGoalsDataPojo.setTotalCalories(nutritionGoal.getCalories());
+			nutritionalGoalsDataPojo.setTotalCarbohydrates(nutritionGoal.getCarbohydrates());
+			nutritionalGoalsDataPojo.setTotalFat(nutritionGoal.getFat());
+			nutritionalGoalsDataPojo.setTotalProteins(nutritionGoal.getProteins());
+		}
 		
 		List<DietFoodResumePojo> dietFoodResumeEntityPojos = new ArrayList<DietFoodResumePojo>();
 		
 		for (DietFood dietFood: dietBase.getDietFoods()) {
 			
-			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood);
+			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
 			dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
 			dietFoodResumeEntityPojo.setPortions(dietFood.getPortions());
+			dietFoodResumeEntityPojo.setUnities(dietFood.getUnities() != null ? dietFood.getUnities() : new BigDecimal(0.0));
 			
 			dietFoodResumeEntityPojos.add(dietFoodResumeEntityPojo);
 		}
@@ -170,9 +184,10 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 			
 			for (DietFood dietFood: dietCustom.getDietFoods()) {
 				
-				DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood);
+				DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
 				dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
 				dietFoodResumeEntityPojo.setPortions(dietFood.getPortions());
+				dietFoodResumeEntityPojo.setUnities(dietFood.getUnities() != null ? dietFood.getUnities() : new BigDecimal(0.0));
 				
 				dietFoodDietCustomResumeEntityPojos.add(dietFoodResumeEntityPojo);
 			}
@@ -186,6 +201,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		GetDietCustomRespPojo responsePojo = new GetDietCustomRespPojo();
 		responsePojo.setSubTotalDietBase(dietBaseDataPojo);
 		responsePojo.setSubTotalDietCustom(dietCustomDataPojo);
+		responsePojo.setNutritionalGoals(nutritionalGoalsDataPojo);
 		responsePojo.setFoodsDietBase(dietFoodResumeEntityPojos);
 		responsePojo.setDietCustom(dietDataPojo);
 		
@@ -211,7 +227,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 			
 			for (DietFood dietFood: dietCustom.getDietFoods()) {
 				
-				DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood);
+				DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
 				dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
 				dietFoodResumeEntityPojo.setPortions(dietFood.getPortions());
 				
@@ -261,7 +277,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		
 		for (DietFood dietFood: dietCustom.getDietFoods()) {
 			
-			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood);
+			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
 			dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
 			dietFoodResumeEntityPojo.setPortions(dietFood.getPortions());
 			
