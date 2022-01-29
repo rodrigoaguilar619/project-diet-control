@@ -2,8 +2,6 @@ package project.diet.control.pojos.entity;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
-
 public class DietEntityPojo {
 
 	private Boolean isBase;

@@ -14,7 +14,6 @@ import project.diet.control.beans.entity.Diet;
 import project.diet.control.beans.entity.DietFood;
 import project.diet.control.beans.entity.NutritionGoal;
 import project.diet.control.pojos.diet.DietCustomDetailResumePojo;
-import project.diet.control.pojos.diet.DietCustomResumePojo;
 import project.diet.control.pojos.diet.DietDataPojo;
 import project.diet.control.pojos.diet.DietFoodResumePojo;
 import project.diet.control.pojos.diet.DietResumePojo;
@@ -26,7 +25,6 @@ import project.diet.control.pojos.request.diet.GetDietCustomDetailListRequestPoj
 import project.diet.control.pojos.request.diet.GetDietCustomRequestPojo;
 import project.diet.control.pojos.request.diet.RegisterDietBaseRequestPojo;
 import project.diet.control.pojos.response.diet.AddEditDietRespPojo;
-import project.diet.control.pojos.response.diet.GetDietBaseRespPojo;
 import project.diet.control.pojos.response.diet.GetDietCustomDetailListRespPojo;
 import project.diet.control.pojos.response.diet.GetDietCustomDetailRespPojo;
 import project.diet.control.pojos.response.diet.GetDietCustomListRespPojo;
@@ -221,7 +219,6 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		for (Diet dietCustom: dietCustomList) {
 			
 			RecipeEntityPojo recipeDietCustomEntityPojo = buildEntityToPojoUtil.generateRecipePojo(null, dietCustom.getRecipe());
-			DietEntityPojo dietCustomResumePojo = buildEntityToPojoUtil.generateDietPojo(null, dietCustom);
 			
 			List<DietFoodResumePojo> dietFoodDietCustomResumeEntityPojos = new ArrayList<DietFoodResumePojo>();
 			
@@ -271,7 +268,6 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		
 		DietEntityPojo dietBaseDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietBase);
 		RecipeEntityPojo recipeDietCustomEntityPojo = buildEntityToPojoUtil.generateRecipePojo(null, dietCustom.getRecipe());
-		DietEntityPojo dietCustomResumePojo = buildEntityToPojoUtil.generateDietPojo(null, dietCustom);
 		
 		List<DietFoodResumePojo> dietFoodDietCustomResumeEntityPojos = new ArrayList<DietFoodResumePojo>();
 		

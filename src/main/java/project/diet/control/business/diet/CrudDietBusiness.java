@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.exception.data.BusinessException;
-import lib.base.backend.persistance.GenericPersistence;
 import lib.base.backend.web.enumeratos.CrudOptionsEnum;
 import project.diet.control.beans.entity.Diet;
 import project.diet.control.beans.entity.DietFood;
@@ -16,11 +15,8 @@ import project.diet.control.business.MainBusiness;
 import project.diet.control.pojos.diet.DietPojo;
 import project.diet.control.pojos.entity.DietFoodEntityPojo;
 import project.diet.control.pojos.request.diet.AddEditDietRequestPojo;
-import project.diet.control.pojos.request.diet.RegisterDietBaseRequestPojo;
 import project.diet.control.pojos.response.diet.AddEditDietRespPojo;
 import project.diet.control.repository.DietRepositoryImpl;
-import project.diet.control.util.BuildEntityToPojoUtil;
-import project.diet.control.util.BuildPojoToEntityUtil;
 
 @Component
 public class CrudDietBusiness extends MainBusiness {

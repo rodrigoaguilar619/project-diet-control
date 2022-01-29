@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import lib.base.backend.pojo.catalog.CatalogRequestPojo;
-import lib.base.backend.pojo.catalog.CatalogRespPojo;
 import lib.base.backend.utils.RestUtil;
 import project.diet.control.business.admin.NutritionGoalsBusiness;
 import project.diet.control.pojos.request.admin.GetNutritionGoalRequestPojo;
