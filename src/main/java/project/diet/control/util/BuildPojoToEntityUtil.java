@@ -36,7 +36,7 @@ public class BuildPojoToEntityUtil {
 		foodEntity.setProteins(foodEntityPojo.getProteins());
 		foodEntity.setQuantityGrams(foodEntityPojo.getQuantityGrams());
 		foodEntity.setPrice(foodEntityPojo.getPrice());
-		foodEntity.setCostCalorie(foodEntityPojo.getPrice().divide(foodEntityPojo.getCalories(), 2, RoundingMode.HALF_UP));
+		foodEntity.setCostCalorie(foodEntityPojo.getCalories().compareTo(new BigDecimal(0.0)) == 0 ? new BigDecimal(0.0) : foodEntityPojo.getPrice().divide(foodEntityPojo.getCalories(), 2, RoundingMode.HALF_UP));
 		foodEntity.setCostProtein(foodEntityPojo.getProteins().compareTo(new BigDecimal(0.0)) == 0 ? new BigDecimal(0.0) : foodEntityPojo.getPrice().divide(foodEntityPojo.getProteins(), 2, RoundingMode.HALF_UP));
 		foodEntity.setUnityGrams(foodEntityPojo.getUnityGrams());
 		
