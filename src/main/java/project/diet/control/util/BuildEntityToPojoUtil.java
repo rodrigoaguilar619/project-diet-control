@@ -39,7 +39,7 @@ public class BuildEntityToPojoUtil {
 			foodEntityPojo = new FoodEntityPojo();
 		
 		foodEntityPojo.setId(dietFoodEntity.getFood().getId());
-		foodEntityPojo.setDescription(dietFoodEntity.getFood().getDescription() + (mergeUnityGrams ? " (" + dietFoodEntity.getFood().getUnityGrams().toPlainString() + "gr)" : "" ));
+		foodEntityPojo.setDescription(dietFoodEntity.getFood().getDescription() + (mergeUnityGrams ? " (" + dietFoodEntity.getFood().getUnityGrams().toPlainString() + " gr)" : "" ));
 		foodEntityPojo.setCalories(dietFoodEntity.getTotalCalories());
 		foodEntityPojo.setCarbohydrates(dietFoodEntity.getTotalCarbohydrates());
 		foodEntityPojo.setFat(dietFoodEntity.getTotalFat());
