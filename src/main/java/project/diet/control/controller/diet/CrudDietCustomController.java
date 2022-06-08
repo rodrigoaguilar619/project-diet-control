@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import lib.base.backend.exception.data.BusinessException;
 import lib.base.backend.utils.RestUtil;
 import project.diet.control.business.diet.CrudDietCustomBusiness;
 import project.diet.control.pojos.request.diet.AddEditDietRequestPojo;
@@ -26,7 +27,7 @@ public class CrudDietCustomController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/diet/dietCustomAdd", consumes = "application/json", produces = "application/json")
-	public ResponseEntity addFood(@RequestBody AddEditDietRequestPojo requestPojo) throws Exception {
+	public ResponseEntity addFood(@RequestBody AddEditDietRequestPojo requestPojo) throws BusinessException {
 		
 		AddEditDietRespPojo responsePojo = crudDietCustomBusiness.executeAddDiet(requestPojo);
 		return new RestUtil().buildResponseSuccess(responsePojo, "food added");
@@ -34,7 +35,7 @@ public class CrudDietCustomController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/diet/dietCustomEdit", consumes = "application/json", produces = "application/json")
-	public ResponseEntity editFood(@RequestBody AddEditDietRequestPojo requestPojo) throws Exception {
+	public ResponseEntity editFood(@RequestBody AddEditDietRequestPojo requestPojo) throws BusinessException {
 		
 		AddEditDietRespPojo responsePojo = crudDietCustomBusiness.executeEditDiet(requestPojo);
 		return new RestUtil().buildResponseSuccess(responsePojo, "food edited");
@@ -42,7 +43,7 @@ public class CrudDietCustomController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/diet/getDietCustomList", consumes = "application/json", produces = "application/json")
-	public ResponseEntity getDietCustomList(@RequestBody GetDietCustomListRequestPojo requestPojo) throws Exception {
+	public ResponseEntity getDietCustomList(@RequestBody GetDietCustomListRequestPojo requestPojo) {
 		
 		GetDietCustomListRespPojo reponsePojo = crudDietCustomBusiness.executeGetDietCustomList();
 		return new RestUtil().buildResponseSuccess(reponsePojo, "Get diet custom list");
@@ -50,7 +51,7 @@ public class CrudDietCustomController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/diet/getDietCustom", consumes = "application/json", produces = "application/json")
-	public ResponseEntity getDietCustom(@RequestBody GetDietCustomRequestPojo requestPojo) throws Exception {
+	public ResponseEntity getDietCustom(@RequestBody GetDietCustomRequestPojo requestPojo) {
 		
 		GetDietCustomRespPojo reponsePojo = crudDietCustomBusiness.executeGetDietCustomInfo(requestPojo);
 		return new RestUtil().buildResponseSuccess(reponsePojo, "Get diet custom");
@@ -58,7 +59,7 @@ public class CrudDietCustomController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/diet/getDietsCustomDetailList", consumes = "application/json", produces = "application/json")
-	public ResponseEntity getDietsCustomDetailList(@RequestBody GetDietCustomDetailListRequestPojo requestPojo) throws Exception {
+	public ResponseEntity getDietsCustomDetailList(@RequestBody GetDietCustomDetailListRequestPojo requestPojo) {
 		
 		GetDietCustomDetailListRespPojo reponsePojo = crudDietCustomBusiness.executeGetDietsCustomDetail(requestPojo);
 		return new RestUtil().buildResponseSuccess(reponsePojo, "Get diet custom detail list");
@@ -66,7 +67,7 @@ public class CrudDietCustomController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/diet/getDietCustomDetail", consumes = "application/json", produces = "application/json")
-	public ResponseEntity getDietCustomDetail(@RequestBody GetDietCustomRequestPojo requestPojo) throws Exception {
+	public ResponseEntity getDietCustomDetail(@RequestBody GetDietCustomRequestPojo requestPojo) {
 		
 		GetDietCustomDetailRespPojo reponsePojo = crudDietCustomBusiness.executeGetDietCustomDetail(requestPojo);
 		return new RestUtil().buildResponseSuccess(reponsePojo, "Get diet custom detail");

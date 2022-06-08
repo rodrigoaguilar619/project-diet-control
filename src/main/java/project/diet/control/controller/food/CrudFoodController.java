@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import lib.base.backend.exception.data.BusinessException;
 import lib.base.backend.utils.RestUtil;
 import project.diet.control.business.food.CrudFoodBusiness;
 import project.diet.control.pojos.request.food.AddEditFoodRequestPojo;
@@ -24,7 +25,7 @@ public class CrudFoodController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/food/add", consumes = "application/json", produces = "application/json")
-	public ResponseEntity addFood(@RequestBody AddEditFoodRequestPojo requestPojo) throws Exception {
+	public ResponseEntity addFood(@RequestBody AddEditFoodRequestPojo requestPojo) throws BusinessException {
 		
 		AddEditFoodRespPojo responsePojo = crudFoodBusiness.executeAddFood(requestPojo);
 		return new RestUtil().buildResponseSuccess(responsePojo, "food added");
@@ -32,7 +33,7 @@ public class CrudFoodController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/food/edit", consumes = "application/json", produces = "application/json")
-	public ResponseEntity editFood(@RequestBody AddEditFoodRequestPojo requestPojo) throws Exception {
+	public ResponseEntity editFood(@RequestBody AddEditFoodRequestPojo requestPojo) throws BusinessException {
 		
 		AddEditFoodRespPojo responsePojo = crudFoodBusiness.executeEditFood(requestPojo);
 		return new RestUtil().buildResponseSuccess(responsePojo, "food edited");
@@ -40,7 +41,7 @@ public class CrudFoodController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/food/get", consumes = "application/json", produces = "application/json")
-	public ResponseEntity getFood(@RequestBody GetFoodRequestPojo requestPojo) throws Exception {
+	public ResponseEntity getFood(@RequestBody GetFoodRequestPojo requestPojo) throws BusinessException {
 		
 		GetFoodRespPojo responsePojo = crudFoodBusiness.executeGetFood(requestPojo);
 		return new RestUtil().buildResponseSuccess(responsePojo, "food getted");
@@ -48,7 +49,7 @@ public class CrudFoodController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/food/delete", consumes = "application/json", produces = "application/json")
-	public ResponseEntity deleteFood(@RequestBody DeleteFoodRequestPojo requestPojo) throws Exception {
+	public ResponseEntity deleteFood(@RequestBody DeleteFoodRequestPojo requestPojo) throws BusinessException {
 		
 		crudFoodBusiness.executeDeleteFood(requestPojo);
 		return new RestUtil().buildResponseSuccess(null, "food deleted");
@@ -56,7 +57,7 @@ public class CrudFoodController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/food/addMultiple", consumes = "application/json", produces = "application/json")
-	public ResponseEntity addFoodMultiple(@RequestBody AddEditFoodsRequestPojo addEditFoodsRequestPojo) throws Exception {
+	public ResponseEntity addFoodMultiple(@RequestBody AddEditFoodsRequestPojo addEditFoodsRequestPojo) {
 		
 		crudFoodBusiness.executeAddFoods(addEditFoodsRequestPojo);
 		return new RestUtil().buildResponseSuccess(null, "list of food added");
@@ -65,8 +66,6 @@ public class CrudFoodController {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/food/getAll", consumes = "application/json", produces = "application/json")
 	public ResponseEntity getFoodsAll() {
-		
-		//return new ResponseEntity(null, null, HttpStatus.INTERNAL_SERVER_ERROR);
 		
 		GetFoodListRespPojo dataPojo = crudFoodBusiness.executeGetFoods();
 		return new RestUtil().buildResponseSuccess(dataPojo, "list of food gotten");

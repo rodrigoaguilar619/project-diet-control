@@ -11,7 +11,7 @@ public class DietPojo {
 	
 	private Boolean isBase;
 	
-	private List<DietFoodEntityPojo> foods = new ArrayList<DietFoodEntityPojo>();
+	private List<DietFoodEntityPojo> foods = new ArrayList<>();
 
 	public Integer getIdRecipe() {
 		return idRecipe;

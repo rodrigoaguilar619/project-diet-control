@@ -35,6 +35,11 @@ public class CrudFoodBusiness {
 	@Autowired
 	BuildEntityToPojoUtil buildEntityToPojoUtil;
 	
+	private String messageFoodNotFound(Integer idFood) {
+		
+		return "Food id: " + idFood + " not found";
+	}
+	
 	@SuppressWarnings("unchecked")
 	public Integer setAddEditFood(Food foodEntity, FoodEntityPojo foodEntityPojo, CrudOptionsEnum crudOptionsEnum) {
 		
@@ -79,7 +84,7 @@ public class CrudFoodBusiness {
 		Food food = (Food) genericCustomPersistance.findById(Food.class, foodEntityPojo.getId());
 		
 		if (food == null)
-			throw new BusinessException("Food id: " + foodEntityPojo.getId() + " not found");
+			throw new BusinessException(messageFoodNotFound(foodEntityPojo.getId()));
 			
 		Integer id = setAddEditFood(food, addEditFoodRequestPojo.getFood(), CrudOptionsEnum.UPDATE);
 		
@@ -103,7 +108,7 @@ public class CrudFoodBusiness {
 	public GetFoodListRespPojo executeGetFoods() {
 		
 		List<Food> foods = genericCustomPersistance.findAll(Food.class);
-		List<FoodEntityPojo> foodEntityPojos = new ArrayList<FoodEntityPojo>();
+		List<FoodEntityPojo> foodEntityPojos = new ArrayList<>();
 		
 		for (Food food: foods) {
 			
@@ -126,7 +131,7 @@ public class CrudFoodBusiness {
 		Food food = (Food) genericCustomPersistance.findById(Food.class, requestPojo.getId());
 		
 		if (food == null)
-			throw new BusinessException("Food id: " + requestPojo.getId() + " not found");
+			throw new BusinessException(messageFoodNotFound(requestPojo.getId()));
 		
 		genericCustomPersistance.delete(food);
 	}
@@ -141,7 +146,7 @@ public class CrudFoodBusiness {
 		Food food = (Food) genericCustomPersistance.findById(Food.class, requestPojo.getId());
 		
 		if (food == null)
-			throw new BusinessException("Food id: " + requestPojo.getId() + " not found");
+			throw new BusinessException(messageFoodNotFound(requestPojo.getId()));
 		
 		FoodEntityPojo foodEntityPojo = buildEntityToPojoUtil.generateFoodPojo(new FoodEntityPojo(), food);
 		

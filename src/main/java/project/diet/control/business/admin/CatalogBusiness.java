@@ -40,9 +40,7 @@ public class CatalogBusiness extends MainBusiness {
 		
 		List<?> catalogList = genericCustomPersistance.findAll(clazz);
 		
-		List<CatalogDataPojo> catalogListPojo = catalogUtil.getCatalog(clazz, catalogList);
-		
-		return catalogListPojo;
+		return catalogUtil.getCatalog(clazz, catalogList);
 	}
 	
 	@Transactional

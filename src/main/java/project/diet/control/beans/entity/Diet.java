@@ -78,6 +78,14 @@ public class Diet implements Serializable {
 	public void setTotalCalories(BigDecimal totalCalories) {
 		this.totalCalories = totalCalories;
 	}
+	
+	public BigDecimal getTotalProteins() {
+		return this.totalProteins;
+	}
+
+	public void setTotalProteins(BigDecimal totalProteins) {
+		this.totalProteins = totalProteins;
+	}
 
 	public BigDecimal getTotalCarbohydrates() {
 		return this.totalCarbohydrates;
@@ -93,14 +101,6 @@ public class Diet implements Serializable {
 
 	public void setTotalFat(BigDecimal totalFat) {
 		this.totalFat = totalFat;
-	}
-
-	public BigDecimal getTotalProteins() {
-		return this.totalProteins;
-	}
-
-	public void setTotalProteins(BigDecimal totalProteins) {
-		this.totalProteins = totalProteins;
 	}
 
 	public BigDecimal getTotalQuantityGrams() {

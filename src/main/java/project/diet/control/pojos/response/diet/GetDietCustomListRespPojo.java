@@ -7,7 +7,7 @@ import project.diet.control.pojos.diet.DietResumePojo;
 
 public class GetDietCustomListRespPojo {
 	
-	List<DietResumePojo> diets = new ArrayList<DietResumePojo>();
+	List<DietResumePojo> diets = new ArrayList<>();
 
 	public List<DietResumePojo> getDiets() {
 		return diets;

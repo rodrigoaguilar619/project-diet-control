@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import lib.base.backend.exception.data.BusinessException;
 import lib.base.backend.utils.RestUtil;
 import project.diet.control.business.recipe.CrudRecipeBusiness;
 import project.diet.control.pojos.request.recipe.AddEditRecipeRequestPojo;
@@ -23,7 +24,7 @@ public class CrudRecipeController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/recipe/add", consumes = "application/json", produces = "application/json")
-	public ResponseEntity addRecipe(@RequestBody AddEditRecipeRequestPojo requestPojo) throws Exception {
+	public ResponseEntity addRecipe(@RequestBody AddEditRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		AddEditRecipeRespPojo reponsePojo = crudRecipeBusiness.executeAddRecipe(requestPojo);
 		return new RestUtil().buildResponseSuccess(reponsePojo, "Recipe added");
@@ -31,7 +32,7 @@ public class CrudRecipeController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/recipe/edit", consumes = "application/json", produces = "application/json")
-	public ResponseEntity editRecipe(@RequestBody AddEditRecipeRequestPojo requestPojo) throws Exception {
+	public ResponseEntity editRecipe(@RequestBody AddEditRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		AddEditRecipeRespPojo reponsePojo = crudRecipeBusiness.executeEditRecipe(requestPojo);
 		return new RestUtil().buildResponseSuccess(reponsePojo, "Recipe edited");
@@ -39,7 +40,7 @@ public class CrudRecipeController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/recipe/get", consumes = "application/json", produces = "application/json")
-	public ResponseEntity getRecipe(@RequestBody GetRecipeRequestPojo requestPojo) throws Exception {
+	public ResponseEntity getRecipe(@RequestBody GetRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		GetRecipeRespPojo responsePojo = crudRecipeBusiness.executeGetRecipe(requestPojo);
 		return new RestUtil().buildResponseSuccess(responsePojo, "Recipe getted");
@@ -47,7 +48,7 @@ public class CrudRecipeController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/recipe/delete", consumes = "application/json", produces = "application/json")
-	public ResponseEntity deleteRecipe(@RequestBody DeleteRecipeRequestPojo requestPojo) throws Exception {
+	public ResponseEntity deleteRecipe(@RequestBody DeleteRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		crudRecipeBusiness.executeDeleteRecipe(requestPojo);
 		return new RestUtil().buildResponseSuccess(null, "Recipe deleted");
@@ -56,8 +57,6 @@ public class CrudRecipeController {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/recipe/getAll", consumes = "application/json", produces = "application/json")
 	public ResponseEntity getRecipesAll() {
-		
-		//return new ResponseEntity(null, null, HttpStatus.INTERNAL_SERVER_ERROR);
 		
 		GetRecipeListRespPojo dataPojo = crudRecipeBusiness.executeGetRecipes();
 		return new RestUtil().buildResponseSuccess(dataPojo, "list of recipe gotten");

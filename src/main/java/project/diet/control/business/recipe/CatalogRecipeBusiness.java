@@ -25,9 +25,7 @@ public class CatalogRecipeBusiness extends MainBusiness {
 		
 		List<Recipe> catalogList = genericCustomPersistance.findAll(Recipe.class);
 		
-		List<CatalogDataPojo> catalogDataPojos = catalogUtil.getCatalog(Recipe.class, catalogList, "id", "title");
-		
-		return catalogDataPojos;
+		return catalogUtil.getCatalog(Recipe.class, catalogList, "id", "title");
 	}
 	
 	@Transactional

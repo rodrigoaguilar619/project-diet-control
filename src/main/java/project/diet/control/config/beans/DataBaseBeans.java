@@ -19,9 +19,6 @@ public class DataBaseBeans {
 	@Autowired
 	EntityManager entityManager;
 	
-	@Autowired
-	private EntityManagerFactory entityManagerFactory;
-	
 	@SuppressWarnings("rawtypes")
 	@Bean
 	@Primary
@@ -39,7 +36,7 @@ public class DataBaseBeans {
 	
 	@SuppressWarnings("rawtypes")
 	@Bean("customPersistance")
-	public GenericPersistence generateCustomGenericPersistence() {
+	public GenericPersistence generateCustomGenericPersistence(EntityManagerFactory entityManagerFactory) {
 		return new GenericJpaPeristanceImpl(entityManagerFactory);
 	}
 

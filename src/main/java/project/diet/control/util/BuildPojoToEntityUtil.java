@@ -36,8 +36,8 @@ public class BuildPojoToEntityUtil {
 		foodEntity.setProteins(foodEntityPojo.getProteins());
 		foodEntity.setQuantityGrams(foodEntityPojo.getQuantityGrams());
 		foodEntity.setPrice(foodEntityPojo.getPrice());
-		foodEntity.setCostCalorie(foodEntityPojo.getCalories().compareTo(new BigDecimal(0.0)) == 0 ? new BigDecimal(0.0) : foodEntityPojo.getPrice().divide(foodEntityPojo.getCalories(), 2, RoundingMode.HALF_UP));
-		foodEntity.setCostProtein(foodEntityPojo.getProteins().compareTo(new BigDecimal(0.0)) == 0 ? new BigDecimal(0.0) : foodEntityPojo.getPrice().divide(foodEntityPojo.getProteins(), 2, RoundingMode.HALF_UP));
+		foodEntity.setCostCalorie(foodEntityPojo.getCalories().compareTo(BigDecimal.valueOf(0.0)) == 0 ? BigDecimal.valueOf(0.0) : foodEntityPojo.getPrice().divide(foodEntityPojo.getCalories(), 2, RoundingMode.HALF_UP));
+		foodEntity.setCostProtein(foodEntityPojo.getProteins().compareTo(BigDecimal.valueOf(0.0)) == 0 ? BigDecimal.valueOf(0.0) : foodEntityPojo.getPrice().divide(foodEntityPojo.getProteins(), 2, RoundingMode.HALF_UP));
 		foodEntity.setUnityGrams(foodEntityPojo.getUnityGrams());
 		
 		return foodEntity;
@@ -60,11 +60,11 @@ public class BuildPojoToEntityUtil {
 		if(dietEntity == null)
 			dietEntity = new Diet();
 		
-		BigDecimal totalCalories = new BigDecimal(0.0);
-		BigDecimal totalProteins = new BigDecimal(0.0);
-		BigDecimal totalCarbohydrates = new BigDecimal(0.0);
-		BigDecimal totalFats = new BigDecimal(0.0);
-		BigDecimal totalGrams = new BigDecimal(0.0);
+		BigDecimal totalCalories = BigDecimal.valueOf(0.0);
+		BigDecimal totalProteins = BigDecimal.valueOf(0.0);
+		BigDecimal totalCarbohydrates = BigDecimal.valueOf(0.0);
+		BigDecimal totalFats = BigDecimal.valueOf(0.0);
+		BigDecimal totalGrams = BigDecimal.valueOf(0.0);
 		
 		for (DietFoodEntityPojo dietFoodEntityPojo: dietEntityPojo.getFoods()) {
 			
@@ -95,11 +95,11 @@ public class BuildPojoToEntityUtil {
 		if(dietFoodEntity == null)
 			dietFoodEntity = new DietFood();
 		
-		BigDecimal totalCalories = new BigDecimal(0.0);
-		BigDecimal totalProteins = new BigDecimal(0.0);
-		BigDecimal totalCarbohydrates = new BigDecimal(0.0);
-		BigDecimal totalFats = new BigDecimal(0.0);
-		BigDecimal totalGrams = new BigDecimal(0.0);
+		BigDecimal totalCalories = BigDecimal.valueOf(0.0);
+		BigDecimal totalProteins = BigDecimal.valueOf(0.0);
+		BigDecimal totalCarbohydrates = BigDecimal.valueOf(0.0);
+		BigDecimal totalFats = BigDecimal.valueOf(0.0);
+		BigDecimal totalGrams = BigDecimal.valueOf(0.0);
 		
 		Food food = (Food) genericCustomPersistance.findById(Food.class, dietFoodEntityPojo.getId());
 		BigDecimal portions = dietFoodEntityPojo.getPortions();
@@ -118,8 +118,7 @@ public class BuildPojoToEntityUtil {
 		dietFoodEntity.setTotalCarbohydrates(totalCarbohydrates);
 		dietFoodEntity.setTotalFat(totalFats);
 		dietFoodEntity.setTotalQuantityGrams(totalGrams);
-		dietFoodEntity.setUnities(dietFoodEntityPojo.getUnities() != null ? dietFoodEntityPojo.getUnities() : new BigDecimal(0.0));
-		//dietFoodEntity.setUnities(food.getUnityGrams().compareTo(new BigDecimal(0.0)) != 0 ? (portions.multiply(food.getQuantityGrams())).divide(food.getUnityGrams(), 2) : new BigDecimal(0.0));
+		dietFoodEntity.setUnities(dietFoodEntityPojo.getUnities() != null ? dietFoodEntityPojo.getUnities() : BigDecimal.valueOf(0.0));
 		
 		return dietFoodEntity;
 	}

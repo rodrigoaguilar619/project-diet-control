@@ -21,7 +21,7 @@ public class NutritionGoalsController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/admin/nutritionGoals/register", consumes = "application/json", produces = "application/json")
-	public ResponseEntity catalogGetAll(@RequestBody RegisterNutritionGoalRequestPojo requestPojo) throws Exception {
+	public ResponseEntity catalogGetAll(@RequestBody RegisterNutritionGoalRequestPojo requestPojo) {
 		
 		RegisterNutritionGoalRespPojo reponsePojo = nutritionGoalsBusiness.executeRegisterNutritionGoal(requestPojo);
 		return new RestUtil().buildResponseSuccess(reponsePojo, "Nutrition goal registered");
@@ -29,7 +29,7 @@ public class NutritionGoalsController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = "/api/admin/nutritionGoals/get", consumes = "application/json", produces = "application/json")
-	public ResponseEntity catalogGetAll(@RequestBody GetNutritionGoalRequestPojo requestPojo) throws Exception {
+	public ResponseEntity catalogGetAll(@RequestBody GetNutritionGoalRequestPojo requestPojo) {
 		
 		GetNutritionGoalRespPojo reponsePojo = nutritionGoalsBusiness.executeGetNutritionGoal(requestPojo);
 		return new RestUtil().buildResponseSuccess(reponsePojo, "Nutrition goal getted");

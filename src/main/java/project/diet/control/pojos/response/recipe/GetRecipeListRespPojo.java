@@ -7,7 +7,7 @@ import project.diet.control.pojos.entity.RecipeEntityPojo;
 
 public class GetRecipeListRespPojo {
 
-	List<RecipeEntityPojo> recipes = new ArrayList<RecipeEntityPojo>();
+	List<RecipeEntityPojo> recipes = new ArrayList<>();
 
 	public List<RecipeEntityPojo> getRecipes() {
 		return recipes;

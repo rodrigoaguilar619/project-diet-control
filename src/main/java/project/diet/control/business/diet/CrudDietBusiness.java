@@ -29,7 +29,7 @@ public class CrudDietBusiness extends MainBusiness {
 		
 		dietEntity = buildPojoToEntityUtil.generateDietEntity(dietEntity, dietEntityPojo);
 		
-		List<DietFood> dietFoods = new ArrayList<DietFood>();
+		List<DietFood> dietFoods = new ArrayList<>();
 		for(DietFoodEntityPojo dietFoodEntityPojo: dietEntityPojo.getFoods()) {
 			
 			DietFood dietFood = buildPojoToEntityUtil.generateDietFoodEntity(null, dietFoodEntityPojo, dietEntityPojo.getIdRecipe());

@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,13 +17,9 @@ import project.diet.control.pojos.entity.RecipeEntityPojo;
 import project.diet.control.pojos.request.diet.RegisterDietBaseRequestPojo;
 import project.diet.control.pojos.response.diet.AddEditDietRespPojo;
 import project.diet.control.pojos.response.diet.GetDietBaseRespPojo;
-import project.diet.control.repository.DietRepositoryImpl;
 
 @Component
 public class CrudDietBaseBusiness extends CrudDietBusiness {
-	
-	@Autowired
-	DietRepositoryImpl dietRepository;
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
@@ -65,14 +60,14 @@ public class CrudDietBaseBusiness extends CrudDietBusiness {
 		RecipeEntityPojo recipeEntityPojo = buildEntityToPojoUtil.generateRecipePojo(null, dietBase.getRecipe());
 		DietEntityPojo dietResumePojo = buildEntityToPojoUtil.generateDietPojo(null, dietBase);
 		
-		List<DietFoodResumePojo> dietFoodResumeEntityPojos = new ArrayList<DietFoodResumePojo>();
+		List<DietFoodResumePojo> dietFoodResumeEntityPojos = new ArrayList<>();
 		
 		for (DietFood dietFood: dietBase.getDietFoods()) {
 			
 			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
 			dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
 			dietFoodResumeEntityPojo.setPortions(dietFood.getPortions());
-			dietFoodResumeEntityPojo.setUnities(dietFood.getUnities() != null ? dietFood.getUnities() : new BigDecimal(0.0));
+			dietFoodResumeEntityPojo.setUnities(dietFood.getUnities() != null ? dietFood.getUnities() : BigDecimal.valueOf(0.0));
 			
 			dietFoodResumeEntityPojos.add(dietFoodResumeEntityPojo);
 		}

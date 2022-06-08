@@ -28,15 +28,20 @@ public class NutritionGoal implements Serializable {
 
 	private BigDecimal proteins;
 
-	public NutritionGoal() {
-	}
-
 	public Integer getId() {
 		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public BigDecimal getCarbohydrates() {
+		return this.carbohydrates;
+	}
+
+	public void setCarbohydrates(BigDecimal carbohydrates) {
+		this.carbohydrates = carbohydrates;
 	}
 
 	public BigDecimal getCalories() {
@@ -45,14 +50,6 @@ public class NutritionGoal implements Serializable {
 
 	public void setCalories(BigDecimal calories) {
 		this.calories = calories;
-	}
-
-	public BigDecimal getCarbohydrates() {
-		return this.carbohydrates;
-	}
-
-	public void setCarbohydrates(BigDecimal carbohydrates) {
-		this.carbohydrates = carbohydrates;
 	}
 
 	public BigDecimal getFat() {

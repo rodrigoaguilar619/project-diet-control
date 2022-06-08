@@ -49,9 +49,6 @@ public class DietFood implements Serializable {
 	@JoinColumn(name="id_diet")
 	private Diet diet;
 
-	public DietFood() {
-	}
-
 	public int getId() {
 		return this.id;
 	}

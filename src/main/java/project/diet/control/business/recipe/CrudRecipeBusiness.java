@@ -34,6 +34,11 @@ public class CrudRecipeBusiness {
 	@Autowired
 	BuildEntityToPojoUtil buildEntityToPojoUtil;
 	
+	private String messageRecipeNotFound(Integer idRecipe) {
+		
+		return "Recipe id: " + idRecipe + " not found";
+	}
+	
 	@SuppressWarnings("unchecked")
 	public Integer setAddEditRecipe(Recipe recipeEntity, RecipeEntityPojo recipeEntityPojo, CrudOptionsEnum crudOptionsEnum) {
 		
@@ -78,7 +83,7 @@ public class CrudRecipeBusiness {
 		Recipe recipe = (Recipe) genericCustomPersistance.findById(Recipe.class, recipeEntityPojo.getId());
 		
 		if (recipe == null)
-			throw new BusinessException("Recipe id: " + recipeEntityPojo.getId() + " not found");
+			throw new BusinessException(messageRecipeNotFound(recipeEntityPojo.getId()));
 			
 		Integer id = setAddEditRecipe(recipe, addEditRecipeRequestPojo.getRecipe(), CrudOptionsEnum.UPDATE);
 		
@@ -98,7 +103,7 @@ public class CrudRecipeBusiness {
 		Recipe recipe = (Recipe) genericCustomPersistance.findById(Recipe.class, requestPojo.getId());
 		
 		if (recipe == null)
-			throw new BusinessException("Recipe id: " + requestPojo.getId() + " not found");
+			throw new BusinessException(messageRecipeNotFound(requestPojo.getId()));
 		
 		genericCustomPersistance.delete(recipe);
 	}
@@ -113,7 +118,7 @@ public class CrudRecipeBusiness {
 		Recipe recipe = (Recipe) genericCustomPersistance.findById(Recipe.class, requestPojo.getId());
 		
 		if (recipe == null)
-			throw new BusinessException("Recipe id: " + requestPojo.getId() + " not found");
+			throw new BusinessException(messageRecipeNotFound(requestPojo.getId()));
 		
 		RecipeEntityPojo recipeEntityPojo = buildEntityToPojoUtil.generateRecipePojo(new RecipeEntityPojo(), recipe);
 		
@@ -128,7 +133,7 @@ public class CrudRecipeBusiness {
 	public GetRecipeListRespPojo executeGetRecipes() {
 		
 		List<Recipe> recipes = genericCustomPersistance.findAll(Recipe.class);
-		List<RecipeEntityPojo> recipeEntityPojos = new ArrayList<RecipeEntityPojo>();
+		List<RecipeEntityPojo> recipeEntityPojos = new ArrayList<>();
 		
 		for (Recipe recipe: recipes) {
 			

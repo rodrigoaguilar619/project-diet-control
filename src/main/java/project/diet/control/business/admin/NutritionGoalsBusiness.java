@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import lib.base.backend.exception.data.BusinessException;
 import lib.base.backend.persistance.GenericPersistence;
 import lib.base.backend.web.enumeratos.CrudOptionsEnum;
 import project.diet.control.beans.entity.NutritionGoal;
@@ -48,10 +47,10 @@ public class NutritionGoalsBusiness {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public RegisterNutritionGoalRespPojo executeRegisterNutritionGoal(RegisterNutritionGoalRequestPojo requestPojo) throws BusinessException {
+	public RegisterNutritionGoalRespPojo executeRegisterNutritionGoal(RegisterNutritionGoalRequestPojo requestPojo) {
 		
 		List<NutritionGoal> nutritionGoals = genericCustomPersistance.findAll(NutritionGoal.class);
-		NutritionGoal nutritionGoal = nutritionGoals != null && nutritionGoals.size() > 0 ? nutritionGoals.get(0) : null;
+		NutritionGoal nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
 			
 		Integer id = setAddEditNutritionGoal(nutritionGoal, requestPojo.getNutritionGoal(), nutritionGoal == null ? CrudOptionsEnum.SAVE : CrudOptionsEnum.UPDATE);
 		
@@ -63,10 +62,10 @@ public class NutritionGoalsBusiness {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public GetNutritionGoalRespPojo executeGetNutritionGoal(GetNutritionGoalRequestPojo requestPojo) throws BusinessException {
+	public GetNutritionGoalRespPojo executeGetNutritionGoal(GetNutritionGoalRequestPojo requestPojo) {
 		
 		List<NutritionGoal> nutritionGoals = genericCustomPersistance.findAll(NutritionGoal.class);
-		NutritionGoal nutritionGoal = nutritionGoals != null && nutritionGoals.size() > 0 ? nutritionGoals.get(0) : null;
+		NutritionGoal nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
 		
 		NutritionGoalEntityPojo nutritionGoalEntityPojo = nutritionGoal != null ? buildEntityToPojoUtil.generateNutritionGoalEntityPojo(null, nutritionGoal): null;
 		

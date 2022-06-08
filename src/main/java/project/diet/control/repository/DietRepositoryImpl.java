@@ -40,7 +40,7 @@ public class DietRepositoryImpl extends MainRepository {
 		cq.where( predicateAnd );
 		
 		List<Diet> resultList = em.createQuery(cq).setMaxResults(1).getResultList();
-		return (resultList.size() == 0) ? null : resultList.get(0);
+		return (resultList.isEmpty()) ? null : resultList.get(0);
 		
 	}
 	
@@ -55,8 +55,6 @@ public class DietRepositoryImpl extends MainRepository {
 		
 		cq.where( predicateAnd );
 		
-		List<Diet> resultList = em.createQuery(cq).getResultList();
-		return resultList;
-		
+		return em.createQuery(cq).getResultList();
 	}
 }

@@ -48,9 +48,6 @@ public class Food implements Serializable {
 	@OneToMany(mappedBy="food")
 	private List<DietFood> dietFoods;
 
-	public Food() {
-	}
-
 	public Integer getId() {
 		return this.id;
 	}

@@ -27,9 +27,6 @@ public class Recipe implements Serializable {
 	@OneToOne(mappedBy="recipe", fetch=FetchType.LAZY)
 	private Diet diet;
 
-	public Recipe() {
-	}
-
 	public int getId() {
 		return this.id;
 	}
