@@ -21,7 +21,17 @@ public abstract class Food_ {
 	public static volatile SingularAttribute<Food, Integer> id;
 	public static volatile SingularAttribute<Food, BigDecimal> calories;
 	public static volatile SingularAttribute<Food, BigDecimal> costCalorie;
+	public static volatile SingularAttribute<Food, BigDecimal> fatMono;
+	public static volatile SingularAttribute<Food, BigDecimal> fatPoli;
+	public static volatile SingularAttribute<Food, BigDecimal> fatSat;
+	public static volatile SingularAttribute<Food, BigDecimal> fatTrans;
+	public static volatile SingularAttribute<Food, BigDecimal> carbSugar;
+	public static volatile SingularAttribute<Food, BigDecimal> carbSugarAdded;
+	public static volatile SingularAttribute<Food, BigDecimal> fiber;
+	public static volatile SingularAttribute<Food, BigDecimal> cholesterol;
+	public static volatile SingularAttribute<Food, BigDecimal> sodium;
 	public static volatile ListAttribute<Food, DietFood> dietFoods;
+	
 
 	public static final String CARBOHYDRATES = "carbohydrates";
 	public static final String QUANTITY_GRAMS = "quantityGrams";
@@ -35,6 +45,15 @@ public abstract class Food_ {
 	public static final String CALORIES = "calories";
 	public static final String COST_CALORIE = "costCalorie";
 	public static final String DIET_FOODS = "dietFoods";
+	public static final String FAT_MONO = "fatMono";
+	public static final String FAT_POLI = "fatPoli";
+	public static final String FAT_SAT = "fatSat";
+	public static final String FAT_TRANS = "fatTrans";
+	public static final String CARB_SUGAR = "carbSugar";
+	public static final String CARB_SUGAR_ADDED = "carbSugarAdded";
+	public static final String FIBER = "fiber";
+	public static final String CHOLESTEROL = "cholesterol";
+	public static final String SODIUM = "sodium";
 
 }
 

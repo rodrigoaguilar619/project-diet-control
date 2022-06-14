@@ -19,6 +19,15 @@ public abstract class DietFood_ {
 	public static volatile SingularAttribute<DietFood, Food> food;
 	public static volatile SingularAttribute<DietFood, BigDecimal> portions;
 	public static volatile SingularAttribute<DietFood, BigDecimal> unities;
+	public static volatile SingularAttribute<DietFood, BigDecimal> totalFatMono;
+	public static volatile SingularAttribute<DietFood, BigDecimal> totalFatPoli;
+	public static volatile SingularAttribute<DietFood, BigDecimal> totalFatSat;
+	public static volatile SingularAttribute<DietFood, BigDecimal> totalFatTrans;
+	public static volatile SingularAttribute<DietFood, BigDecimal> totalCarbSugar;
+	public static volatile SingularAttribute<DietFood, BigDecimal> totalCarbSugarAdded;
+	public static volatile SingularAttribute<DietFood, BigDecimal> totalFiber;
+	public static volatile SingularAttribute<DietFood, BigDecimal> totalCholesterol;
+	public static volatile SingularAttribute<DietFood, BigDecimal> totalSodium;
 
 	public static final String TOTAL_CARBOHYDRATES = "totalCarbohydrates";
 	public static final String TOTAL_FAT = "totalFat";
@@ -29,7 +38,15 @@ public abstract class DietFood_ {
 	public static final String TOTAL_QUANTITY_GRAMS = "totalQuantityGrams";
 	public static final String FOOD = "food";
 	public static final String UNITIES = "unitites";
-	
+	public static final String TOTAL_FAT_MONO = "totalFatMono";
+	public static final String TOTAL_FAT_POLI = "totalFatPoli";
+	public static final String TOTAL_FAT_SAT = "totalFatSat";
+	public static final String TOTAL_FAT_TRANS = "totalFatTrans";
+	public static final String TOTAL_CARB_SUGAR = "totalCarbSugar";
+	public static final String TOTAL_CARB_SUGAR_ADDED = "totalCarbSugarAdded";
+	public static final String TOTAL_FIBER = "totalFiber";
+	public static final String TOTAL_CHOLESTEROL = "totalCholesterol";
+	public static final String TOTAL_SODIUM = "totalSodium";
 
 }
 

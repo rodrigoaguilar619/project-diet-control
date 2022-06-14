@@ -142,6 +142,15 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 			dietCustom.setTotalFat(BigDecimal.valueOf(0.0));
 			dietCustom.setTotalProteins(BigDecimal.valueOf(0.0));
 			dietCustom.setTotalQuantityGrams(BigDecimal.valueOf(0.0));
+			dietCustom.setTotalFatMono(BigDecimal.valueOf(0.0));
+			dietCustom.setTotalFatPoli(BigDecimal.valueOf(0.0));
+			dietCustom.setTotalFatSat(BigDecimal.valueOf(0.0));
+			dietCustom.setTotalFatTrans(BigDecimal.valueOf(0.0));
+			dietCustom.setTotalCarbSugar(BigDecimal.valueOf(0.0));
+			dietCustom.setTotalCarbSugarAdded(BigDecimal.valueOf(0.0));
+			dietCustom.setTotalFiber(BigDecimal.valueOf(0.0));
+			dietCustom.setTotalSodium(BigDecimal.valueOf(0.0));
+			dietCustom.setTotalCholesterol(BigDecimal.valueOf(0.0));
 		}
 		
 		DietEntityPojo dietBaseDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietBase);
@@ -154,6 +163,15 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 			nutritionalGoalsDataPojo.setTotalCarbohydrates(nutritionGoal.getCarbohydrates());
 			nutritionalGoalsDataPojo.setTotalFat(nutritionGoal.getFat());
 			nutritionalGoalsDataPojo.setTotalProteins(nutritionGoal.getProteins());
+			nutritionalGoalsDataPojo.setTotalFatMono(nutritionGoal.getFatMono());
+			nutritionalGoalsDataPojo.setTotalFatPoli(nutritionGoal.getFatPoli());
+			nutritionalGoalsDataPojo.setTotalFatSat(nutritionGoal.getFatSat());
+			nutritionalGoalsDataPojo.setTotalFatTrans(nutritionGoal.getFatTrans());
+			nutritionalGoalsDataPojo.setTotalCarbSugar(nutritionGoal.getCarbSugar());
+			nutritionalGoalsDataPojo.setTotalCarbSugarAdded(nutritionGoal.getCarbSugarAdded());
+			nutritionalGoalsDataPojo.setTotalFiber(nutritionGoal.getFiber());
+			nutritionalGoalsDataPojo.setTotalCholesterol(nutritionGoal.getCholesterol());
+			nutritionalGoalsDataPojo.setTotalSodium(nutritionGoal.getSodium());
 		}
 		
 		List<DietFoodResumePojo> dietFoodResumeEntityPojos = new ArrayList<>();

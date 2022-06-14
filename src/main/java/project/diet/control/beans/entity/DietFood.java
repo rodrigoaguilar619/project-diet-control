@@ -33,6 +33,33 @@ public class DietFood implements Serializable {
 	@Column(name="total_proteins")
 	private BigDecimal totalProteins;
 	
+	@Column(name="total_fat_mono")
+	private BigDecimal totalFatMono;
+
+	@Column(name="total_fat_poli")
+	private BigDecimal totalFatPoli;
+
+	@Column(name="total_fat_sat")
+	private BigDecimal totalFatSat;
+
+	@Column(name="total_fat_trans")
+	private BigDecimal totalFatTrans;
+
+	@Column(name="total_carb_sugar")
+	private BigDecimal totalCarbSugar;
+
+	@Column(name="total_carb_sugar_added")
+	private BigDecimal totalCarbSugarAdded;
+
+	@Column(name="total_fiber")
+	private BigDecimal totalFiber;
+
+	@Column(name="total_cholesterol")
+	private BigDecimal totalCholesterol;
+
+	@Column(name="total_sodium")
+	private BigDecimal totalSodium;
+	
 	@Column(name="unities")
 	private BigDecimal unities;
 
@@ -103,6 +130,78 @@ public class DietFood implements Serializable {
 
 	public void setTotalProteins(BigDecimal totalProteins) {
 		this.totalProteins = totalProteins;
+	}
+
+	public BigDecimal getTotalFatMono() {
+		return totalFatMono;
+	}
+
+	public void setTotalFatMono(BigDecimal totalFatMono) {
+		this.totalFatMono = totalFatMono;
+	}
+
+	public BigDecimal getTotalFatPoli() {
+		return totalFatPoli;
+	}
+
+	public void setTotalFatPoli(BigDecimal totalFatPoli) {
+		this.totalFatPoli = totalFatPoli;
+	}
+
+	public BigDecimal getTotalFatSat() {
+		return totalFatSat;
+	}
+
+	public void setTotalFatSat(BigDecimal totalFatSat) {
+		this.totalFatSat = totalFatSat;
+	}
+
+	public BigDecimal getTotalFatTrans() {
+		return totalFatTrans;
+	}
+
+	public void setTotalFatTrans(BigDecimal totalFatTrans) {
+		this.totalFatTrans = totalFatTrans;
+	}
+
+	public BigDecimal getTotalCarbSugar() {
+		return totalCarbSugar;
+	}
+
+	public void setTotalCarbSugar(BigDecimal totalCarbSugar) {
+		this.totalCarbSugar = totalCarbSugar;
+	}
+
+	public BigDecimal getTotalCarbSugarAdded() {
+		return totalCarbSugarAdded;
+	}
+
+	public void setTotalCarbSugarAdded(BigDecimal totalCarbSugarAdded) {
+		this.totalCarbSugarAdded = totalCarbSugarAdded;
+	}
+
+	public BigDecimal getTotalFiber() {
+		return totalFiber;
+	}
+
+	public void setTotalFiber(BigDecimal totalFiber) {
+		this.totalFiber = totalFiber;
+	}
+
+	public BigDecimal getTotalCholesterol() {
+		return totalCholesterol;
+	}
+
+	public void setTotalCholesterol(BigDecimal totalCholesterol) {
+		this.totalCholesterol = totalCholesterol;
+	}
+
+	public BigDecimal getTotalSodium() {
+		return totalSodium;
+	}
+
+	public void setTotalSodium(BigDecimal totalSodium) {
+		this.totalSodium = totalSodium;
 	}
 
 	public BigDecimal getTotalQuantityGrams() {
