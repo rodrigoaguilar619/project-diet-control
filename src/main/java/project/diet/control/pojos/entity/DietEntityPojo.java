@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 public class DietEntityPojo {
 
 	private Boolean isBase;
+	
+	private Integer id;
 
 	private BigDecimal totalCalories;
 
@@ -33,6 +35,14 @@ public class DietEntityPojo {
 	private BigDecimal totalCholesterol;
 
 	private BigDecimal totalSodium;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public Boolean getIsBase() {
 		return isBase;

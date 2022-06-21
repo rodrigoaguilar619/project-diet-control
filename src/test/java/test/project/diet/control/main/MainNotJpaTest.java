@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
+
+import project.diet.control.config.starter.Application;
+
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -15,7 +18,7 @@ excludeFilters= {@Filter(type = FilterType.REGEX, pattern="project.diet.control.
 		@Filter(type = FilterType.REGEX, pattern="project.diet.control.business.*"),
 		@Filter(type = FilterType.REGEX, pattern="project.diet.control.config.starter.*"),
 		@Filter(type = FilterType.REGEX, pattern="project.diet.control.config.beans.DataBaseBeans")})
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @SpringBootApplication(exclude = {
     DataSourceAutoConfiguration.class, 
     DataSourceTransactionManagerAutoConfiguration.class, 

@@ -9,6 +9,7 @@ import lib.utils.backend.format.DateFormatUtil;
 import lib.utils.backend.format.DateUtil;
 import project.diet.control.util.BuildEntityToPojoUtil;
 import project.diet.control.util.BuildPojoToEntityUtil;
+import project.diet.control.util.DietUtil;
 
 @Configuration
 public class UtilBeans {
@@ -41,5 +42,10 @@ public class UtilBeans {
 	@Bean
 	public CatalogUtil buildCatalogUtil() {
 		return new CatalogUtil();
+	}
+	
+	@Bean
+	public DietUtil buildDietUtil() {
+		return new DietUtil();
 	}
 }

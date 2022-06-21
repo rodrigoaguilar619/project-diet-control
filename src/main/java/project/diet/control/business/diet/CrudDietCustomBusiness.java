@@ -1,9 +1,9 @@
 package project.diet.control.business.diet;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,9 +28,13 @@ import project.diet.control.pojos.response.diet.GetDietCustomDetailListRespPojo;
 import project.diet.control.pojos.response.diet.GetDietCustomDetailRespPojo;
 import project.diet.control.pojos.response.diet.GetDietCustomListRespPojo;
 import project.diet.control.pojos.response.diet.GetDietCustomRespPojo;
+import project.diet.control.util.DietUtil;
 
 @Component
 public class CrudDietCustomBusiness extends CrudDietBusiness {
+	
+	@Autowired
+	DietUtil dietUtil;
 	
 	@Transactional
 	public AddEditDietRespPojo executeRegisterDietBase(RegisterDietBaseRequestPojo requestPojo) throws BusinessException {
@@ -133,58 +137,14 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		List<NutritionGoal> nutritionGoals = genericCustomPersistance.findAll(NutritionGoal.class);
 		NutritionGoal nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
 		
-		if (requestPojo.getId() == null) {
-			
-			dietCustom = new Diet();
-			dietCustom.setIsBase(false);
-			dietCustom.setTotalCalories(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalCarbohydrates(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalFat(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalProteins(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalQuantityGrams(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalFatMono(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalFatPoli(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalFatSat(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalFatTrans(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalCarbSugar(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalCarbSugarAdded(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalFiber(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalSodium(BigDecimal.valueOf(0.0));
-			dietCustom.setTotalCholesterol(BigDecimal.valueOf(0.0));
-		}
+		if (requestPojo.getId() == null)
+			dietCustom = dietUtil.generateDietZeros();
 		
 		DietEntityPojo dietBaseDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietBase);
 		DietEntityPojo dietCustomDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietCustom);
-		DietEntityPojo nutritionalGoalsDataPojo = null;
+		DietEntityPojo nutritionalGoalsDataPojo = (nutritionGoal != null) ? buildEntityToPojoUtil.generateNutritionalGoalPojo(null, nutritionGoal) : null;
 		
-		if (nutritionGoal != null) {
-			nutritionalGoalsDataPojo = new DietEntityPojo();
-			nutritionalGoalsDataPojo.setTotalCalories(nutritionGoal.getCalories());
-			nutritionalGoalsDataPojo.setTotalCarbohydrates(nutritionGoal.getCarbohydrates());
-			nutritionalGoalsDataPojo.setTotalFat(nutritionGoal.getFat());
-			nutritionalGoalsDataPojo.setTotalProteins(nutritionGoal.getProteins());
-			nutritionalGoalsDataPojo.setTotalFatMono(nutritionGoal.getFatMono());
-			nutritionalGoalsDataPojo.setTotalFatPoli(nutritionGoal.getFatPoli());
-			nutritionalGoalsDataPojo.setTotalFatSat(nutritionGoal.getFatSat());
-			nutritionalGoalsDataPojo.setTotalFatTrans(nutritionGoal.getFatTrans());
-			nutritionalGoalsDataPojo.setTotalCarbSugar(nutritionGoal.getCarbSugar());
-			nutritionalGoalsDataPojo.setTotalCarbSugarAdded(nutritionGoal.getCarbSugarAdded());
-			nutritionalGoalsDataPojo.setTotalFiber(nutritionGoal.getFiber());
-			nutritionalGoalsDataPojo.setTotalCholesterol(nutritionGoal.getCholesterol());
-			nutritionalGoalsDataPojo.setTotalSodium(nutritionGoal.getSodium());
-		}
-		
-		List<DietFoodResumePojo> dietFoodResumeEntityPojos = new ArrayList<>();
-		
-		for (DietFood dietFood: dietBase.getDietFoods()) {
-			
-			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
-			dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
-			dietFoodResumeEntityPojo.setPortions(dietFood.getPortions());
-			dietFoodResumeEntityPojo.setUnities(dietFood.getUnities() != null ? dietFood.getUnities() : BigDecimal.valueOf(0.0));
-			
-			dietFoodResumeEntityPojos.add(dietFoodResumeEntityPojo);
-		}
+		List<DietFoodResumePojo> dietFoodResumeEntityPojos = dietUtil.buildDietFoodsResume(dietBase.getDietFoods());
 		
 		DietDataPojo dietDataPojo = null;
 		
@@ -193,17 +153,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 			RecipeEntityPojo recipeDietCustomEntityPojo = buildEntityToPojoUtil.generateRecipePojo(null, dietCustom.getRecipe());
 			DietEntityPojo dietCustomResumePojo = buildEntityToPojoUtil.generateDietPojo(null, dietCustom);
 			
-			List<DietFoodResumePojo> dietFoodDietCustomResumeEntityPojos = new ArrayList<>();
-			
-			for (DietFood dietFood: dietCustom.getDietFoods()) {
-				
-				DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
-				dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
-				dietFoodResumeEntityPojo.setPortions(dietFood.getPortions());
-				dietFoodResumeEntityPojo.setUnities(dietFood.getUnities() != null ? dietFood.getUnities() : BigDecimal.valueOf(0.0));
-				
-				dietFoodDietCustomResumeEntityPojos.add(dietFoodResumeEntityPojo);
-			}
+			List<DietFoodResumePojo> dietFoodDietCustomResumeEntityPojos = dietUtil.buildDietFoodsResume(dietCustom.getDietFoods());
 			
 			dietDataPojo = new DietDataPojo();
 			dietDataPojo.setRecipe(recipeDietCustomEntityPojo);
@@ -316,4 +266,5 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		return responsePojo;
 		
 	}
+
 }

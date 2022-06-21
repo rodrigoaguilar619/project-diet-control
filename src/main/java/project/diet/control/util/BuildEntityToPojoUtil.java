@@ -140,4 +140,27 @@ public class BuildEntityToPojoUtil {
 		
 		return nutritionGoalEntityPojo;
 	}
+	
+	public DietEntityPojo generateNutritionalGoalPojo(DietEntityPojo nutritionalGoalsDataPojo, NutritionGoal nutritionGoalEntity) {
+		
+		if (nutritionalGoalsDataPojo == null)
+			nutritionalGoalsDataPojo = new DietEntityPojo();
+		
+		nutritionalGoalsDataPojo = new DietEntityPojo();
+		nutritionalGoalsDataPojo.setTotalCalories(nutritionGoalEntity.getCalories());
+		nutritionalGoalsDataPojo.setTotalCarbohydrates(nutritionGoalEntity.getCarbohydrates());
+		nutritionalGoalsDataPojo.setTotalFat(nutritionGoalEntity.getFat());
+		nutritionalGoalsDataPojo.setTotalProteins(nutritionGoalEntity.getProteins());
+		nutritionalGoalsDataPojo.setTotalFatMono(nutritionGoalEntity.getFatMono());
+		nutritionalGoalsDataPojo.setTotalFatPoli(nutritionGoalEntity.getFatPoli());
+		nutritionalGoalsDataPojo.setTotalFatSat(nutritionGoalEntity.getFatSat());
+		nutritionalGoalsDataPojo.setTotalFatTrans(nutritionGoalEntity.getFatTrans());
+		nutritionalGoalsDataPojo.setTotalCarbSugar(nutritionGoalEntity.getCarbSugar());
+		nutritionalGoalsDataPojo.setTotalCarbSugarAdded(nutritionGoalEntity.getCarbSugarAdded());
+		nutritionalGoalsDataPojo.setTotalFiber(nutritionGoalEntity.getFiber());
+		nutritionalGoalsDataPojo.setTotalCholesterol(nutritionGoalEntity.getCholesterol());
+		nutritionalGoalsDataPojo.setTotalSodium(nutritionGoalEntity.getSodium());
+		
+		return nutritionalGoalsDataPojo;
+	}
 }
