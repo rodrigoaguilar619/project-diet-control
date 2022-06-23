@@ -17,10 +17,8 @@ public class Recipe implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	@Lob
 	private String instructions;
 
-	@Lob
 	private String title;
 
 	//bi-directional one-to-one association to Diet
