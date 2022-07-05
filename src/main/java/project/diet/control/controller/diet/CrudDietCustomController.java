@@ -10,9 +10,11 @@ import lib.base.backend.exception.data.BusinessException;
 import lib.base.backend.utils.RestUtil;
 import project.diet.control.business.diet.CrudDietCustomBusiness;
 import project.diet.control.pojos.request.diet.AddEditDietRequestPojo;
+import project.diet.control.pojos.request.diet.DeleteDietCustomRequestPojo;
 import project.diet.control.pojos.request.diet.GetDietCustomDetailListRequestPojo;
 import project.diet.control.pojos.request.diet.GetDietCustomListRequestPojo;
 import project.diet.control.pojos.request.diet.GetDietCustomRequestPojo;
+import project.diet.control.pojos.request.food.DeleteFoodRequestPojo;
 import project.diet.control.pojos.response.diet.AddEditDietRespPojo;
 import project.diet.control.pojos.response.diet.GetDietCustomDetailListRespPojo;
 import project.diet.control.pojos.response.diet.GetDietCustomDetailRespPojo;
@@ -71,5 +73,13 @@ public class CrudDietCustomController {
 		
 		GetDietCustomDetailRespPojo reponsePojo = crudDietCustomBusiness.executeGetDietCustomDetail(requestPojo);
 		return new RestUtil().buildResponseSuccess(reponsePojo, "Get diet custom detail");
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@PostMapping(path = "/api/diet/deleteDietCustom", consumes = "application/json", produces = "application/json")
+	public ResponseEntity deleteDietCustom(@RequestBody DeleteDietCustomRequestPojo requestPojo) throws BusinessException {
+		
+		crudDietCustomBusiness.executeDeleteDietCustom(requestPojo);
+		return new RestUtil().buildResponseSuccess(null, "diet deleted");
 	}
 }

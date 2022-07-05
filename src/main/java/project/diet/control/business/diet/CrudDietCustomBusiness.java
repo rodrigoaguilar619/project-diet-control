@@ -20,6 +20,7 @@ import project.diet.control.pojos.diet.DietPojo;
 import project.diet.control.pojos.entity.DietEntityPojo;
 import project.diet.control.pojos.entity.RecipeEntityPojo;
 import project.diet.control.pojos.request.diet.AddEditDietRequestPojo;
+import project.diet.control.pojos.request.diet.DeleteDietCustomRequestPojo;
 import project.diet.control.pojos.request.diet.GetDietCustomDetailListRequestPojo;
 import project.diet.control.pojos.request.diet.GetDietCustomRequestPojo;
 import project.diet.control.pojos.request.diet.RegisterDietBaseRequestPojo;
@@ -264,6 +265,15 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		responsePojo.setTotalDiet(totalDiet);
 		
 		return responsePojo;
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public void executeDeleteDietCustom(DeleteDietCustomRequestPojo requestPojo) {
+		
+		Diet dietCustom = (Diet) genericCustomPersistance.findById(Diet.class, requestPojo.getId());
+		deleteDiet(dietCustom);
 		
 	}
 

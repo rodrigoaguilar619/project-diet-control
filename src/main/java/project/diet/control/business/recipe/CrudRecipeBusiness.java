@@ -18,6 +18,7 @@ import project.diet.control.pojos.request.recipe.GetRecipeRequestPojo;
 import project.diet.control.pojos.response.recipe.AddEditRecipeRespPojo;
 import project.diet.control.pojos.response.recipe.GetRecipeListRespPojo;
 import project.diet.control.pojos.response.recipe.GetRecipeRespPojo;
+import project.diet.control.repository.DietRepositoryImpl;
 import project.diet.control.util.BuildEntityToPojoUtil;
 import project.diet.control.util.BuildPojoToEntityUtil;
 
@@ -33,6 +34,9 @@ public class CrudRecipeBusiness {
 	
 	@Autowired
 	BuildEntityToPojoUtil buildEntityToPojoUtil;
+	
+	@Autowired
+	DietRepositoryImpl dietRepository;
 	
 	private String messageRecipeNotFound(Integer idRecipe) {
 		
@@ -104,6 +108,9 @@ public class CrudRecipeBusiness {
 		
 		if (recipe == null)
 			throw new BusinessException(messageRecipeNotFound(requestPojo.getId()));
+		
+		if (dietRepository.countRegisterDiet(requestPojo.getId()) > 0)
+			throw new BusinessException("Recipe is use on a diet");
 		
 		genericCustomPersistance.delete(recipe);
 	}

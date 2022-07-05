@@ -19,6 +19,7 @@ import project.diet.control.pojos.request.food.GetFoodRequestPojo;
 import project.diet.control.pojos.response.food.AddEditFoodRespPojo;
 import project.diet.control.pojos.response.food.GetFoodListRespPojo;
 import project.diet.control.pojos.response.food.GetFoodRespPojo;
+import project.diet.control.repository.FoodRepositoryImpl;
 import project.diet.control.util.BuildEntityToPojoUtil;
 import project.diet.control.util.BuildPojoToEntityUtil;
 
@@ -34,6 +35,9 @@ public class CrudFoodBusiness {
 	
 	@Autowired
 	BuildEntityToPojoUtil buildEntityToPojoUtil;
+	
+	@Autowired
+	FoodRepositoryImpl foodRepository;
 	
 	private String messageFoodNotFound(Integer idFood) {
 		
@@ -132,6 +136,9 @@ public class CrudFoodBusiness {
 		
 		if (food == null)
 			throw new BusinessException(messageFoodNotFound(requestPojo.getId()));
+		
+		if (foodRepository.countRegisterDietFood(requestPojo.getId()) > 0)
+			throw new BusinessException("Id food is used on a diet custom");
 		
 		genericCustomPersistance.delete(food);
 	}

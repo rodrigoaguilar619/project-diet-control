@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.diet.control.beans.entity.Diet;
+import project.diet.control.beans.entity.DietFood;
 import project.diet.control.beans.entity.DietFood_;
 import project.diet.control.beans.entity.Diet_;
+import project.diet.control.beans.entity.Food_;
 
 @Repository
 public class DietRepositoryImpl extends MainRepository {
@@ -56,5 +58,20 @@ public class DietRepositoryImpl extends MainRepository {
 		cq.where( predicateAnd );
 		
 		return em.createQuery(cq).getResultList();
+	}
+	
+	public long countRegisterDiet(Integer idDiet) {
+		
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+		Root<Diet> root = cq.from(Diet.class);
+		
+		Predicate predicateAnd = cb.and(
+				cb.equal(root.get(Diet_.idRecipe), idDiet));
+		
+		cq.where( predicateAnd );
+		cq.select(cb.count(root.get(Diet_.idRecipe)));
+
+		return (long)(em.createQuery(cq).getResultList().get(0));
 	}
 }
