@@ -21,6 +21,7 @@
 	<properties>
 		<jar.name>${server.servlet.context-path}</jar.name>
 		<project.build.main.class>project.diet.control.config.starter.Application</project.build.main.class>
+		<prop.main.class>project.diet.control.config.starter.Application</prop.main.class>
 		<prop.main.class.heroku>project.diet.control.config.starter.Application</prop.main.class.heroku>
 		<test.skip>true</test.skip>
 	</properties>
