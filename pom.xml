@@ -6,45 +6,34 @@
 	<parent>
 		<groupId>com.parent.project.web</groupId>
 		<artifactId>lib-parent-project-web</artifactId>
-		<version>1.1.0</version>
+		<version>2.0.0</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>project.diet.control</groupId>
 	<artifactId>project-diet-control</artifactId>
-	<version>1.7.0-SNAPSHOT</version>
+	<version>6.0.0</version>
 	<packaging>jar</packaging>
 	<name>project-diet-control</name>
 	<description>Diet control project</description>
 
 	<properties>
 		<jar.name>${server.servlet.context-path}</jar.name>
-		<project.build.main.class>project.diet.control.config.starter.Application</project.build.main.class>
-		<prop.main.class>project.diet.control.config.starter.Application</prop.main.class>
-		<prop.main.class.heroku>project.diet.control.config.starter.Application</prop.main.class.heroku>
+		<project.build.main.class>project.diet.control.config.starter.AppDietControl</project.build.main.class>
+		<prop.main.class>project.diet.control.config.starter.AppDietControl</prop.main.class>
+		<prop.main.class.heroku>project.diet.control.config.starter.AppDietControl</prop.main.class.heroku>
 		<test.skip>true</test.skip>
 	</properties>
 
 	<dependencies>
-	
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-csv</artifactId>
-		    <version>1.1</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    </dependency>
 		
 		<dependency>
 		    <groupId>com.smattme</groupId>
 		    <artifactId>mysql-backup4j</artifactId>
 		    <version>1.0.0</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
