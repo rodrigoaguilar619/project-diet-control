@@ -1,4 +1,4 @@
-package project.diet.control.config;
+package test.diet.control.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,9 +23,9 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 			@ComponentScan.Filter(type = FilterType.REGEX, pattern = "project.diet.control.modules.*"),
 			@Filter(type = FilterType.ASSIGNABLE_TYPE, value = DataBaseBeans.class),			
 	})
-public abstract class AppDietControlIindividualTest {
+public class AppDietControlIndividualTest {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AppDietControlIindividualTest.class, args);
+		SpringApplication.run(AppDietControlIndividualTest.class, args);
 	}
 }

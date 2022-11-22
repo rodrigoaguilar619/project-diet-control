@@ -46,7 +46,7 @@ public class NutritionGoalsBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public RegisterNutritionGoalDataPojo executeRegisterNutritionGoal(RegisterNutritionGoalRequestPojo requestPojo) {
 		
 		List<NutritionGoal> nutritionGoals = genericCustomPersistance.findAll(NutritionGoal.class);
@@ -61,7 +61,7 @@ public class NutritionGoalsBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public GetNutritionGoalDataPojo executeGetNutritionGoal(GetNutritionGoalRequestPojo requestPojo) {
 		
 		List<NutritionGoal> nutritionGoals = genericCustomPersistance.findAll(NutritionGoal.class);

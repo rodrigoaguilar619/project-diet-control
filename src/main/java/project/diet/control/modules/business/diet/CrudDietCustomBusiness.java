@@ -37,7 +37,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	@Autowired
 	DietUtil dietUtil;
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public AddEditDietDataPojo executeRegisterDietBase(RegisterDietBaseRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getDiet() == null)
@@ -55,7 +55,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		return responsePojo;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public GetDietCustomListDataPojo executeGetDietCustomList() {
 		
 		List<Diet> dietBases = dietRepository.getDietCustomList();
@@ -75,7 +75,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public AddEditDietDataPojo executeAddDiet(AddEditDietRequestPojo requestPojo) throws BusinessException {
 		
@@ -98,7 +98,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public AddEditDietDataPojo executeEditDiet(AddEditDietRequestPojo requestPojo) throws BusinessException {
 		
@@ -129,7 +129,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public GetDietCustomDataPojo executeGetDietCustomInfo(GetDietCustomRequestPojo requestPojo) {
 		
 		Diet dietBase = dietRepository.getDietBase();
@@ -172,7 +172,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		return responsePojo;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public GetDietCustomDetailListDataPojo executeGetDietsCustomDetail(GetDietCustomDetailListRequestPojo requestPojo) {
 		
 		List<DietCustomDetailResumePojo> dietCustomDetailPojos = new ArrayList<>();
@@ -226,7 +226,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public GetDietCustomDetailDataPojo executeGetDietCustomDetail(GetDietCustomRequestPojo requestPojo) {
 		
 		Diet dietBase = dietRepository.getDietBase();
@@ -269,7 +269,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public void executeDeleteDietCustom(DeleteDietCustomRequestPojo requestPojo) {
 		
 		Diet dietCustom = (Diet) genericCustomPersistance.findById(Diet.class, requestPojo.getId());

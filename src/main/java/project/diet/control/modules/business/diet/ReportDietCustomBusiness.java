@@ -201,7 +201,7 @@ public class ReportDietCustomBusiness {
 		return parameters;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public GetDietCustomReportDataPojo executeGetDietCustomReport(GetDietCustomReportRequestPojo requestPojo) throws FileNotFoundException, JRException {
 		
 		Map<String, Object> parameters = getParametersDietCustomReport(requestPojo.getId());

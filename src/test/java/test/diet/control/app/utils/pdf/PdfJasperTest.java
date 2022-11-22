@@ -1,36 +1,34 @@
-package project.diet.control.modules.business.diet;
+package test.diet.control.app.utils.pdf;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.transaction.Transactional;
-
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import lib.base.backend.pojo.pdf.jasper.PdfReportJasperConfigPojo;
 import lib.base.backend.utils.ExecuteMethodUtil;
 import lib.base.backend.utils.pdf.BuildPdfJasperUtil;
-import project.diet.control.config.AppDietControlTest;
+import test.diet.control.config.AppDietControlTest;
 
 @SpringBootTest(classes = AppDietControlTest.class)
-class DietReportTest {
-	
-	@Autowired
-	ReportDietCustomBusiness reportDietCustomBusiness;
+class PdfJasperTest {
 
 	@Test
-	@Transactional
-	void generateReportTest() throws Throwable {
+	void pdfJasperTest() throws Throwable {
 		
-		ExecuteMethodUtil.execute("GENERATE DIET REPORT", () -> {
+		ExecuteMethodUtil.execute("GENERATE JASPER REPORT", () -> {
 			
-			Map<String, Object> parameters = reportDietCustomBusiness.getParametersDietCustomReport(2);
+			Map<String, String> dietTotals = new LinkedHashMap<>();
+			dietTotals.put("total_grams", "6000");
+			
+			Map<String, Object> parameters = new LinkedHashMap<>();
+			parameters.put("_subtotal_diet_base", dietTotals);
 			
 			PdfReportJasperConfigPojo reportJasperConfig = new PdfReportJasperConfigPojo();
 			reportJasperConfig.setConfig(parameters);

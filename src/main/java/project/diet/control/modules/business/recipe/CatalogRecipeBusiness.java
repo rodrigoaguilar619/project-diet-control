@@ -20,7 +20,7 @@ public class CatalogRecipeBusiness extends MainBusiness {
 	CatalogUtil catalogUtil;
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<CatalogPojo> getCatalog() throws BaseException {
 		
 		List<Recipe> catalogList = genericCustomPersistance.findAll(Recipe.class);
@@ -28,7 +28,7 @@ public class CatalogRecipeBusiness extends MainBusiness {
 		return catalogUtil.getCatalog(Recipe.class, catalogList, "id", "title");
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public CatalogDataPojo executeGetCatalog() throws BaseException {
 		
 		List<CatalogPojo> catalogListPojo = getCatalog();

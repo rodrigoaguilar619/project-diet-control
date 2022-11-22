@@ -58,7 +58,7 @@ public class CrudRecipeBusiness {
 		return recipeEntity.getId();
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public AddEditRecipeDataPojo executeAddRecipe(AddEditRecipeRequestPojo addEditRecipeRequestPojo) throws BusinessException {
 		
 		if (addEditRecipeRequestPojo.getRecipe() == null)
@@ -73,7 +73,7 @@ public class CrudRecipeBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public AddEditRecipeDataPojo executeEditRecipe(AddEditRecipeRequestPojo addEditRecipeRequestPojo) throws BusinessException {
 		
 		RecipeEntityPojo recipeEntityPojo = addEditRecipeRequestPojo.getRecipe();
@@ -98,7 +98,7 @@ public class CrudRecipeBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public void executeDeleteRecipe(DeleteRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getId() == null)
@@ -116,7 +116,7 @@ public class CrudRecipeBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public GetRecipeDataPojo executeGetRecipe(GetRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getId() == null)
@@ -136,7 +136,7 @@ public class CrudRecipeBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public GetRecipeListDataPojo executeGetRecipes() {
 		
 		List<Recipe> recipes = genericCustomPersistance.findAll(Recipe.class);

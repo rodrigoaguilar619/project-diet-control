@@ -22,7 +22,7 @@ import project.diet.control.app.beans.pojos.petition.request.diet.RegisterDietBa
 public class CrudDietBaseBusiness extends CrudDietBusiness {
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public AddEditDietDataPojo executeRegisterDietBase(RegisterDietBaseRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getDiet() == null)
@@ -49,7 +49,7 @@ public class CrudDietBaseBusiness extends CrudDietBusiness {
 		return responsePojo;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public GetDietBaseDataPojo executeGetDietBase() {
 		
 		Diet dietBase = dietRepository.getDietBase();

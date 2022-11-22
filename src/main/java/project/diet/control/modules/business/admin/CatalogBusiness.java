@@ -43,7 +43,7 @@ public class CatalogBusiness extends MainBusiness {
 		return catalogUtil.getCatalog(clazz, catalogList);
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public CatalogDataPojo executeGetCatalog(CatalogRequestPojo requestPojo) throws BaseException {
 		
 		List<CatalogPojo> catalogListPojo = getCatalog(requestPojo.getCatalogName());

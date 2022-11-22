@@ -58,7 +58,7 @@ public class CrudDietBusiness extends MainBusiness {
 		}
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public AddEditDietDataPojo executeAddDiet(AddEditDietRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getDiet() == null)
@@ -73,7 +73,7 @@ public class CrudDietBusiness extends MainBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public AddEditDietDataPojo executeEditDiet(AddEditDietRequestPojo requestPojo) throws BusinessException {
 		
 		DietPojo dietEntityPojo = requestPojo.getDiet();

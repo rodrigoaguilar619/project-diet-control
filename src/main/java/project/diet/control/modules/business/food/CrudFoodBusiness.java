@@ -59,7 +59,7 @@ public class CrudFoodBusiness {
 		return foodEntity.getId();
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public AddEditFoodDataPojo executeAddFood(AddEditFoodRequestPojo addEditFoodRequestPojo) throws BusinessException {
 		
 		if (addEditFoodRequestPojo.getFood() == null)
@@ -74,7 +74,7 @@ public class CrudFoodBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public AddEditFoodDataPojo executeEditFood(AddEditFoodRequestPojo addEditFoodRequestPojo) throws BusinessException {
 		
 		FoodEntityPojo foodEntityPojo = addEditFoodRequestPojo.getFood();
@@ -98,7 +98,7 @@ public class CrudFoodBusiness {
 		return responsePojo;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public void executeAddFoods(AddEditFoodsRequestPojo addEditFoodsRequestPojo) {
 		
 		for(FoodEntityPojo foodEntityPojo: addEditFoodsRequestPojo.getFoods()) {
@@ -108,7 +108,7 @@ public class CrudFoodBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public GetFoodListDataPojo executeGetFoods() {
 		
 		List<Food> foods = genericCustomPersistance.findAll(Food.class);
@@ -126,7 +126,7 @@ public class CrudFoodBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public void executeDeleteFood(DeleteFoodRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getId() == null)
@@ -144,7 +144,7 @@ public class CrudFoodBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public GetFoodDataPojo executeGetFood(GetFoodRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getId() == null)
