@@ -12,6 +12,7 @@ import lib.base.backend.exception.data.BusinessException;
 import project.diet.control.app.beans.entity.Diet;
 import project.diet.control.app.beans.entity.DietFood;
 import project.diet.control.app.beans.entity.NutritionGoal;
+import project.diet.control.app.beans.entity.Recipe;
 import project.diet.control.app.beans.pojos.diet.DietCustomDetailResumePojo;
 import project.diet.control.app.beans.pojos.diet.DietDataPojo;
 import project.diet.control.app.beans.pojos.diet.DietFoodResumePojo;
@@ -121,6 +122,9 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 			throw new BusinessException("Diet id: " + dietPojo.getIdRecipe() + " is a base diet, can be edited as custom");
 			
 		Integer id = setAddEditDiet(diet, dietPojo, CrudOptionsEnum.UPDATE);
+		
+		Recipe recipe = diet.getRecipe();
+		recipe.setInstructions(requestPojo.getRecipeInstructions());
 		
 		AddEditDietDataPojo responsePojo = new AddEditDietDataPojo();
 		responsePojo.setId(id);

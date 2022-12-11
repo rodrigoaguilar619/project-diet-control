@@ -14,7 +14,7 @@
 	<groupId>project.diet.control</groupId>
 	<artifactId>project-diet-control</artifactId>
 	<version>6.0.0</version>
-	<packaging>jar</packaging>
+	<packaging>${prop.packaging.type}</packaging>
 	<name>project-diet-control</name>
 	<description>Diet control project</description>
 
@@ -23,6 +23,7 @@
 		<project.build.main.class>project.diet.control.config.starter.AppDietControl</project.build.main.class>
 		<prop.main.class>project.diet.control.config.starter.AppDietControl</prop.main.class>
 		<prop.main.class.heroku>project.diet.control.config.starter.AppDietControl</prop.main.class.heroku>
+		<prop.main.class.heliohost>project.diet.control.config.starter.AppDietControl</prop.main.class.heliohost>
 		<test.skip>true</test.skip>
 	</properties>
 

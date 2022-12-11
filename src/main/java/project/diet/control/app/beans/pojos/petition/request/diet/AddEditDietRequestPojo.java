@@ -4,7 +4,17 @@ import project.diet.control.app.beans.pojos.diet.DietPojo;
 
 public class AddEditDietRequestPojo {
 
-	DietPojo diet;
+	private DietPojo diet;
+	
+	private String recipeInstructions;
+
+	public String getRecipeInstructions() {
+		return recipeInstructions;
+	}
+
+	public void setRecipeInstructions(String recipeInstructions) {
+		this.recipeInstructions = recipeInstructions;
+	}
 
 	public DietPojo getDiet() {
 		return diet;

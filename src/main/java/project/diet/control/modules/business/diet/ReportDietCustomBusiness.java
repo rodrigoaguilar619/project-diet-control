@@ -197,6 +197,7 @@ public class ReportDietCustomBusiness {
 		parameters.putAll(buildParametersDietFoods(dietFoodResumeEntityPojos, dietFoodDietCustomResumeEntityPojos));
 		
 		parameters.put("_diet_title", dietCustom.getRecipe().getTitle());
+		parameters.put("_recipe_instructions", dietCustom.getRecipe().getInstructions());
 		
 		return parameters;
 	}

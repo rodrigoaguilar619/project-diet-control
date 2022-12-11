@@ -44,6 +44,7 @@
 	<parameter name="_foods_diet_base_list" class="java.util.Collection"/>
 	<parameter name="_foods_diet_custom_list" class="java.util.Collection"/>
 	<parameter name="_diet_title" class="java.lang.String"/>
+	<parameter name="_recipe_instructions" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -62,7 +63,7 @@
 		</band>
 	</title>
 	<detail>
-		<band height="211" splitType="Stretch">
+		<band height="235" splitType="Stretch">
 			<componentElement>
 				<reportElement x="37" y="10" width="982" height="49" uuid="0cc1c22c-b9d0-47ae-8475-89285494272b">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
@@ -1007,6 +1008,10 @@
 					</jr:column>
 				</jr:table>
 			</componentElement>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" x="40" y="215" width="976" height="18" uuid="79d5fc1d-3929-4f41-981c-6843bc38fb7d"/>
+				<textFieldExpression><![CDATA[$P{_recipe_instructions}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
