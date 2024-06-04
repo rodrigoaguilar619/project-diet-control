@@ -1,6 +1,7 @@
 package project.diet.control.modules.controller.diet;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import project.diet.control.app.beans.pojos.petition.request.diet.DeleteDietCust
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomDetailListRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomListRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomRequestPojo;
+import project.diet.control.app.vo.catalogs.CatalogsUri;
 import project.diet.control.modules.business.diet.CrudDietCustomBusiness;
 
 @RestController
@@ -27,7 +29,7 @@ public class CrudDietCustomController {
 	CrudDietCustomBusiness crudDietCustomBusiness;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/diet/dietCustomAdd", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_DIET_DIET_CUSTOM_ADD, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity addFood(@RequestBody AddEditDietRequestPojo requestPojo) throws BusinessException  {
 		
 		AddEditDietDataPojo responsePojo = crudDietCustomBusiness.executeAddDiet(requestPojo);
@@ -35,7 +37,7 @@ public class CrudDietCustomController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/diet/dietCustomEdit", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_DIET_DIET_CUSTOM_EDIT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity editFood(@RequestBody AddEditDietRequestPojo requestPojo) throws BusinessException {
 		
 		AddEditDietDataPojo responsePojo = crudDietCustomBusiness.executeEditDiet(requestPojo);
@@ -43,7 +45,7 @@ public class CrudDietCustomController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/diet/getDietCustomList", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_DIET_DIET_CUSTOM_LIST_GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity getDietCustomList(@RequestBody GetDietCustomListRequestPojo requestPojo) {
 		
 		GetDietCustomListDataPojo reponsePojo = crudDietCustomBusiness.executeGetDietCustomList();
@@ -51,7 +53,7 @@ public class CrudDietCustomController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/diet/getDietCustom", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_DIET_DIET_CUSTOM_GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity getDietCustom(@RequestBody GetDietCustomRequestPojo requestPojo) {
 		
 		GetDietCustomDataPojo reponsePojo = crudDietCustomBusiness.executeGetDietCustomInfo(requestPojo);
@@ -59,7 +61,7 @@ public class CrudDietCustomController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/diet/getDietsCustomDetailList", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_DIET_DIET_CUSTOM_DETAIL_LIST_GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity getDietsCustomDetailList(@RequestBody GetDietCustomDetailListRequestPojo requestPojo) {
 		
 		GetDietCustomDetailListDataPojo reponsePojo = crudDietCustomBusiness.executeGetDietsCustomDetail(requestPojo);
@@ -67,7 +69,7 @@ public class CrudDietCustomController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/diet/getDietCustomDetail", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_DIET_DIET_CUSTOM_DETAIL_GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity getDietCustomDetail(@RequestBody GetDietCustomRequestPojo requestPojo) {
 		
 		GetDietCustomDetailDataPojo reponsePojo = crudDietCustomBusiness.executeGetDietCustomDetail(requestPojo);
@@ -75,7 +77,7 @@ public class CrudDietCustomController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/diet/deleteDietCustom", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_DIET_DIET_CUSTOM_DELETE, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity deleteDietCustom(@RequestBody DeleteDietCustomRequestPojo requestPojo) {
 		
 		crudDietCustomBusiness.executeDeleteDietCustom(requestPojo);

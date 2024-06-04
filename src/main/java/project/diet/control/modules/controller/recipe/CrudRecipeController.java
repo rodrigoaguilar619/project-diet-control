@@ -1,6 +1,7 @@
 package project.diet.control.modules.controller.recipe;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import project.diet.control.app.beans.pojos.petition.data.recipe.GetRecipeListDa
 import project.diet.control.app.beans.pojos.petition.request.recipe.AddEditRecipeRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.recipe.DeleteRecipeRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.recipe.GetRecipeRequestPojo;
+import project.diet.control.app.vo.catalogs.CatalogsUri;
 import project.diet.control.modules.business.recipe.CrudRecipeBusiness;
 
 @RestController
@@ -23,7 +25,7 @@ public class CrudRecipeController {
 	CrudRecipeBusiness crudRecipeBusiness;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/recipe/add", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_RECIPE_ADD, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity addRecipe(@RequestBody AddEditRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		AddEditRecipeDataPojo reponsePojo = crudRecipeBusiness.executeAddRecipe(requestPojo);
@@ -31,7 +33,7 @@ public class CrudRecipeController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/recipe/edit", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_RECIPE_EDIT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity editRecipe(@RequestBody AddEditRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		AddEditRecipeDataPojo reponsePojo = crudRecipeBusiness.executeEditRecipe(requestPojo);
@@ -39,7 +41,7 @@ public class CrudRecipeController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/recipe/get", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_RECIPE_GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity getRecipe(@RequestBody GetRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		GetRecipeDataPojo responsePojo = crudRecipeBusiness.executeGetRecipe(requestPojo);
@@ -47,7 +49,7 @@ public class CrudRecipeController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/recipe/delete", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_RECIPE_DELETE, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity deleteRecipe(@RequestBody DeleteRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		crudRecipeBusiness.executeDeleteRecipe(requestPojo);
@@ -55,7 +57,7 @@ public class CrudRecipeController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/recipe/getAll", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_RECIPE_GET_ALL, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity getRecipesAll() {
 		
 		GetRecipeListDataPojo dataPojo = crudRecipeBusiness.executeGetRecipes();

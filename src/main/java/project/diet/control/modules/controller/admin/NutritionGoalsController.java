@@ -1,6 +1,7 @@
 package project.diet.control.modules.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +12,7 @@ import project.diet.control.app.beans.pojos.petition.data.admin.GetNutritionGoal
 import project.diet.control.app.beans.pojos.petition.data.admin.RegisterNutritionGoalDataPojo;
 import project.diet.control.app.beans.pojos.petition.request.admin.GetNutritionGoalRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.admin.RegisterNutritionGoalRequestPojo;
+import project.diet.control.app.vo.catalogs.CatalogsUri;
 import project.diet.control.modules.business.admin.NutritionGoalsBusiness;
 
 @RestController
@@ -20,7 +22,7 @@ public class NutritionGoalsController {
 	NutritionGoalsBusiness nutritionGoalsBusiness;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/admin/nutritionGoals/register", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_ADMIN_NUTRITION_GOALS_REGISTER, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity catalogGetAll(@RequestBody RegisterNutritionGoalRequestPojo requestPojo) {
 		
 		RegisterNutritionGoalDataPojo reponsePojo = nutritionGoalsBusiness.executeRegisterNutritionGoal(requestPojo);
@@ -28,7 +30,7 @@ public class NutritionGoalsController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = "/api/admin/nutritionGoals/get", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = CatalogsUri.API_ADMIN_NUTRITION_GOALS_GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity catalogGetAll(@RequestBody GetNutritionGoalRequestPojo requestPojo) {
 		
 		GetNutritionGoalDataPojo reponsePojo = nutritionGoalsBusiness.executeGetNutritionGoal(requestPojo);
