@@ -1,33 +1,33 @@
 package project.diet.control.app.beans.entity;
 
 import java.math.BigDecimal;
-import javax.annotation.Generated;
-import javax.persistence.metamodel.ListAttribute;
-import javax.persistence.metamodel.SingularAttribute;
-import javax.persistence.metamodel.StaticMetamodel;
+import jakarta.annotation.Generated;
+import jakarta.persistence.metamodel.ListAttribute;
+import jakarta.persistence.metamodel.SingularAttribute;
+import jakarta.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(Diet.class)
 public abstract class Diet_ {
 
-	public static volatile SingularAttribute<Diet, BigDecimal> totalCarbohydrates;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalFat;
-	public static volatile SingularAttribute<Diet, Recipe> recipe;
-	public static volatile SingularAttribute<Diet, Byte> isBase;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalCalories;
-	public static volatile SingularAttribute<Diet, Integer> idRecipe;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalProteins;
-	public static volatile ListAttribute<Diet, DietFood> dietFoods;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalQuantityGrams;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalFatMono;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalFatPoli;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalFatSat;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalFatTrans;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalCarbSugar;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalCarbSugarAdded;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalFiber;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalCholesterol;
-	public static volatile SingularAttribute<Diet, BigDecimal> totalSodium;
+	public static SingularAttribute<Diet, BigDecimal> totalCarbohydrates;
+	public static SingularAttribute<Diet, BigDecimal> totalFat;
+	public static SingularAttribute<Diet, Recipe> recipe;
+	public static SingularAttribute<Diet, Byte> isBase;
+	public static SingularAttribute<Diet, BigDecimal> totalCalories;
+	public static SingularAttribute<Diet, Integer> idRecipe;
+	public static SingularAttribute<Diet, BigDecimal> totalProteins;
+	public static ListAttribute<Diet, DietFood> dietFoods;
+	public static SingularAttribute<Diet, BigDecimal> totalQuantityGrams;
+	public static SingularAttribute<Diet, BigDecimal> totalFatMono;
+	public static SingularAttribute<Diet, BigDecimal> totalFatPoli;
+	public static SingularAttribute<Diet, BigDecimal> totalFatSat;
+	public static SingularAttribute<Diet, BigDecimal> totalFatTrans;
+	public static SingularAttribute<Diet, BigDecimal> totalCarbSugar;
+	public static SingularAttribute<Diet, BigDecimal> totalCarbSugarAdded;
+	public static SingularAttribute<Diet, BigDecimal> totalFiber;
+	public static SingularAttribute<Diet, BigDecimal> totalCholesterol;
+	public static SingularAttribute<Diet, BigDecimal> totalSodium;
 
 	public static final String TOTAL_CARBOHYDRATES = "totalCarbohydrates";
 	public static final String TOTAL_FAT = "totalFat";

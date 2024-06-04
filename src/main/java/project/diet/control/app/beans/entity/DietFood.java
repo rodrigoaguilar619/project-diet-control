@@ -1,6 +1,6 @@
 package project.diet.control.app.beans.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import project.diet.control.app.beans.entity.generic.GenericDietEntity;
 

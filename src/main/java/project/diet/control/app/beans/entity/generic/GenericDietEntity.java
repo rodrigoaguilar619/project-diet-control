@@ -3,8 +3,8 @@ package project.diet.control.app.beans.entity.generic;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class GenericDietEntity implements Serializable {

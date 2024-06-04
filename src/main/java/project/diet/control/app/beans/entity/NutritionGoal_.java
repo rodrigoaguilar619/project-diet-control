@@ -2,28 +2,28 @@ package project.diet.control.app.beans.entity;
 
 import java.math.BigDecimal;
 
-import javax.annotation.Generated;
-import javax.persistence.metamodel.SingularAttribute;
-import javax.persistence.metamodel.StaticMetamodel;
+import jakarta.annotation.Generated;
+import jakarta.persistence.metamodel.SingularAttribute;
+import jakarta.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(NutritionGoal.class)
 public abstract class NutritionGoal_ {
 
-	public static volatile SingularAttribute<NutritionGoal, Double> carbohydrates;
-	public static volatile SingularAttribute<NutritionGoal, Double> proteins;
-	public static volatile SingularAttribute<NutritionGoal, Double> fat;
-	public static volatile SingularAttribute<NutritionGoal, Integer> id;
-	public static volatile SingularAttribute<NutritionGoal, Double> calories;
-	public static volatile SingularAttribute<NutritionGoal, BigDecimal> fatMono;
-	public static volatile SingularAttribute<NutritionGoal, BigDecimal> fatPoli;
-	public static volatile SingularAttribute<NutritionGoal, BigDecimal> fatSat;
-	public static volatile SingularAttribute<NutritionGoal, BigDecimal> fatTrans;
-	public static volatile SingularAttribute<NutritionGoal, BigDecimal> carbSugar;
-	public static volatile SingularAttribute<NutritionGoal, BigDecimal> carbSugarAdded;
-	public static volatile SingularAttribute<NutritionGoal, BigDecimal> fiber;
-	public static volatile SingularAttribute<NutritionGoal, BigDecimal> cholesterol;
-	public static volatile SingularAttribute<NutritionGoal, BigDecimal> sodium;
+	public static SingularAttribute<NutritionGoal, Double> carbohydrates;
+	public static SingularAttribute<NutritionGoal, Double> proteins;
+	public static SingularAttribute<NutritionGoal, Double> fat;
+	public static SingularAttribute<NutritionGoal, Integer> id;
+	public static SingularAttribute<NutritionGoal, Double> calories;
+	public static SingularAttribute<NutritionGoal, BigDecimal> fatMono;
+	public static SingularAttribute<NutritionGoal, BigDecimal> fatPoli;
+	public static SingularAttribute<NutritionGoal, BigDecimal> fatSat;
+	public static SingularAttribute<NutritionGoal, BigDecimal> fatTrans;
+	public static SingularAttribute<NutritionGoal, BigDecimal> carbSugar;
+	public static SingularAttribute<NutritionGoal, BigDecimal> carbSugarAdded;
+	public static SingularAttribute<NutritionGoal, BigDecimal> fiber;
+	public static SingularAttribute<NutritionGoal, BigDecimal> cholesterol;
+	public static SingularAttribute<NutritionGoal, BigDecimal> sodium;
 
 	public static final String CARBOHYDRATES = "carbohydrates";
 	public static final String PROTEINS = "proteins";

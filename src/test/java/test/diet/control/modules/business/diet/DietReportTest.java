@@ -7,7 +7,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

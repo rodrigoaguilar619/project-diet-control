@@ -2,7 +2,7 @@ package project.diet.control.app.beans.entity;
 
 import java.math.BigDecimal;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import project.diet.control.app.beans.entity.generic.GenericNutrientEntity;
 

@@ -6,14 +6,14 @@
 	<parent>
 		<groupId>com.parent.project.web</groupId>
 		<artifactId>lib-parent-project-web</artifactId>
-		<version>2.0.0</version>
+		<version>4.0.0</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>project.diet.control</groupId>
 	<artifactId>project-diet-control</artifactId>
-	<version>6.0.0</version>
+	<version>7.0.0-SNAPSHOT</version>
 	<packaging>${prop.packaging.type}</packaging>
 	<name>project-diet-control</name>
 	<description>Diet control project</description>
@@ -22,8 +22,6 @@
 		<jar.name>${server.servlet.context-path}</jar.name>
 		<project.build.main.class>project.diet.control.config.starter.AppDietControl</project.build.main.class>
 		<prop.main.class>project.diet.control.config.starter.AppDietControl</prop.main.class>
-		<prop.main.class.heroku>project.diet.control.config.starter.AppDietControl</prop.main.class.heroku>
-		<prop.main.class.heliohost>project.diet.control.config.starter.AppDietControl</prop.main.class.heliohost>
 		<test.skip>true</test.skip>
 	</properties>
 

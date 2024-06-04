@@ -1,7 +1,7 @@
 package project.diet.control.app.beans.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 
 /**

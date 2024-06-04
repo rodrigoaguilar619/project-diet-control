@@ -1,36 +1,36 @@
 package project.diet.control.app.beans.entity;
 
 import java.math.BigDecimal;
-import javax.annotation.Generated;
-import javax.persistence.metamodel.ListAttribute;
-import javax.persistence.metamodel.SingularAttribute;
-import javax.persistence.metamodel.StaticMetamodel;
+import jakarta.annotation.Generated;
+import jakarta.persistence.metamodel.ListAttribute;
+import jakarta.persistence.metamodel.SingularAttribute;
+import jakarta.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(Food.class)
 public abstract class Food_ {
 
-	public static volatile SingularAttribute<Food, BigDecimal> carbohydrates;
-	public static volatile SingularAttribute<Food, BigDecimal> quantityGrams;
-	public static volatile SingularAttribute<Food, BigDecimal> unityGrams;
-	public static volatile SingularAttribute<Food, BigDecimal> price;
-	public static volatile SingularAttribute<Food, BigDecimal> proteins;
-	public static volatile SingularAttribute<Food, BigDecimal> fat;
-	public static volatile SingularAttribute<Food, String> description;
-	public static volatile SingularAttribute<Food, BigDecimal> costProtein;
-	public static volatile SingularAttribute<Food, Integer> id;
-	public static volatile SingularAttribute<Food, BigDecimal> calories;
-	public static volatile SingularAttribute<Food, BigDecimal> costCalorie;
-	public static volatile SingularAttribute<Food, BigDecimal> fatMono;
-	public static volatile SingularAttribute<Food, BigDecimal> fatPoli;
-	public static volatile SingularAttribute<Food, BigDecimal> fatSat;
-	public static volatile SingularAttribute<Food, BigDecimal> fatTrans;
-	public static volatile SingularAttribute<Food, BigDecimal> carbSugar;
-	public static volatile SingularAttribute<Food, BigDecimal> carbSugarAdded;
-	public static volatile SingularAttribute<Food, BigDecimal> fiber;
-	public static volatile SingularAttribute<Food, BigDecimal> cholesterol;
-	public static volatile SingularAttribute<Food, BigDecimal> sodium;
-	public static volatile ListAttribute<Food, DietFood> dietFoods;
+	public static SingularAttribute<Food, BigDecimal> carbohydrates;
+	public static SingularAttribute<Food, BigDecimal> quantityGrams;
+	public static SingularAttribute<Food, BigDecimal> unityGrams;
+	public static SingularAttribute<Food, BigDecimal> price;
+	public static SingularAttribute<Food, BigDecimal> proteins;
+	public static SingularAttribute<Food, BigDecimal> fat;
+	public static SingularAttribute<Food, String> description;
+	public static SingularAttribute<Food, BigDecimal> costProtein;
+	public static SingularAttribute<Food, Integer> id;
+	public static SingularAttribute<Food, BigDecimal> calories;
+	public static SingularAttribute<Food, BigDecimal> costCalorie;
+	public static SingularAttribute<Food, BigDecimal> fatMono;
+	public static SingularAttribute<Food, BigDecimal> fatPoli;
+	public static SingularAttribute<Food, BigDecimal> fatSat;
+	public static SingularAttribute<Food, BigDecimal> fatTrans;
+	public static SingularAttribute<Food, BigDecimal> carbSugar;
+	public static SingularAttribute<Food, BigDecimal> carbSugarAdded;
+	public static SingularAttribute<Food, BigDecimal> fiber;
+	public static SingularAttribute<Food, BigDecimal> cholesterol;
+	public static SingularAttribute<Food, BigDecimal> sodium;
+	public static ListAttribute<Food, DietFood> dietFoods;
 	
 
 	public static final String CARBOHYDRATES = "carbohydrates";
