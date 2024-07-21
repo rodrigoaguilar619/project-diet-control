@@ -123,9 +123,6 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 			
 		Integer id = setAddEditDiet(diet, dietPojo, CrudOptionsEnum.UPDATE);
 		
-		Recipe recipe = diet.getRecipe();
-		recipe.setInstructions(requestPojo.getRecipeInstructions());
-		
 		AddEditDietDataPojo responsePojo = new AddEditDietDataPojo();
 		responsePojo.setId(id);
 		

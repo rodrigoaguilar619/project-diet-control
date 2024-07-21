@@ -57,7 +57,7 @@ public class CrudRecipeController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = CatalogsUri.API_RECIPE_GET_ALL, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = CatalogsUri.API_RECIPE_LIST_GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity getRecipesAll() {
 		
 		GetRecipeListDataPojo dataPojo = crudRecipeBusiness.executeGetRecipes();

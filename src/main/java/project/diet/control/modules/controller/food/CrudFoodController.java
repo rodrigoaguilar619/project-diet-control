@@ -66,7 +66,7 @@ public class CrudFoodController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = CatalogsUri.API_FOOD_GET_ALL, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = CatalogsUri.API_FOOD_LIST_GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity getFoodsAll() {
 		
 		GetFoodListDataPojo dataPojo = crudFoodBusiness.executeGetFoods();

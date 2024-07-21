@@ -23,7 +23,7 @@ public class CrudDietBaseController {
 	CrudDietBaseBusiness crudDietBaseBusiness;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = CatalogsUri.API_DIET_REGISTER_DIET_BASE, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = CatalogsUri.API_DIET_DIET_BASE_REGISTER, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity registerDietBase(@RequestBody RegisterDietBaseRequestPojo requestPojo) throws BusinessException {
 		
 		AddEditDietDataPojo reponsePojo = crudDietBaseBusiness.executeRegisterDietBase(requestPojo);
@@ -31,7 +31,7 @@ public class CrudDietBaseController {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@PostMapping(path = CatalogsUri.API_DIET_GET_DIET_BASE, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = CatalogsUri.API_DIET_DIET_BASE_GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity getDietBase(@RequestBody GetDietBaseRequestPojo requestPojo) {
 		
 		GetDietBaseDataPojo reponsePojo = crudDietBaseBusiness.executeGetDietBase();
