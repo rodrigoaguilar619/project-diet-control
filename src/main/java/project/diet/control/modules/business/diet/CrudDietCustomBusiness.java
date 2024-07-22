@@ -12,7 +12,6 @@ import lib.base.backend.exception.data.BusinessException;
 import project.diet.control.app.beans.entity.Diet;
 import project.diet.control.app.beans.entity.DietFood;
 import project.diet.control.app.beans.entity.NutritionGoal;
-import project.diet.control.app.beans.entity.Recipe;
 import project.diet.control.app.beans.pojos.diet.DietCustomDetailResumePojo;
 import project.diet.control.app.beans.pojos.diet.DietDataPojo;
 import project.diet.control.app.beans.pojos.diet.DietFoodResumePojo;
