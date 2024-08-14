@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
-import lib.base.backend.persistance.GenericPersistence;
 import project.diet.control.app.beans.entity.Food;
 import project.diet.control.app.beans.pojos.entity.FoodEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.food.AddEditFoodDataPojo;
@@ -20,21 +19,10 @@ import project.diet.control.app.beans.pojos.petition.request.food.AddEditFoodsRe
 import project.diet.control.app.beans.pojos.petition.request.food.DeleteFoodRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.food.GetFoodRequestPojo;
 import project.diet.control.app.repository.FoodRepositoryImpl;
-import project.diet.control.app.util.BuildEntityToPojoUtil;
-import project.diet.control.app.util.BuildPojoToEntityUtil;
+import project.diet.control.modules.business.MainBusiness;
 
 @Component
-public class CrudFoodBusiness {
-
-	@SuppressWarnings("rawtypes")
-	@Autowired
-	GenericPersistence genericCustomPersistance;
-	
-	@Autowired
-	BuildPojoToEntityUtil buildPojoToEntityUtil;
-	
-	@Autowired
-	BuildEntityToPojoUtil buildEntityToPojoUtil;
+public class CrudFoodBusiness extends MainBusiness {
 	
 	@Autowired
 	FoodRepositoryImpl foodRepository;

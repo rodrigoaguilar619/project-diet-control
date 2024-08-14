@@ -2,33 +2,20 @@ package project.diet.control.modules.business.admin;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
-import lib.base.backend.persistance.GenericPersistence;
 import project.diet.control.app.beans.entity.NutritionGoal;
 import project.diet.control.app.beans.pojos.entity.NutritionGoalEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.admin.GetNutritionGoalDataPojo;
 import project.diet.control.app.beans.pojos.petition.data.admin.RegisterNutritionGoalDataPojo;
 import project.diet.control.app.beans.pojos.petition.request.admin.GetNutritionGoalRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.admin.RegisterNutritionGoalRequestPojo;
-import project.diet.control.app.util.BuildEntityToPojoUtil;
-import project.diet.control.app.util.BuildPojoToEntityUtil;
+import project.diet.control.modules.business.MainBusiness;
 
 @Component
-public class NutritionGoalsBusiness {
-	
-	@SuppressWarnings("rawtypes")
-	@Autowired
-	GenericPersistence genericCustomPersistance;
-	
-	@Autowired
-	BuildPojoToEntityUtil buildPojoToEntityUtil;
-	
-	@Autowired
-	BuildEntityToPojoUtil buildEntityToPojoUtil;
+public class NutritionGoalsBusiness extends MainBusiness {
 
 	@SuppressWarnings("unchecked")
 	public Integer setAddEditNutritionGoal(NutritionGoal nutritionGoalEntity, NutritionGoalEntityPojo nutritionGoalEntityPojo, CrudOptionsEnum crudOptionsEnum) {

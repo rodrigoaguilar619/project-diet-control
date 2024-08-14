@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import lib.base.backend.persistance.GenericPersistence;
 import lib.base.backend.pojo.files.FilePojo;
 import lib.base.backend.pojo.pdf.jasper.PdfReportJasperConfigPojo;
 import lib.base.backend.utils.pdf.BuildPdfJasperUtil;
@@ -27,28 +26,14 @@ import project.diet.control.app.beans.pojos.entity.RecipeEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.diet.GetDietCustomReportDataPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomReportRequestPojo;
 import project.diet.control.app.repository.DietRepositoryImpl;
-import project.diet.control.app.util.BuildEntityToPojoUtil;
-import project.diet.control.app.util.BuildPojoToEntityUtil;
 import project.diet.control.app.util.DietUtil;
+import project.diet.control.modules.business.MainBusiness;
 
 @Component
-public class ReportDietCustomBusiness {
-	
-	@SuppressWarnings("rawtypes")
-	@Autowired
-	protected GenericPersistence genericCustomPersistance;
-	
-	@Autowired
-	protected BuildPojoToEntityUtil buildPojoToEntityUtil;
-	
-	@Autowired
-	protected BuildEntityToPojoUtil buildEntityToPojoUtil;
+public class ReportDietCustomBusiness extends MainBusiness {
 	
 	@Autowired
 	DietRepositoryImpl dietRepository;
-	
-	@Autowired
-	DietUtil dietUtil;
 	
 	private String setDecimalScale(BigDecimal number) {
 		

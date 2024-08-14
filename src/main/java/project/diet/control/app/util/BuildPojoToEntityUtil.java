@@ -24,6 +24,12 @@ public class BuildPojoToEntityUtil {
 	@Autowired
 	GenericPersistence genericCustomPersistance;
 	
+	@SuppressWarnings("rawtypes")
+	public BuildPojoToEntityUtil(GenericPersistence genericCustomPersistance) {
+		super();
+		this.genericCustomPersistance = genericCustomPersistance;
+	}
+
 	private NutrientPojo initNutrient() {
 		
 		NutrientPojo nutrientPojo = new NutrientPojo();

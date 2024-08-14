@@ -3,8 +3,10 @@ package project.diet.control.modules.business;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import lib.base.backend.persistance.GenericPersistence;
+import lib.base.backend.utils.CatalogUtil;
 import project.diet.control.app.util.BuildEntityToPojoUtil;
 import project.diet.control.app.util.BuildPojoToEntityUtil;
+import project.diet.control.app.util.DietUtil;
 
 public class MainBusiness {
 
@@ -12,9 +14,8 @@ public class MainBusiness {
 	@Autowired
 	protected GenericPersistence genericCustomPersistance;
 	
-	@Autowired
-	protected BuildPojoToEntityUtil buildPojoToEntityUtil;
-	
-	@Autowired
-	protected BuildEntityToPojoUtil buildEntityToPojoUtil;
+	protected BuildPojoToEntityUtil buildPojoToEntityUtil = new BuildPojoToEntityUtil(genericCustomPersistance);
+	protected BuildEntityToPojoUtil buildEntityToPojoUtil = new BuildEntityToPojoUtil();
+	protected CatalogUtil catalogUtil = new CatalogUtil();
+	protected DietUtil dietUtil = new DietUtil();
 }

@@ -3,7 +3,6 @@ package project.diet.control.modules.business.diet;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,13 +28,9 @@ import project.diet.control.app.beans.pojos.petition.request.diet.DeleteDietCust
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomDetailListRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.RegisterDietBaseRequestPojo;
-import project.diet.control.app.util.DietUtil;
 
 @Component
 public class CrudDietCustomBusiness extends CrudDietBusiness {
-	
-	@Autowired
-	DietUtil dietUtil;
 	
 	@Transactional(rollbackFor = Exception.class)
 	public AddEditDietDataPojo executeRegisterDietBase(RegisterDietBaseRequestPojo requestPojo) throws BusinessException {

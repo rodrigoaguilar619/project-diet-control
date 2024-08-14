@@ -4,16 +4,13 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import project.diet.control.app.beans.entity.Diet;
 import project.diet.control.app.beans.entity.DietFood;
 import project.diet.control.app.beans.pojos.diet.DietFoodResumePojo;
 
 public class DietUtil {
 	
-	@Autowired
-	protected BuildEntityToPojoUtil buildEntityToPojoUtil;
+	private BuildEntityToPojoUtil buildEntityToPojoUtil = new BuildEntityToPojoUtil();
 
 	public Diet generateDietZeros() {
 		
