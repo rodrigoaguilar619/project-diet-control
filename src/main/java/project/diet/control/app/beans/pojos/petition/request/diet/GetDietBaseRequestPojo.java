@@ -1,5 +1,7 @@
 package project.diet.control.app.beans.pojos.petition.request.diet;
 
-public class GetDietBaseRequestPojo {
+import project.diet.control.app.beans.pojos.petition.request.GenericRequestPojo;
+
+public class GetDietBaseRequestPojo extends GenericRequestPojo {
 
 }

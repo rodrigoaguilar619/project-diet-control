@@ -1,15 +1,11 @@
 package project.diet.control.app.beans.pojos.petition.request.food;
 
-public class GetFoodRequestPojo {
+import lombok.Getter;
+import lombok.Setter;
+import project.diet.control.app.beans.pojos.petition.request.GenericRequestPojo;
+
+@Getter @Setter
+public class GetFoodRequestPojo extends GenericRequestPojo {
 
 	private Integer id;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
 }

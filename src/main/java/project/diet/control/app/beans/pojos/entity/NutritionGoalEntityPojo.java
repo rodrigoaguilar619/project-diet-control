@@ -2,8 +2,11 @@ package project.diet.control.app.beans.pojos.entity;
 
 import java.math.BigDecimal;
 
+import lombok.Getter;
+import lombok.Setter;
 import project.diet.control.app.beans.pojos.entity.generic.GenericNutrientEntityPojo;
 
+@Getter @Setter
 public class NutritionGoalEntityPojo extends GenericNutrientEntityPojo {
 	
 	private BigDecimal calories;
@@ -11,29 +14,4 @@ public class NutritionGoalEntityPojo extends GenericNutrientEntityPojo {
 	private BigDecimal proteins;
 	
 	private BigDecimal carbohydrates;
-
-	public BigDecimal getCalories() {
-		return calories;
-	}
-
-	public void setCalories(BigDecimal calories) {
-		this.calories = calories;
-	}
-
-	public BigDecimal getProteins() {
-		return proteins;
-	}
-
-	public void setProteins(BigDecimal proteins) {
-		this.proteins = proteins;
-	}
-
-	public BigDecimal getCarbohydrates() {
-		return carbohydrates;
-	}
-
-	public void setCarbohydrates(BigDecimal carbohydrates) {
-		this.carbohydrates = carbohydrates;
-	}
-	
 }

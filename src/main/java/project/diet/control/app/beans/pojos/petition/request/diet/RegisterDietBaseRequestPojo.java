@@ -1,16 +1,12 @@
 package project.diet.control.app.beans.pojos.petition.request.diet;
 
+import lombok.Getter;
+import lombok.Setter;
 import project.diet.control.app.beans.pojos.diet.DietPojo;
+import project.diet.control.app.beans.pojos.petition.request.GenericRequestPojo;
 
-public class RegisterDietBaseRequestPojo {
+@Getter @Setter
+public class RegisterDietBaseRequestPojo extends GenericRequestPojo {
 
 	DietPojo diet;
-
-	public DietPojo getDiet() {
-		return diet;
-	}
-
-	public void setDiet(DietPojo diet) {
-		this.diet = diet;
-	}
 }

@@ -2,8 +2,11 @@ package project.diet.control.app.beans.pojos.diet;
 
 import java.math.BigDecimal;
 
+import lombok.Getter;
+import lombok.Setter;
 import project.diet.control.app.beans.pojos.entity.FoodEntityPojo;
 
+@Getter @Setter
 public class DietFoodResumePojo extends FoodEntityPojo {
 
 	private Integer idDietFood;
@@ -11,28 +14,4 @@ public class DietFoodResumePojo extends FoodEntityPojo {
 	private BigDecimal portions;
 	
 	private BigDecimal unities;
-
-	public Integer getIdDietFood() {
-		return idDietFood;
-	}
-
-	public void setIdDietFood(Integer idDietFood) {
-		this.idDietFood = idDietFood;
-	}
-
-	public BigDecimal getPortions() {
-		return portions;
-	}
-
-	public void setPortions(BigDecimal portions) {
-		this.portions = portions;
-	}
-
-	public BigDecimal getUnities() {
-		return unities;
-	}
-
-	public void setUnities(BigDecimal unities) {
-		this.unities = unities;
-	}
 }

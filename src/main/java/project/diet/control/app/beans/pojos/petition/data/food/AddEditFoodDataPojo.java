@@ -1,15 +1,10 @@
 package project.diet.control.app.beans.pojos.petition.data.food;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class AddEditFoodDataPojo {
 
 	private Integer id;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
 }

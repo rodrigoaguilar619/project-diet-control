@@ -1,17 +1,12 @@
 package project.diet.control.app.beans.pojos.petition.request.food;
 
+import lombok.Getter;
+import lombok.Setter;
 import project.diet.control.app.beans.pojos.entity.FoodEntityPojo;
+import project.diet.control.app.beans.pojos.petition.request.GenericRequestPojo;
 
-public class AddEditFoodRequestPojo {
+@Getter @Setter
+public class AddEditFoodRequestPojo extends GenericRequestPojo {
 
 	FoodEntityPojo food;
-
-	public FoodEntityPojo getFood() {
-		return food;
-	}
-
-	public void setFood(FoodEntityPojo food) {
-		this.food = food;
-	}
-	
 }
