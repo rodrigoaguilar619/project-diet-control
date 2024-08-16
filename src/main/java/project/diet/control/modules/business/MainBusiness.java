@@ -14,7 +14,7 @@ public class MainBusiness {
 	@Autowired
 	protected GenericPersistence genericCustomPersistance;
 	
-	protected BuildPojoToEntityUtil buildPojoToEntityUtil = new BuildPojoToEntityUtil(genericCustomPersistance);
+	protected BuildPojoToEntityUtil buildPojoToEntityUtil = new BuildPojoToEntityUtil();
 	protected BuildEntityToPojoUtil buildEntityToPojoUtil = new BuildEntityToPojoUtil();
 	protected CatalogUtil catalogUtil = new CatalogUtil();
 	protected DietUtil dietUtil = new DietUtil();

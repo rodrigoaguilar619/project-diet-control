@@ -3,34 +3,20 @@ package project.diet.control.app.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import lib.base.backend.persistance.GenericPersistence;
 import project.diet.control.app.beans.entity.Diet;
 import project.diet.control.app.beans.entity.DietFood;
 import project.diet.control.app.beans.entity.Food;
 import project.diet.control.app.beans.entity.NutritionGoal;
 import project.diet.control.app.beans.entity.Recipe;
 import project.diet.control.app.beans.pojos.custom.NutrientPojo;
-import project.diet.control.app.beans.pojos.diet.DietPojo;
 import project.diet.control.app.beans.pojos.entity.DietFoodEntityPojo;
 import project.diet.control.app.beans.pojos.entity.FoodEntityPojo;
 import project.diet.control.app.beans.pojos.entity.NutritionGoalEntityPojo;
 import project.diet.control.app.beans.pojos.entity.RecipeEntityPojo;
 
 public class BuildPojoToEntityUtil {
-	
-	@SuppressWarnings("rawtypes")
-	@Autowired
-	GenericPersistence genericCustomPersistance;
-	
-	@SuppressWarnings("rawtypes")
-	public BuildPojoToEntityUtil(GenericPersistence genericCustomPersistance) {
-		super();
-		this.genericCustomPersistance = genericCustomPersistance;
-	}
 
-	private NutrientPojo initNutrient() {
+	public NutrientPojo initNutrient() {
 		
 		NutrientPojo nutrientPojo = new NutrientPojo();
 		
@@ -52,10 +38,9 @@ public class BuildPojoToEntityUtil {
 		return nutrientPojo;
 	}
 	
-	@SuppressWarnings("unchecked")
-	private void mapNutrientFood(NutrientPojo nutrientPojo, Integer idFood, BigDecimal portions) {
+	public void mapNutrientFood(NutrientPojo nutrientPojo, Food food, BigDecimal portions) {
 		
-		Food food = (Food) genericCustomPersistance.findById(Food.class, idFood);
+		//Food food = (Food) genericCustomPersistance.findById(Food.class, idFood);
 		
 		nutrientPojo.setTotalCalories(nutrientPojo.getTotalCalories().add(food.getCalories().multiply(portions)));
 		nutrientPojo.setTotalProteins(nutrientPojo.getTotalProteins().add(food.getProteins().multiply(portions)));
@@ -113,47 +98,16 @@ public class BuildPojoToEntityUtil {
 		return recipeEntity;
 	}
 	
-	public Diet generateDietEntity(Diet dietEntity, DietPojo dietEntityPojo) {
-		
-		if(dietEntity == null)
-			dietEntity = new Diet();
-		
-		NutrientPojo nutrientPojo = initNutrient();
-		
-		for (DietFoodEntityPojo dietFoodEntityPojo: dietEntityPojo.getFoods())
-			mapNutrientFood(nutrientPojo, dietFoodEntityPojo.getId(), dietFoodEntityPojo.getPortions());
-		
-		dietEntity.setIsBase(dietEntityPojo.getIsBase());
-		dietEntity.setIdRecipe(dietEntityPojo.getIdRecipe());
-		dietEntity.setTotalCalories(nutrientPojo.getTotalCalories());
-		dietEntity.setTotalProteins(nutrientPojo.getTotalProteins());
-		dietEntity.setTotalCarbohydrates(nutrientPojo.getTotalCarbohydrates());
-		dietEntity.setTotalFat(nutrientPojo.getTotalFats());
-		dietEntity.setTotalQuantityGrams(nutrientPojo.getTotalGrams());
-		dietEntity.setTotalFatMono(nutrientPojo.getTotalFatMonos());
-		dietEntity.setTotalFatPoli(nutrientPojo.getTotalFatPolis());
-		dietEntity.setTotalFatSat(nutrientPojo.getTotalFatSats());
-		dietEntity.setTotalFatTrans(nutrientPojo.getTotalFatTrans());
-		dietEntity.setTotalCarbSugar(nutrientPojo.getTotalCarbSugars());
-		dietEntity.setTotalCarbSugarAdded(nutrientPojo.getTotalCarbSugarAddeds());
-		dietEntity.setTotalCholesterol(nutrientPojo.getTotalCholesterols());
-		dietEntity.setTotalFiber(nutrientPojo.getTotalFiber());
-		dietEntity.setTotalSodium(nutrientPojo.getTotalSodium());
-		
-		return dietEntity;
-	}
-	
-	@SuppressWarnings("unchecked")
-	public DietFood generateDietFoodEntity(DietFood dietFoodEntity, DietFoodEntityPojo dietFoodEntityPojo, Integer idRecipe) {
+	public DietFood generateDietFoodEntity(DietFood dietFoodEntity, Food food, DietFoodEntityPojo dietFoodEntityPojo, Integer idRecipe) {
 		
 		if(dietFoodEntity == null)
 			dietFoodEntity = new DietFood();
 		
 		NutrientPojo nutrientPojo = initNutrient();
 		
-		mapNutrientFood(nutrientPojo, dietFoodEntityPojo.getId(), dietFoodEntityPojo.getPortions());
+		mapNutrientFood(nutrientPojo, food, dietFoodEntityPojo.getPortions());
 		
-		Food food = (Food) genericCustomPersistance.findById(Food.class, dietFoodEntityPojo.getId());
+		//Food food = (Food) genericCustomPersistance.findById(Food.class, dietFoodEntityPojo.getId());
 		
 		dietFoodEntity.setFood(food);
 		dietFoodEntity.setDiet(new Diet(idRecipe));

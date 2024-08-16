@@ -11,11 +11,13 @@ import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
 import project.diet.control.app.beans.entity.Diet;
 import project.diet.control.app.beans.entity.DietFood;
+import project.diet.control.app.beans.entity.Food;
 import project.diet.control.app.beans.pojos.diet.DietPojo;
 import project.diet.control.app.beans.pojos.entity.DietFoodEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.diet.AddEditDietDataPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.AddEditDietRequestPojo;
 import project.diet.control.app.repository.DietRepositoryImpl;
+import project.diet.control.config.helper.DietHelper;
 import project.diet.control.modules.business.MainBusiness;
 
 @Component
@@ -24,15 +26,19 @@ public class CrudDietBusiness extends MainBusiness {
 	@Autowired
 	DietRepositoryImpl dietRepository;
 	
+	@Autowired
+	DietHelper dietHelper;
+	
 	@SuppressWarnings("unchecked")
 	public Integer setAddEditDiet(Diet dietEntity, DietPojo dietEntityPojo, CrudOptionsEnum crudOptionsEnum) {
 		
-		dietEntity = buildPojoToEntityUtil.generateDietEntity(dietEntity, dietEntityPojo);
+		dietEntity = dietHelper.generateDietEntity(dietEntity, dietEntityPojo);
 		
 		List<DietFood> dietFoods = new ArrayList<>();
 		for(DietFoodEntityPojo dietFoodEntityPojo: dietEntityPojo.getFoods()) {
 			
-			DietFood dietFood = buildPojoToEntityUtil.generateDietFoodEntity(null, dietFoodEntityPojo, dietEntityPojo.getIdRecipe());
+			Food food = (Food) genericCustomPersistance.findById(Food.class, dietFoodEntityPojo.getId());
+			DietFood dietFood = buildPojoToEntityUtil.generateDietFoodEntity(null, food, dietFoodEntityPojo, dietEntityPojo.getIdRecipe());
 			dietFoods.add(dietFood);
 		}
 		

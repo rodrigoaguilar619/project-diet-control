@@ -23,7 +23,7 @@ public class NutritionGoalsController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = CatalogsUri.API_ADMIN_NUTRITION_GOALS_REGISTER, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity catalogGetAll(@RequestBody RegisterNutritionGoalRequestPojo requestPojo) {
+	public ResponseEntity registerNutritionGoals(@RequestBody RegisterNutritionGoalRequestPojo requestPojo) {
 		
 		RegisterNutritionGoalDataPojo reponsePojo = nutritionGoalsBusiness.executeRegisterNutritionGoal(requestPojo);
 		return new RestUtil().buildResponseSuccess(reponsePojo, "Nutrition goal registered");
@@ -31,7 +31,7 @@ public class NutritionGoalsController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = CatalogsUri.API_ADMIN_NUTRITION_GOALS_GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity catalogGetAll(@RequestBody GetNutritionGoalRequestPojo requestPojo) {
+	public ResponseEntity getNutritionGoal(@RequestBody GetNutritionGoalRequestPojo requestPojo) {
 		
 		GetNutritionGoalDataPojo reponsePojo = nutritionGoalsBusiness.executeGetNutritionGoal(requestPojo);
 		return new RestUtil().buildResponseSuccess(reponsePojo, "Nutrition goal getted");

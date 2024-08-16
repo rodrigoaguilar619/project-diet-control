@@ -30,7 +30,7 @@ public class CrudDietCustomController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = CatalogsUri.API_DIET_DIET_CUSTOM_ADD, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity addFood(@RequestBody AddEditDietRequestPojo requestPojo) throws BusinessException  {
+	public ResponseEntity addDietCustom(@RequestBody AddEditDietRequestPojo requestPojo) throws BusinessException  {
 		
 		AddEditDietDataPojo responsePojo = crudDietCustomBusiness.executeAddDiet(requestPojo);
 		return new RestUtil().buildResponseSuccess(responsePojo, "food added");
@@ -38,7 +38,7 @@ public class CrudDietCustomController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = CatalogsUri.API_DIET_DIET_CUSTOM_EDIT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity editFood(@RequestBody AddEditDietRequestPojo requestPojo) throws BusinessException {
+	public ResponseEntity editDietCustom(@RequestBody AddEditDietRequestPojo requestPojo) throws BusinessException {
 		
 		AddEditDietDataPojo responsePojo = crudDietCustomBusiness.executeEditDiet(requestPojo);
 		return new RestUtil().buildResponseSuccess(responsePojo, "food edited");
