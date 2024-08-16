@@ -2,7 +2,10 @@ package project.diet.control.app.beans.entity;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter @Setter
 @Entity
 @Table(name = "recipe")
 public class RecipeEntity implements Serializable {
@@ -18,37 +21,5 @@ public class RecipeEntity implements Serializable {
 
 	@OneToOne(mappedBy="recipe", fetch=FetchType.LAZY)
 	private DietEntity diet;
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getInstructions() {
-		return this.instructions;
-	}
-
-	public void setInstructions(String instructions) {
-		this.instructions = instructions;
-	}
-
-	public String getTitle() {
-		return this.title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public DietEntity getDiet() {
-		return this.diet;
-	}
-
-	/*public void setDiet(DietEntity diet) {
-		this.diet = diet;
-	}*/
 
 }

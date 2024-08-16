@@ -1,11 +1,13 @@
 package project.diet.control.app.beans.entity;
 
 import jakarta.persistence.*;
-
+import lombok.Getter;
+import lombok.Setter;
 import project.diet.control.app.beans.entity.generic.GenericDietEntity;
 
 import java.math.BigDecimal;
 
+@Getter @Setter
 @Entity
 @Table(name="diet_food")
 public class DietFoodEntity extends GenericDietEntity {
@@ -33,61 +35,5 @@ public class DietFoodEntity extends GenericDietEntity {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_diet", insertable = false, updatable = false)
 	private DietEntity diet;
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Integer getIdFood() {
-		return idFood;
-	}
-
-	public void setIdFood(Integer idFood) {
-		this.idFood = idFood;
-	}
-
-	public Integer getIdDiet() {
-		return idDiet;
-	}
-
-	public void setIdDiet(Integer idDiet) {
-		this.idDiet = idDiet;
-	}
-
-	public BigDecimal getPortions() {
-		return this.portions;
-	}
-
-	public void setPortions(BigDecimal portions) {
-		this.portions = portions;
-	}
-	
-	public BigDecimal getUnities() {
-		return unities;
-	}
-
-	public void setUnities(BigDecimal unities) {
-		this.unities = unities;
-	}
-
-	public FoodEntity getFood() {
-		return this.food;
-	}
-
-	public void setFood(FoodEntity food) {
-		this.food = food;
-	}
-
-	public DietEntity getDiet() {
-		return this.diet;
-	}
-
-	public void setDiet(DietEntity diet) {
-		this.diet = diet;
-	}
 
 }

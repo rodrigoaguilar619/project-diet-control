@@ -5,7 +5,10 @@ import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter @Setter
 @MappedSuperclass
 public class GenericDietEntity implements Serializable {
 	
@@ -52,117 +55,5 @@ public class GenericDietEntity implements Serializable {
 
 	@Column(name="total_quantity_grams")
 	private BigDecimal totalQuantityGrams;
-	
-	public BigDecimal getTotalCalories() {
-		return this.totalCalories;
-	}
-
-	public void setTotalCalories(BigDecimal totalCalories) {
-		this.totalCalories = totalCalories;
-	}
-	
-	public BigDecimal getTotalProteins() {
-		return this.totalProteins;
-	}
-
-	public void setTotalProteins(BigDecimal totalProteins) {
-		this.totalProteins = totalProteins;
-	}
-
-	public BigDecimal getTotalFatMono() {
-		return totalFatMono;
-	}
-
-	public void setTotalFatMono(BigDecimal totalFatMono) {
-		this.totalFatMono = totalFatMono;
-	}
-	
-	public void setTotalFatSat(BigDecimal totalFatSat) {
-		this.totalFatSat = totalFatSat;
-	}
-
-	public BigDecimal getTotalFatTrans() {
-		return totalFatTrans;
-	}
-
-	public BigDecimal getTotalFatPoli() {
-		return totalFatPoli;
-	}
-
-	public void setTotalFatPoli(BigDecimal totalFatPoli) {
-		this.totalFatPoli = totalFatPoli;
-	}
-
-	public BigDecimal getTotalFatSat() {
-		return totalFatSat;
-	}
-
-	public void setTotalFatTrans(BigDecimal totalFatTrans) {
-		this.totalFatTrans = totalFatTrans;
-	}
-	
-	public BigDecimal getTotalSodium() {
-		return totalSodium;
-	}
-
-	public void setTotalSodium(BigDecimal totalSodium) {
-		this.totalSodium = totalSodium;
-	}
-
-	public BigDecimal getTotalCarbSugar() {
-		return totalCarbSugar;
-	}
-
-	public void setTotalCarbSugar(BigDecimal totalCarbSugar) {
-		this.totalCarbSugar = totalCarbSugar;
-	}
-
-	public BigDecimal getTotalCarbSugarAdded() {
-		return totalCarbSugarAdded;
-	}
-
-	public void setTotalCarbSugarAdded(BigDecimal totalCarbSugarAdded) {
-		this.totalCarbSugarAdded = totalCarbSugarAdded;
-	}
-
-	public BigDecimal getTotalFiber() {
-		return totalFiber;
-	}
-
-	public void setTotalFiber(BigDecimal totalFiber) {
-		this.totalFiber = totalFiber;
-	}
-
-	public BigDecimal getTotalCholesterol() {
-		return totalCholesterol;
-	}
-
-	public void setTotalCholesterol(BigDecimal totalCholesterol) {
-		this.totalCholesterol = totalCholesterol;
-	}
-
-	public BigDecimal getTotalCarbohydrates() {
-		return this.totalCarbohydrates;
-	}
-
-	public void setTotalCarbohydrates(BigDecimal totalCarbohydrates) {
-		this.totalCarbohydrates = totalCarbohydrates;
-	}
-
-	public BigDecimal getTotalFat() {
-		return this.totalFat;
-	}
-
-	public void setTotalFat(BigDecimal totalFat) {
-		this.totalFat = totalFat;
-	}
-
-	public BigDecimal getTotalQuantityGrams() {
-		return this.totalQuantityGrams;
-	}
-
-	public void setTotalQuantityGrams(BigDecimal totalQuantityGrams) {
-		this.totalQuantityGrams = totalQuantityGrams;
-	}
 	
 }

@@ -1,12 +1,14 @@
 package project.diet.control.app.beans.entity;
 
 import jakarta.persistence.*;
-
+import lombok.Getter;
+import lombok.Setter;
 import project.diet.control.app.beans.entity.generic.GenericDietEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter @Setter
 @Entity
 @Table(name = "diet")
 public class DietEntity extends GenericDietEntity {
@@ -33,38 +35,6 @@ public class DietEntity extends GenericDietEntity {
 	public DietEntity(int idRecipe) {
 		super();
 		this.idRecipe = idRecipe;
-	}
-
-	public int getIdRecipe() {
-		return this.idRecipe;
-	}
-
-	public void setIdRecipe(int idRecipe) {
-		this.idRecipe = idRecipe;
-	}
-
-	public Boolean getIsBase() {
-		return this.isBase;
-	}
-
-	public void setIsBase(Boolean isBase) {
-		this.isBase = isBase;
-	}
-
-	public RecipeEntity getRecipe() {
-		return this.recipe;
-	}
-
-	public void setRecipe(RecipeEntity recipe) {
-		this.recipe = recipe;
-	}
-
-	public List<DietFoodEntity> getDietFoods() {
-		return this.dietFoods;
-	}
-
-	public void setDietFoods(List<DietFoodEntity> dietFoods) {
-		this.dietFoods = dietFoods;
 	}
 
 }

@@ -3,12 +3,14 @@ package project.diet.control.app.beans.entity;
 import java.math.BigDecimal;
 
 import jakarta.persistence.*;
-
+import lombok.Getter;
+import lombok.Setter;
 import project.diet.control.app.beans.entity.generic.GenericNutrientEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter @Setter
 @Entity
 @Table(name = "food")
 public class FoodEntity extends GenericNutrientEntity {
@@ -42,93 +44,5 @@ public class FoodEntity extends GenericNutrientEntity {
 
 	@OneToMany(mappedBy="food", fetch = FetchType.LAZY)
 	private List<DietFoodEntity> dietFoods = new ArrayList<>();
-
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public BigDecimal getCalories() {
-		return this.calories;
-	}
-
-	public void setCalories(BigDecimal calories) {
-		this.calories = calories;
-	}
-
-	public BigDecimal getCarbohydrates() {
-		return this.carbohydrates;
-	}
-
-	public void setCarbohydrates(BigDecimal carbohydrates) {
-		this.carbohydrates = carbohydrates;
-	}
-
-	public BigDecimal getCostCalorie() {
-		return this.costCalorie;
-	}
-
-	public void setCostCalorie(BigDecimal costCalorie) {
-		this.costCalorie = costCalorie;
-	}
-
-	public BigDecimal getCostProtein() {
-		return this.costProtein;
-	}
-
-	public void setCostProtein(BigDecimal costProtein) {
-		this.costProtein = costProtein;
-	}
-
-	public String getDescription() {
-		return this.description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public BigDecimal getFat() {
-		return this.fat;
-	}
-
-	public void setFat(BigDecimal fat) {
-		this.fat = fat;
-	}
-
-	public BigDecimal getPrice() {
-		return this.price;
-	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
-	public BigDecimal getQuantityGrams() {
-		return this.quantityGrams;
-	}
-
-	public void setQuantityGrams(BigDecimal quantityGrams) {
-		this.quantityGrams = quantityGrams;
-	}
-
-	public BigDecimal getUnityGrams() {
-		return unityGrams;
-	}
-
-	public void setUnityGrams(BigDecimal unityGrams) {
-		this.unityGrams = unityGrams;
-	}
-
-	public List<DietFoodEntity> getDietFoods() {
-		return this.dietFoods;
-	}
-
-	public void setDietFoods(List<DietFoodEntity> dietFoods) {
-		this.dietFoods = dietFoods;
-	}
 
 }

@@ -1,11 +1,12 @@
 package project.diet.control.app.beans.entity;
 
 import java.math.BigDecimal;
-
 import jakarta.persistence.*;
-
+import lombok.Getter;
+import lombok.Setter;
 import project.diet.control.app.beans.entity.generic.GenericNutrientEntity;
 
+@Getter @Setter
 @Entity
 @Table(name="nutrition_goals")
 public class NutritionGoalEntity extends GenericNutrientEntity {
@@ -20,37 +21,5 @@ public class NutritionGoalEntity extends GenericNutrientEntity {
 	private BigDecimal carbohydrates;
 
 	private BigDecimal fat;
-
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	public BigDecimal getCarbohydrates() {
-		return this.carbohydrates;
-	}
-
-	public void setCarbohydrates(BigDecimal carbohydrates) {
-		this.carbohydrates = carbohydrates;
-	}
-
-	public BigDecimal getCalories() {
-		return this.calories;
-	}
-
-	public void setCalories(BigDecimal calories) {
-		this.calories = calories;
-	}
-
-	public BigDecimal getFat() {
-		return this.fat;
-	}
-
-	public void setFat(BigDecimal fat) {
-		this.fat = fat;
-	}
 
 }
