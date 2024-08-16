@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import lib.base.backend.persistance.GenericPersistence;
-import project.diet.control.app.beans.entity.Diet;
-import project.diet.control.app.beans.entity.Food;
+import project.diet.control.app.beans.entity.DietEntity;
+import project.diet.control.app.beans.entity.FoodEntity;
 import project.diet.control.app.beans.pojos.custom.NutrientPojo;
 import project.diet.control.app.beans.pojos.diet.DietPojo;
 import project.diet.control.app.beans.pojos.entity.DietFoodEntityPojo;
@@ -21,15 +21,15 @@ public class DietHelper {
 	private BuildPojoToEntityUtil buildPojoToEntityUtil = new BuildPojoToEntityUtil();
 
 	@SuppressWarnings("unchecked")
-	public Diet generateDietEntity(Diet dietEntity, DietPojo dietEntityPojo) {
+	public DietEntity generateDietEntity(DietEntity dietEntity, DietPojo dietEntityPojo) {
 		
 		if(dietEntity == null)
-			dietEntity = new Diet();
+			dietEntity = new DietEntity();
 		
 		NutrientPojo nutrientPojo = buildPojoToEntityUtil.initNutrient();
 		
 		for (DietFoodEntityPojo dietFoodEntityPojo: dietEntityPojo.getFoods()) {
-			Food food = (Food) genericPersistance.findById(Food.class, dietFoodEntityPojo.getId());
+			FoodEntity food = (FoodEntity) genericPersistance.findById(FoodEntity.class, dietFoodEntityPojo.getId());
 			buildPojoToEntityUtil.mapNutrientFood(nutrientPojo, food, dietFoodEntityPojo.getPortions());
 		}
 		

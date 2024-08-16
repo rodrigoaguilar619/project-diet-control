@@ -9,9 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
-import project.diet.control.app.beans.entity.Diet;
-import project.diet.control.app.beans.entity.DietFood;
-import project.diet.control.app.beans.entity.Food;
+import project.diet.control.app.beans.entity.DietEntity;
+import project.diet.control.app.beans.entity.DietFoodEntity;
+import project.diet.control.app.beans.entity.FoodEntity;
 import project.diet.control.app.beans.pojos.diet.DietPojo;
 import project.diet.control.app.beans.pojos.entity.DietFoodEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.diet.AddEditDietDataPojo;
@@ -30,15 +30,15 @@ public class CrudDietBusiness extends MainBusiness {
 	DietHelper dietHelper;
 	
 	@SuppressWarnings("unchecked")
-	public Integer setAddEditDiet(Diet dietEntity, DietPojo dietEntityPojo, CrudOptionsEnum crudOptionsEnum) {
+	public Integer setAddEditDiet(DietEntity dietEntity, DietPojo dietEntityPojo, CrudOptionsEnum crudOptionsEnum) {
 		
 		dietEntity = dietHelper.generateDietEntity(dietEntity, dietEntityPojo);
 		
-		List<DietFood> dietFoods = new ArrayList<>();
+		List<DietFoodEntity> dietFoods = new ArrayList<>();
 		for(DietFoodEntityPojo dietFoodEntityPojo: dietEntityPojo.getFoods()) {
 			
-			Food food = (Food) genericPersistance.findById(Food.class, dietFoodEntityPojo.getId());
-			DietFood dietFood = buildPojoToEntityUtil.generateDietFoodEntity(null, food, dietFoodEntityPojo, dietEntityPojo.getIdRecipe());
+			FoodEntity food = (FoodEntity) genericPersistance.findById(FoodEntity.class, dietFoodEntityPojo.getId());
+			DietFoodEntity dietFood = buildPojoToEntityUtil.generateDietFoodEntity(null, food, dietFoodEntityPojo, dietEntityPojo.getIdRecipe());
 			dietFoods.add(dietFood);
 		}
 		
@@ -56,7 +56,7 @@ public class CrudDietBusiness extends MainBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void deleteDiet(Diet diet) {
+	public void deleteDiet(DietEntity diet) {
 		
 		if (diet != null) {
 			dietRepository.deleteDietFoods(diet.getIdRecipe());
@@ -70,7 +70,7 @@ public class CrudDietBusiness extends MainBusiness {
 		if (requestPojo.getDiet() == null)
 			throw new BusinessException("Diet data not found on request");
 			
-		Integer id = setAddEditDiet(new Diet(), requestPojo.getDiet(), CrudOptionsEnum.SAVE);
+		Integer id = setAddEditDiet(new DietEntity(), requestPojo.getDiet(), CrudOptionsEnum.SAVE);
 		
 		AddEditDietDataPojo responsePojo = new AddEditDietDataPojo();
 		responsePojo.setId(id);
@@ -90,7 +90,7 @@ public class CrudDietBusiness extends MainBusiness {
 		if (dietEntityPojo.getIdRecipe() == null)
 			throw new BusinessException("Diet id is null");
 		
-		Diet diet = (Diet) genericPersistance.findById(Diet.class, dietEntityPojo.getIdRecipe());
+		DietEntity diet = (DietEntity) genericPersistance.findById(DietEntity.class, dietEntityPojo.getIdRecipe());
 		
 		if (diet == null)
 			throw new BusinessException("Diet id: " + dietEntityPojo.getIdRecipe() + " not found");

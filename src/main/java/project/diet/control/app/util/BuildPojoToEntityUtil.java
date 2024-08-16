@@ -3,11 +3,11 @@ package project.diet.control.app.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import project.diet.control.app.beans.entity.Diet;
-import project.diet.control.app.beans.entity.DietFood;
-import project.diet.control.app.beans.entity.Food;
-import project.diet.control.app.beans.entity.NutritionGoal;
-import project.diet.control.app.beans.entity.Recipe;
+import project.diet.control.app.beans.entity.DietEntity;
+import project.diet.control.app.beans.entity.DietFoodEntity;
+import project.diet.control.app.beans.entity.FoodEntity;
+import project.diet.control.app.beans.entity.NutritionGoalEntity;
+import project.diet.control.app.beans.entity.RecipeEntity;
 import project.diet.control.app.beans.pojos.custom.NutrientPojo;
 import project.diet.control.app.beans.pojos.entity.DietFoodEntityPojo;
 import project.diet.control.app.beans.pojos.entity.FoodEntityPojo;
@@ -38,7 +38,7 @@ public class BuildPojoToEntityUtil {
 		return nutrientPojo;
 	}
 	
-	public void mapNutrientFood(NutrientPojo nutrientPojo, Food food, BigDecimal portions) {
+	public void mapNutrientFood(NutrientPojo nutrientPojo, FoodEntity food, BigDecimal portions) {
 		
 		nutrientPojo.setTotalCalories(nutrientPojo.getTotalCalories().add(food.getCalories().multiply(portions)));
 		nutrientPojo.setTotalProteins(nutrientPojo.getTotalProteins().add(food.getProteins().multiply(portions)));
@@ -56,10 +56,10 @@ public class BuildPojoToEntityUtil {
 		nutrientPojo.setTotalSodium(nutrientPojo.getTotalSodium().add(food.getSodium().multiply(portions)));
 	}
 
-	public Food generateFoodEntity(Food foodEntity, FoodEntityPojo foodEntityPojo) {
+	public FoodEntity generateFoodEntity(FoodEntity foodEntity, FoodEntityPojo foodEntityPojo) {
 		
 		if (foodEntity == null)
-			foodEntity = new Food();
+			foodEntity = new FoodEntity();
 		
 		foodEntity.setCalories(foodEntityPojo.getCalories());
 		foodEntity.setCarbohydrates(foodEntityPojo.getCarbohydrates());
@@ -85,10 +85,10 @@ public class BuildPojoToEntityUtil {
 		return foodEntity;
 	}
 	
-	public Recipe generateRecipeEntity(Recipe recipeEntity, RecipeEntityPojo recipeEntityPojo) {
+	public RecipeEntity generateRecipeEntity(RecipeEntity recipeEntity, RecipeEntityPojo recipeEntityPojo) {
 		
 		if (recipeEntity == null)
-			recipeEntity = new Recipe();
+			recipeEntity = new RecipeEntity();
 		
 		recipeEntity.setInstructions(recipeEntityPojo.getInstructions());
 		recipeEntity.setTitle(recipeEntityPojo.getTitle());
@@ -96,17 +96,17 @@ public class BuildPojoToEntityUtil {
 		return recipeEntity;
 	}
 	
-	public DietFood generateDietFoodEntity(DietFood dietFoodEntity, Food food, DietFoodEntityPojo dietFoodEntityPojo, Integer idRecipe) {
+	public DietFoodEntity generateDietFoodEntity(DietFoodEntity dietFoodEntity, FoodEntity food, DietFoodEntityPojo dietFoodEntityPojo, Integer idRecipe) {
 		
 		if(dietFoodEntity == null)
-			dietFoodEntity = new DietFood();
+			dietFoodEntity = new DietFoodEntity();
 		
 		NutrientPojo nutrientPojo = initNutrient();
 		
 		mapNutrientFood(nutrientPojo, food, dietFoodEntityPojo.getPortions());
 		
 		dietFoodEntity.setFood(food);
-		dietFoodEntity.setDiet(new Diet(idRecipe));
+		dietFoodEntity.setDiet(new DietEntity(idRecipe));
 		dietFoodEntity.setPortions(dietFoodEntityPojo.getPortions());
 		dietFoodEntity.setTotalCalories(nutrientPojo.getTotalCalories());
 		dietFoodEntity.setTotalProteins(nutrientPojo.getTotalProteins());
@@ -127,10 +127,10 @@ public class BuildPojoToEntityUtil {
 		return dietFoodEntity;
 	}
 	
-	public NutritionGoal generateNutritionGoalEntity(NutritionGoal nutritionGoalEntity, NutritionGoalEntityPojo nutritionGoalEntityPojo) {
+	public NutritionGoalEntity generateNutritionGoalEntity(NutritionGoalEntity nutritionGoalEntity, NutritionGoalEntityPojo nutritionGoalEntityPojo) {
 		
 		if (nutritionGoalEntity == null)
-			nutritionGoalEntity = new NutritionGoal();
+			nutritionGoalEntity = new NutritionGoalEntity();
 		
 		nutritionGoalEntity.setCalories(nutritionGoalEntityPojo.getCalories());
 		nutritionGoalEntity.setCarbohydrates(nutritionGoalEntityPojo.getCarbohydrates());

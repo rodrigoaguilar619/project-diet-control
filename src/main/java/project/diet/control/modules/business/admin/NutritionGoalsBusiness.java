@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
-import project.diet.control.app.beans.entity.NutritionGoal;
+import project.diet.control.app.beans.entity.NutritionGoalEntity;
 import project.diet.control.app.beans.pojos.entity.NutritionGoalEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.admin.GetNutritionGoalDataPojo;
 import project.diet.control.app.beans.pojos.petition.data.admin.RegisterNutritionGoalDataPojo;
@@ -18,7 +18,7 @@ import project.diet.control.modules.business.MainBusiness;
 public class NutritionGoalsBusiness extends MainBusiness {
 
 	@SuppressWarnings("unchecked")
-	public Integer setAddEditNutritionGoal(NutritionGoal nutritionGoalEntity, NutritionGoalEntityPojo nutritionGoalEntityPojo, CrudOptionsEnum crudOptionsEnum) {
+	public Integer setAddEditNutritionGoal(NutritionGoalEntity nutritionGoalEntity, NutritionGoalEntityPojo nutritionGoalEntityPojo, CrudOptionsEnum crudOptionsEnum) {
 		
 		nutritionGoalEntity = buildPojoToEntityUtil.generateNutritionGoalEntity(nutritionGoalEntity, nutritionGoalEntityPojo);
 		
@@ -36,8 +36,8 @@ public class NutritionGoalsBusiness extends MainBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public RegisterNutritionGoalDataPojo executeRegisterNutritionGoal(RegisterNutritionGoalRequestPojo requestPojo) {
 		
-		List<NutritionGoal> nutritionGoals = genericPersistance.findAll(NutritionGoal.class);
-		NutritionGoal nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
+		List<NutritionGoalEntity> nutritionGoals = genericPersistance.findAll(NutritionGoalEntity.class);
+		NutritionGoalEntity nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
 			
 		Integer id = setAddEditNutritionGoal(nutritionGoal, requestPojo.getNutritionGoal(), nutritionGoal == null ? CrudOptionsEnum.SAVE : CrudOptionsEnum.UPDATE);
 		
@@ -51,8 +51,8 @@ public class NutritionGoalsBusiness extends MainBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public GetNutritionGoalDataPojo executeGetNutritionGoal(GetNutritionGoalRequestPojo requestPojo) {
 		
-		List<NutritionGoal> nutritionGoals = genericPersistance.findAll(NutritionGoal.class);
-		NutritionGoal nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
+		List<NutritionGoalEntity> nutritionGoals = genericPersistance.findAll(NutritionGoalEntity.class);
+		NutritionGoalEntity nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
 		
 		NutritionGoalEntityPojo nutritionGoalEntityPojo = nutritionGoal != null ? buildEntityToPojoUtil.generateNutritionGoalEntityPojo(null, nutritionGoal): null;
 		

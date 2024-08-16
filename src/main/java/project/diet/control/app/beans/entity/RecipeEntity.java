@@ -9,8 +9,8 @@ import jakarta.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Recipe.findAll", query="SELECT r FROM Recipe r")
-public class Recipe implements Serializable {
+@Table(name = "recipe")
+public class RecipeEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,7 +23,7 @@ public class Recipe implements Serializable {
 
 	//bi-directional one-to-one association to Diet
 	@OneToOne(mappedBy="recipe", fetch=FetchType.LAZY)
-	private Diet diet;
+	private DietEntity diet;
 
 	public int getId() {
 		return this.id;
@@ -49,11 +49,11 @@ public class Recipe implements Serializable {
 		this.title = title;
 	}
 
-	public Diet getDiet() {
+	public DietEntity getDiet() {
 		return this.diet;
 	}
 
-	public void setDiet(Diet diet) {
+	public void setDiet(DietEntity diet) {
 		this.diet = diet;
 	}
 

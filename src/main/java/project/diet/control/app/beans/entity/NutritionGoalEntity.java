@@ -13,8 +13,7 @@ import project.diet.control.app.beans.entity.generic.GenericNutrientEntity;
  */
 @Entity
 @Table(name="nutrition_goals")
-@NamedQuery(name="NutritionGoal.findAll", query="SELECT n FROM NutritionGoal n")
-public class NutritionGoal extends GenericNutrientEntity {
+public class NutritionGoalEntity extends GenericNutrientEntity {
 	private static final long serialVersionUID = 1L;
 
 	@Id

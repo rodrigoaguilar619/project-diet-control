@@ -17,8 +17,8 @@ import lib.base.backend.pojo.files.FilePojo;
 import lib.base.backend.pojo.pdf.jasper.PdfReportJasperConfigPojo;
 import lib.base.backend.utils.pdf.BuildPdfJasperUtil;
 import net.sf.jasperreports.engine.JRException;
-import project.diet.control.app.beans.entity.Diet;
-import project.diet.control.app.beans.entity.NutritionGoal;
+import project.diet.control.app.beans.entity.DietEntity;
+import project.diet.control.app.beans.entity.NutritionGoalEntity;
 import project.diet.control.app.beans.pojos.diet.DietDataPojo;
 import project.diet.control.app.beans.pojos.diet.DietFoodResumePojo;
 import project.diet.control.app.beans.pojos.entity.DietEntityPojo;
@@ -127,11 +127,11 @@ public class ReportDietCustomBusiness extends MainBusiness {
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> getParametersDietCustomReport(Integer id) {
 		
-		Diet dietBase = dietRepository.getDietBase();
-		Diet dietCustom = id != null ? (Diet) genericPersistance.findById(Diet.class, id) : new Diet();
+		DietEntity dietBase = dietRepository.getDietBase();
+		DietEntity dietCustom = id != null ? (DietEntity) genericPersistance.findById(DietEntity.class, id) : new DietEntity();
 
-		List<NutritionGoal> nutritionGoals = genericPersistance.findAll(NutritionGoal.class);
-		NutritionGoal nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
+		List<NutritionGoalEntity> nutritionGoals = genericPersistance.findAll(NutritionGoalEntity.class);
+		NutritionGoalEntity nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
 		
 		if (id == null)
 			dietCustom = dietUtil.generateDietZeros();

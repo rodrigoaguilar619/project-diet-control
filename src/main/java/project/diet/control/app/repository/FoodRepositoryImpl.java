@@ -9,9 +9,9 @@ import jakarta.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import project.diet.control.app.beans.entity.DietFood;
-import project.diet.control.app.beans.entity.DietFood_;
-import project.diet.control.app.beans.entity.Food_;
+import project.diet.control.app.beans.entity.DietFoodEntity;
+import project.diet.control.app.beans.entity.DietFoodEntity_;
+import project.diet.control.app.beans.entity.FoodEntity_;
 
 @Repository
 public class FoodRepositoryImpl extends MainRepository {
@@ -23,13 +23,13 @@ public class FoodRepositoryImpl extends MainRepository {
 		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
-		Root<DietFood> root = cq.from(DietFood.class);
+		Root<DietFoodEntity> root = cq.from(DietFoodEntity.class);
 		
 		Predicate predicateAnd = cb.and(
-				cb.equal(root.get(DietFood_.food).get(Food_.id), idFood));
+				cb.equal(root.get(DietFoodEntity_.food).get(FoodEntity_.id), idFood));
 		
 		cq.where( predicateAnd );
-		cq.select(cb.count(root.get(DietFood_.food).get(Food_.id)));
+		cq.select(cb.count(root.get(DietFoodEntity_.food).get(FoodEntity_.id)));
 
 		return (em.createQuery(cq).getResultList().get(0));
 	}

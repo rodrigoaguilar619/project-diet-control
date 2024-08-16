@@ -13,8 +13,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="diet_food")
-@NamedQuery(name="DietFood.findAll", query="SELECT d FROM DietFood d")
-public class DietFood extends GenericDietEntity {
+public class DietFoodEntity extends GenericDietEntity {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,12 +28,12 @@ public class DietFood extends GenericDietEntity {
 	//bi-directional many-to-one association to Food
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_food")
-	private Food food;
+	private FoodEntity food;
 
 	//bi-directional many-to-one association to Diet
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_diet")
-	private Diet diet;
+	private DietEntity diet;
 
 	public int getId() {
 		return this.id;
@@ -60,19 +59,19 @@ public class DietFood extends GenericDietEntity {
 		this.unities = unities;
 	}
 
-	public Food getFood() {
+	public FoodEntity getFood() {
 		return this.food;
 	}
 
-	public void setFood(Food food) {
+	public void setFood(FoodEntity food) {
 		this.food = food;
 	}
 
-	public Diet getDiet() {
+	public DietEntity getDiet() {
 		return this.diet;
 	}
 
-	public void setDiet(Diet diet) {
+	public void setDiet(DietEntity diet) {
 		this.diet = diet;
 	}
 

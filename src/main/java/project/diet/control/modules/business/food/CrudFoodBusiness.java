@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
-import project.diet.control.app.beans.entity.Food;
+import project.diet.control.app.beans.entity.FoodEntity;
 import project.diet.control.app.beans.pojos.entity.FoodEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.food.AddEditFoodDataPojo;
 import project.diet.control.app.beans.pojos.petition.data.food.GetFoodDataPojo;
@@ -33,7 +33,7 @@ public class CrudFoodBusiness extends MainBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Integer setAddEditFood(Food foodEntity, FoodEntityPojo foodEntityPojo, CrudOptionsEnum crudOptionsEnum) {
+	public Integer setAddEditFood(FoodEntity foodEntity, FoodEntityPojo foodEntityPojo, CrudOptionsEnum crudOptionsEnum) {
 		
 		buildPojoToEntityUtil.generateFoodEntity(foodEntity, foodEntityPojo);
 		
@@ -53,7 +53,7 @@ public class CrudFoodBusiness extends MainBusiness {
 		if (addEditFoodRequestPojo.getFood() == null)
 			throw new BusinessException("Food data not found on request");
 			
-		Integer id = setAddEditFood(new Food(), addEditFoodRequestPojo.getFood(), CrudOptionsEnum.SAVE);
+		Integer id = setAddEditFood(new FoodEntity(), addEditFoodRequestPojo.getFood(), CrudOptionsEnum.SAVE);
 		
 		AddEditFoodDataPojo responsePojo = new AddEditFoodDataPojo();
 		responsePojo.setId(id);
@@ -73,7 +73,7 @@ public class CrudFoodBusiness extends MainBusiness {
 		if (foodEntityPojo.getId() == null)
 			throw new BusinessException("Food id is null");
 		
-		Food food = (Food) genericPersistance.findById(Food.class, foodEntityPojo.getId());
+		FoodEntity food = (FoodEntity) genericPersistance.findById(FoodEntity.class, foodEntityPojo.getId());
 		
 		if (food == null)
 			throw new BusinessException(messageFoodNotFound(foodEntityPojo.getId()));
@@ -91,7 +91,7 @@ public class CrudFoodBusiness extends MainBusiness {
 		
 		for(FoodEntityPojo foodEntityPojo: addEditFoodsRequestPojo.getFoods()) {
 			
-			setAddEditFood(new Food(), foodEntityPojo, CrudOptionsEnum.SAVE);
+			setAddEditFood(new FoodEntity(), foodEntityPojo, CrudOptionsEnum.SAVE);
 		}
 	}
 	
@@ -99,10 +99,10 @@ public class CrudFoodBusiness extends MainBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public GetFoodListDataPojo executeGetFoods() {
 		
-		List<Food> foods = genericPersistance.findAll(Food.class);
+		List<FoodEntity> foods = genericPersistance.findAll(FoodEntity.class);
 		List<FoodEntityPojo> foodEntityPojos = new ArrayList<>();
 		
-		for (Food food: foods) {
+		for (FoodEntity food: foods) {
 			
 			foodEntityPojos.add(buildEntityToPojoUtil.generateFoodPojo(new FoodEntityPojo(), food));
 		}
@@ -120,7 +120,7 @@ public class CrudFoodBusiness extends MainBusiness {
 		if (requestPojo.getId() == null)
 			throw new BusinessException("Id can´t be null");
 		
-		Food food = (Food) genericPersistance.findById(Food.class, requestPojo.getId());
+		FoodEntity food = (FoodEntity) genericPersistance.findById(FoodEntity.class, requestPojo.getId());
 		
 		if (food == null)
 			throw new BusinessException(messageFoodNotFound(requestPojo.getId()));
@@ -138,7 +138,7 @@ public class CrudFoodBusiness extends MainBusiness {
 		if (requestPojo.getId() == null)
 			throw new BusinessException("Id can´t be null");
 		
-		Food food = (Food) genericPersistance.findById(Food.class, requestPojo.getId());
+		FoodEntity food = (FoodEntity) genericPersistance.findById(FoodEntity.class, requestPojo.getId());
 		
 		if (food == null)
 			throw new BusinessException(messageFoodNotFound(requestPojo.getId()));

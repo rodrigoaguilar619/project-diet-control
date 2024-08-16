@@ -12,8 +12,8 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Diet.findAll", query="SELECT d FROM Diet d")
-public class Diet extends GenericDietEntity {
+@Table(name = "diet")
+public class DietEntity extends GenericDietEntity {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -27,16 +27,16 @@ public class Diet extends GenericDietEntity {
 	//bi-directional one-to-one association to Recipe
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_recipe")
-	private Recipe recipe;
+	private RecipeEntity recipe;
 
 	//bi-directional many-to-one association to DietFood
 	@OneToMany(mappedBy="diet")
-	private List<DietFood> dietFoods;
+	private List<DietFoodEntity> dietFoods;
 
-	public Diet() {
+	public DietEntity() {
 	}
 
-	public Diet(int idRecipe) {
+	public DietEntity(int idRecipe) {
 		super();
 		this.idRecipe = idRecipe;
 	}
@@ -57,30 +57,30 @@ public class Diet extends GenericDietEntity {
 		this.isBase = isBase;
 	}
 
-	public Recipe getRecipe() {
+	public RecipeEntity getRecipe() {
 		return this.recipe;
 	}
 
-	public void setRecipe(Recipe recipe) {
+	public void setRecipe(RecipeEntity recipe) {
 		this.recipe = recipe;
 	}
 
-	public List<DietFood> getDietFoods() {
+	public List<DietFoodEntity> getDietFoods() {
 		return this.dietFoods;
 	}
 
-	public void setDietFoods(List<DietFood> dietFoods) {
+	public void setDietFoods(List<DietFoodEntity> dietFoods) {
 		this.dietFoods = dietFoods;
 	}
 
-	public DietFood addDietFood(DietFood dietFood) {
+	public DietFoodEntity addDietFood(DietFoodEntity dietFood) {
 		getDietFoods().add(dietFood);
 		dietFood.setDiet(this);
 
 		return dietFood;
 	}
 
-	public DietFood removeDietFood(DietFood dietFood) {
+	public DietFoodEntity removeDietFood(DietFoodEntity dietFood) {
 		getDietFoods().remove(dietFood);
 		dietFood.setDiet(null);
 

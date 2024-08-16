@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
-import project.diet.control.app.beans.entity.Diet;
-import project.diet.control.app.beans.entity.DietFood;
+import project.diet.control.app.beans.entity.DietEntity;
+import project.diet.control.app.beans.entity.DietFoodEntity;
 import project.diet.control.app.beans.pojos.diet.DietFoodResumePojo;
 import project.diet.control.app.beans.pojos.entity.DietEntityPojo;
 import project.diet.control.app.beans.pojos.entity.RecipeEntityPojo;
@@ -30,12 +30,12 @@ public class CrudDietBaseBusiness extends CrudDietBusiness {
 		
 		requestPojo.getDiet().setIsBase(true);
 		
-		Diet dietBase = dietRepository.getDietBase();
+		DietEntity dietBase = dietRepository.getDietBase();
 		deleteDiet(dietBase);
 		
 		if  (dietBase != null && requestPojo.getDiet().getIdRecipe() != dietBase.getRecipe().getId()) {
 			
-			Diet diet = (Diet) genericPersistance.findById(Diet.class, requestPojo.getDiet().getIdRecipe());
+			DietEntity diet = (DietEntity) genericPersistance.findById(DietEntity.class, requestPojo.getDiet().getIdRecipe());
 			
 			if (diet != null)
 				throw new BusinessException("Diet custom already exist id: " + diet.getIdRecipe() + " title: " + diet.getRecipe().getTitle());
@@ -52,7 +52,7 @@ public class CrudDietBaseBusiness extends CrudDietBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public GetDietBaseDataPojo executeGetDietBase() {
 		
-		Diet dietBase = dietRepository.getDietBase();
+		DietEntity dietBase = dietRepository.getDietBase();
 		
 		if (dietBase == null)
 			return null;
@@ -62,7 +62,7 @@ public class CrudDietBaseBusiness extends CrudDietBusiness {
 		
 		List<DietFoodResumePojo> dietFoodResumeEntityPojos = new ArrayList<>();
 		
-		for (DietFood dietFood: dietBase.getDietFoods()) {
+		for (DietFoodEntity dietFood: dietBase.getDietFoods()) {
 			
 			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
 			dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());

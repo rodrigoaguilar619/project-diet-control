@@ -13,9 +13,9 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import project.diet.control.app.beans.entity.Diet;
-import project.diet.control.app.beans.entity.DietFood_;
-import project.diet.control.app.beans.entity.Diet_;
+import project.diet.control.app.beans.entity.DietEntity;
+import project.diet.control.app.beans.entity.DietFoodEntity_;
+import project.diet.control.app.beans.entity.DietEntity_;
 
 @Repository
 public class DietRepositoryImpl extends MainRepository {
@@ -25,36 +25,36 @@ public class DietRepositoryImpl extends MainRepository {
 	
 	public void deleteDietFoods(Integer idRecipe) {
 		
-		Query query = em.createQuery(StringEscapeUtils.escapeSql("DELETE FROM " + jpaUtil.getTableMetaModel(DietFood_.class) + " WHERE " + DietFood_.diet.getName() + " = :idRecipe"));
+		Query query = em.createQuery(StringEscapeUtils.escapeSql("DELETE FROM " + jpaUtil.getTableMetaModel(DietFoodEntity_.class) + " WHERE " + DietFoodEntity_.diet.getName() + " = :idRecipe"));
 		
-		query.setParameter("idRecipe", new Diet(idRecipe));
+		query.setParameter("idRecipe", new DietEntity(idRecipe));
 		query.executeUpdate();
 	}
 	
-	public Diet getDietBase() {
+	public DietEntity getDietBase() {
 		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<Diet> cq = cb.createQuery(Diet.class);
-		Root<Diet> root = cq.from(Diet.class);
+		CriteriaQuery<DietEntity> cq = cb.createQuery(DietEntity.class);
+		Root<DietEntity> root = cq.from(DietEntity.class);
 				
 		Predicate predicateAnd = cb.and(
-				cb.equal(root.get(Diet_.isBase), true));
+				cb.equal(root.get(DietEntity_.isBase), true));
 		
 		cq.where( predicateAnd );
 		
-		List<Diet> resultList = em.createQuery(cq).setMaxResults(1).getResultList();
+		List<DietEntity> resultList = em.createQuery(cq).setMaxResults(1).getResultList();
 		return (resultList.isEmpty()) ? null : resultList.get(0);
 		
 	}
 	
-	public List<Diet> getDietCustomList() {
+	public List<DietEntity> getDietCustomList() {
 		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<Diet> cq = cb.createQuery(Diet.class);
-		Root<Diet> root = cq.from(Diet.class);
+		CriteriaQuery<DietEntity> cq = cb.createQuery(DietEntity.class);
+		Root<DietEntity> root = cq.from(DietEntity.class);
 				
 		Predicate predicateAnd = cb.and(
-				cb.equal(root.get(Diet_.isBase), false));
+				cb.equal(root.get(DietEntity_.isBase), false));
 		
 		cq.where( predicateAnd );
 		
@@ -65,13 +65,13 @@ public class DietRepositoryImpl extends MainRepository {
 		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
-		Root<Diet> root = cq.from(Diet.class);
+		Root<DietEntity> root = cq.from(DietEntity.class);
 		
 		Predicate predicateAnd = cb.and(
-				cb.equal(root.get(Diet_.idRecipe), idDiet));
+				cb.equal(root.get(DietEntity_.idRecipe), idDiet));
 		
 		cq.where( predicateAnd );
-		cq.select(cb.count(root.get(Diet_.idRecipe)));
+		cq.select(cb.count(root.get(DietEntity_.idRecipe)));
 
 		return (em.createQuery(cq).getResultList().get(0));
 	}

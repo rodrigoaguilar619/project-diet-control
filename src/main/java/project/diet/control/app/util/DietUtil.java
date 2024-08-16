@@ -4,17 +4,17 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import project.diet.control.app.beans.entity.Diet;
-import project.diet.control.app.beans.entity.DietFood;
+import project.diet.control.app.beans.entity.DietEntity;
+import project.diet.control.app.beans.entity.DietFoodEntity;
 import project.diet.control.app.beans.pojos.diet.DietFoodResumePojo;
 
 public class DietUtil {
 	
 	private BuildEntityToPojoUtil buildEntityToPojoUtil = new BuildEntityToPojoUtil();
 
-	public Diet generateDietZeros() {
+	public DietEntity generateDietZeros() {
 		
-		Diet dietCustom = new Diet();
+		DietEntity dietCustom = new DietEntity();
 		dietCustom.setIsBase(false);
 		dietCustom.setTotalCalories(BigDecimal.valueOf(0.0));
 		dietCustom.setTotalCarbohydrates(BigDecimal.valueOf(0.0));
@@ -34,11 +34,11 @@ public class DietUtil {
 		return dietCustom;
 	}
 	
-	public List<DietFoodResumePojo> buildDietFoodsResume(List<DietFood> dietFoods) {
+	public List<DietFoodResumePojo> buildDietFoodsResume(List<DietFoodEntity> dietFoods) {
 		
 		List<DietFoodResumePojo> dietFoodResumeEntityPojos = new ArrayList<>();
 		
-		for (DietFood dietFood: dietFoods) {
+		for (DietFoodEntity dietFood: dietFoods) {
 			
 			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
 			dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
@@ -51,7 +51,7 @@ public class DietUtil {
 		return dietFoodResumeEntityPojos;
 	}
 	
-	public DietFoodResumePojo buildDietFoodTotals(List<DietFood> dietFoods) {
+	public DietFoodResumePojo buildDietFoodTotals(List<DietFoodEntity> dietFoods) {
 		
 		DietFoodResumePojo foodEntityPojo = new DietFoodResumePojo();
 		foodEntityPojo.setId(-1);
@@ -71,7 +71,7 @@ public class DietUtil {
 		foodEntityPojo.setSodium(BigDecimal.valueOf(0.0));
 		foodEntityPojo.setCholesterol(BigDecimal.valueOf(0.0));
 		
-		for (DietFood dietFood: dietFoods) {
+		for (DietFoodEntity dietFood: dietFoods) {
 			
 			foodEntityPojo.setQuantityGrams(foodEntityPojo.getQuantityGrams().add(dietFood.getTotalQuantityGrams()));
 			foodEntityPojo.setCalories(foodEntityPojo.getCalories().add(dietFood.getTotalCalories()));

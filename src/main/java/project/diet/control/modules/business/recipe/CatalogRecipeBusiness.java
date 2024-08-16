@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lib.base.backend.exception.BaseException;
 import lib.base.backend.pojo.catalog.CatalogPojo;
 import lib.base.backend.pojo.catalog.CatalogDataPojo;
-import project.diet.control.app.beans.entity.Recipe;
+import project.diet.control.app.beans.entity.RecipeEntity;
 import project.diet.control.modules.business.MainBusiness;
 
 @Component
@@ -18,9 +18,9 @@ public class CatalogRecipeBusiness extends MainBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public List<CatalogPojo> getCatalog() throws BaseException {
 		
-		List<Recipe> catalogList = genericPersistance.findAll(Recipe.class);
+		List<RecipeEntity> catalogList = genericPersistance.findAll(RecipeEntity.class);
 		
-		return catalogUtil.getCatalog(Recipe.class, catalogList, "id", "title");
+		return catalogUtil.getCatalog(RecipeEntity.class, catalogList, "id", "title");
 	}
 	
 	@Transactional(rollbackFor = Exception.class)

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import project.diet.control.ProjectJpaTest;
-import project.diet.control.app.beans.entity.Diet;
+import project.diet.control.app.beans.entity.DietEntity;
 
 class DietRepositoryImplTest extends ProjectJpaTest {
 	
@@ -24,7 +24,7 @@ class DietRepositoryImplTest extends ProjectJpaTest {
 	@Test
 	void testGetDietBase() {
 
-		Diet diet = dietRepository.getDietBase();
+		DietEntity diet = dietRepository.getDietBase();
 		
 		assertNotNull(diet);
 	}
@@ -32,7 +32,7 @@ class DietRepositoryImplTest extends ProjectJpaTest {
 	@Test
 	void testGetDietCustomList() {
 		
-		Diet diet = dietRepository.getDietBase();
+		DietEntity diet = dietRepository.getDietBase();
 		
 		assertNotNull(diet);
 	}

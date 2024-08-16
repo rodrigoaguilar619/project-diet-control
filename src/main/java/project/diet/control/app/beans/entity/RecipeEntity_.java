@@ -5,13 +5,13 @@ import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(Recipe.class)
-public abstract class Recipe_ {
+@StaticMetamodel(RecipeEntity.class)
+public abstract class RecipeEntity_ {
 
-	public static SingularAttribute<Recipe, String> instructions;
-	public static SingularAttribute<Recipe, Integer> id;
-	public static SingularAttribute<Recipe, Diet> diet;
-	public static SingularAttribute<Recipe, String> title;
+	public static SingularAttribute<RecipeEntity, String> instructions;
+	public static SingularAttribute<RecipeEntity, Integer> id;
+	public static SingularAttribute<RecipeEntity, DietEntity> diet;
+	public static SingularAttribute<RecipeEntity, String> title;
 
 	public static final String INSTRUCTIONS = "instructions";
 	public static final String ID = "id";

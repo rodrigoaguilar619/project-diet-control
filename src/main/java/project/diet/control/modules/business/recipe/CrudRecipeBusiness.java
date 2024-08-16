@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
-import project.diet.control.app.beans.entity.Recipe;
+import project.diet.control.app.beans.entity.RecipeEntity;
 import project.diet.control.app.beans.pojos.entity.RecipeEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.recipe.AddEditRecipeDataPojo;
 import project.diet.control.app.beans.pojos.petition.data.recipe.GetRecipeDataPojo;
@@ -32,7 +32,7 @@ public class CrudRecipeBusiness extends MainBusiness {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Integer setAddEditRecipe(Recipe recipeEntity, RecipeEntityPojo recipeEntityPojo, CrudOptionsEnum crudOptionsEnum) {
+	public Integer setAddEditRecipe(RecipeEntity recipeEntity, RecipeEntityPojo recipeEntityPojo, CrudOptionsEnum crudOptionsEnum) {
 		
 		buildPojoToEntityUtil.generateRecipeEntity(recipeEntity, recipeEntityPojo);
 		
@@ -52,7 +52,7 @@ public class CrudRecipeBusiness extends MainBusiness {
 		if (addEditRecipeRequestPojo.getRecipe() == null)
 			throw new BusinessException("Recipe data not found on request");
 			
-		Integer id = setAddEditRecipe(new Recipe(), addEditRecipeRequestPojo.getRecipe(), CrudOptionsEnum.SAVE);
+		Integer id = setAddEditRecipe(new RecipeEntity(), addEditRecipeRequestPojo.getRecipe(), CrudOptionsEnum.SAVE);
 		
 		AddEditRecipeDataPojo responsePojo = new AddEditRecipeDataPojo();
 		responsePojo.setId(id);
@@ -72,7 +72,7 @@ public class CrudRecipeBusiness extends MainBusiness {
 		if (recipeEntityPojo.getId() == null)
 			throw new BusinessException("Recipe id is null");
 		
-		Recipe recipe = (Recipe) genericPersistance.findById(Recipe.class, recipeEntityPojo.getId());
+		RecipeEntity recipe = (RecipeEntity) genericPersistance.findById(RecipeEntity.class, recipeEntityPojo.getId());
 		
 		if (recipe == null)
 			throw new BusinessException(messageRecipeNotFound(recipeEntityPojo.getId()));
@@ -92,7 +92,7 @@ public class CrudRecipeBusiness extends MainBusiness {
 		if (requestPojo.getId() == null)
 			throw new BusinessException("Id can´t be null");
 		
-		Recipe recipe = (Recipe) genericPersistance.findById(Recipe.class, requestPojo.getId());
+		RecipeEntity recipe = (RecipeEntity) genericPersistance.findById(RecipeEntity.class, requestPojo.getId());
 		
 		if (recipe == null)
 			throw new BusinessException(messageRecipeNotFound(requestPojo.getId()));
@@ -110,7 +110,7 @@ public class CrudRecipeBusiness extends MainBusiness {
 		if (requestPojo.getId() == null)
 			throw new BusinessException("Id can´t be null");
 		
-		Recipe recipe = (Recipe) genericPersistance.findById(Recipe.class, requestPojo.getId());
+		RecipeEntity recipe = (RecipeEntity) genericPersistance.findById(RecipeEntity.class, requestPojo.getId());
 		
 		if (recipe == null)
 			throw new BusinessException(messageRecipeNotFound(requestPojo.getId()));
@@ -127,10 +127,10 @@ public class CrudRecipeBusiness extends MainBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public GetRecipeListDataPojo executeGetRecipes() {
 		
-		List<Recipe> recipes = genericPersistance.findAll(Recipe.class);
+		List<RecipeEntity> recipes = genericPersistance.findAll(RecipeEntity.class);
 		List<RecipeEntityPojo> recipeEntityPojos = new ArrayList<>();
 		
-		for (Recipe recipe: recipes) {
+		for (RecipeEntity recipe: recipes) {
 			
 			recipeEntityPojos.add(buildEntityToPojoUtil.generateRecipePojo(new RecipeEntityPojo(), recipe));
 		}

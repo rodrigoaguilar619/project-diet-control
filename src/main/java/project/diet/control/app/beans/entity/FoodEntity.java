@@ -14,8 +14,8 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Food.findAll", query="SELECT f FROM Food f")
-public class Food extends GenericNutrientEntity {
+@Table(name = "food")
+public class FoodEntity extends GenericNutrientEntity {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -46,7 +46,7 @@ public class Food extends GenericNutrientEntity {
 
 	//bi-directional many-to-one association to DietFood
 	@OneToMany(mappedBy="food")
-	private List<DietFood> dietFoods;
+	private List<DietFoodEntity> dietFoods;
 
 	public Integer getId() {
 		return this.id;
@@ -128,22 +128,22 @@ public class Food extends GenericNutrientEntity {
 		this.unityGrams = unityGrams;
 	}
 
-	public List<DietFood> getDietFoods() {
+	public List<DietFoodEntity> getDietFoods() {
 		return this.dietFoods;
 	}
 
-	public void setDietFoods(List<DietFood> dietFoods) {
+	public void setDietFoods(List<DietFoodEntity> dietFoods) {
 		this.dietFoods = dietFoods;
 	}
 
-	public DietFood addDietFood(DietFood dietFood) {
+	public DietFoodEntity addDietFood(DietFoodEntity dietFood) {
 		getDietFoods().add(dietFood);
 		dietFood.setFood(this);
 
 		return dietFood;
 	}
 
-	public DietFood removeDietFood(DietFood dietFood) {
+	public DietFoodEntity removeDietFood(DietFoodEntity dietFood) {
 		getDietFoods().remove(dietFood);
 		dietFood.setFood(null);
 

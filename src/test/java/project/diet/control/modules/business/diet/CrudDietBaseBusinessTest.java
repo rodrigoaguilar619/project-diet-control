@@ -14,9 +14,9 @@ import org.mockito.MockitoAnnotations;
 
 import lib.base.backend.persistance.GenericPersistence;
 import project.diet.control.ProjectUnitTest;
-import project.diet.control.app.beans.entity.Diet;
-import project.diet.control.app.beans.entity.DietFood;
-import project.diet.control.app.beans.entity.Recipe;
+import project.diet.control.app.beans.entity.DietEntity;
+import project.diet.control.app.beans.entity.DietFoodEntity;
+import project.diet.control.app.beans.entity.RecipeEntity;
 import project.diet.control.app.beans.pojos.petition.data.diet.GetDietBaseDataPojo;
 import project.diet.control.app.repository.DietRepositoryImpl;
 
@@ -40,13 +40,13 @@ class CrudDietBaseBusinessTest extends ProjectUnitTest {
 	@Test
 	void testExecuteGetDietBase() {
 		
-		Recipe recipeBase = new Recipe();
+		RecipeEntity recipeBase = new RecipeEntity();
 		recipeBase.setId(1);
 		recipeBase.setTitle("Test recipe");
 		
-		List<DietFood> dietFoods = new ArrayList<>();
+		List<DietFoodEntity> dietFoods = new ArrayList<>();
 		
-		Diet dietBase = new Diet();
+		DietEntity dietBase = new DietEntity();
 		dietBase.setIdRecipe(1);
 		dietBase.setIsBase(true);
 		dietBase.setRecipe(recipeBase);

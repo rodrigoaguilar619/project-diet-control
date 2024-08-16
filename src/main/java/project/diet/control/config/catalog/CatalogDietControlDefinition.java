@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import lib.base.backend.modules.catalog.interaface.CatalogDefinition;
-import project.diet.control.app.beans.entity.Food;
+import project.diet.control.app.beans.entity.FoodEntity;
 
 public class CatalogDietControlDefinition implements CatalogDefinition {
 
@@ -13,7 +13,7 @@ public class CatalogDietControlDefinition implements CatalogDefinition {
 	
 	public CatalogDietControlDefinition() {
 		
-		catalogs.put("food", Food.class);
+		catalogs.put("food", FoodEntity.class);
 	}
 
 	@SuppressWarnings("rawtypes")

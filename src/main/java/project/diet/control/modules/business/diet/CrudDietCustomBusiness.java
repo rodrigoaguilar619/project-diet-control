@@ -8,9 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
-import project.diet.control.app.beans.entity.Diet;
-import project.diet.control.app.beans.entity.DietFood;
-import project.diet.control.app.beans.entity.NutritionGoal;
+import project.diet.control.app.beans.entity.DietEntity;
+import project.diet.control.app.beans.entity.DietFoodEntity;
+import project.diet.control.app.beans.entity.NutritionGoalEntity;
 import project.diet.control.app.beans.pojos.diet.DietCustomDetailResumePojo;
 import project.diet.control.app.beans.pojos.diet.DietDataPojo;
 import project.diet.control.app.beans.pojos.diet.DietFoodResumePojo;
@@ -40,7 +40,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		
 		requestPojo.getDiet().setIsBase(true);
 		
-		Diet dietBase = dietRepository.getDietBase();
+		DietEntity dietBase = dietRepository.getDietBase();
 		
 		Integer id = setAddEditDiet(dietBase, requestPojo.getDiet(), dietBase == null ? CrudOptionsEnum.SAVE : CrudOptionsEnum.UPDATE);
 		
@@ -53,11 +53,11 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public GetDietCustomListDataPojo executeGetDietCustomList() {
 		
-		List<Diet> dietBases = dietRepository.getDietCustomList();
+		List<DietEntity> dietBases = dietRepository.getDietCustomList();
 		
 		List<DietResumePojo> dietResumePojos = new ArrayList<>(); 
 		
-		for(Diet diet: dietBases) {
+		for(DietEntity diet: dietBases) {
 			DietResumePojo dietResumePojo = buildEntityToPojoUtil.generateDietResumePojo(null, diet);
 			
 			dietResumePojos.add(dietResumePojo);
@@ -77,14 +77,14 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		if (requestPojo.getDiet() == null)
 			throw new BusinessException("Diet custom data not found on request");
 		
-		Diet diet = (Diet) genericPersistance.findById(Diet.class, requestPojo.getDiet().getIdRecipe());
+		DietEntity diet = (DietEntity) genericPersistance.findById(DietEntity.class, requestPojo.getDiet().getIdRecipe());
 		
 		if (diet != null)
 			throw new BusinessException("Diet custom already exist id: " + diet.getIdRecipe() + " title: " + diet.getRecipe().getTitle());
 		
 		requestPojo.getDiet().setIsBase(false);
 		
-		Integer id = setAddEditDiet(new Diet(), requestPojo.getDiet(), CrudOptionsEnum.SAVE);
+		Integer id = setAddEditDiet(new DietEntity(), requestPojo.getDiet(), CrudOptionsEnum.SAVE);
 		
 		AddEditDietDataPojo responsePojo = new AddEditDietDataPojo();
 		responsePojo.setId(id);
@@ -107,7 +107,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		
 		requestPojo.getDiet().setIsBase(false);
 		
-		Diet diet = (Diet) genericPersistance.findById(Diet.class, dietPojo.getIdRecipe());
+		DietEntity diet = (DietEntity) genericPersistance.findById(DietEntity.class, dietPojo.getIdRecipe());
 		
 		if (diet == null)
 			throw new BusinessException("Diet id: " + dietPojo.getIdRecipe() + " not found");
@@ -127,11 +127,11 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public GetDietCustomDataPojo executeGetDietCustomInfo(GetDietCustomRequestPojo requestPojo) {
 		
-		Diet dietBase = dietRepository.getDietBase();
-		Diet dietCustom = requestPojo.getId() != null ? (Diet) genericPersistance.findById(Diet.class, requestPojo.getId()) : new Diet();
+		DietEntity dietBase = dietRepository.getDietBase();
+		DietEntity dietCustom = requestPojo.getId() != null ? (DietEntity) genericPersistance.findById(DietEntity.class, requestPojo.getId()) : new DietEntity();
 
-		List<NutritionGoal> nutritionGoals = genericPersistance.findAll(NutritionGoal.class);
-		NutritionGoal nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
+		List<NutritionGoalEntity> nutritionGoals = genericPersistance.findAll(NutritionGoalEntity.class);
+		NutritionGoalEntity nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
 		
 		if (requestPojo.getId() == null)
 			dietCustom = dietUtil.generateDietZeros();
@@ -172,18 +172,18 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		
 		List<DietCustomDetailResumePojo> dietCustomDetailPojos = new ArrayList<>();
 		
-		Diet dietBase = dietRepository.getDietBase();
-		List<Diet> dietCustomList = dietRepository.getDietCustomList();
+		DietEntity dietBase = dietRepository.getDietBase();
+		List<DietEntity> dietCustomList = dietRepository.getDietCustomList();
 		
 		DietEntityPojo dietBaseDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietBase);
 		
-		for (Diet dietCustom: dietCustomList) {
+		for (DietEntity dietCustom: dietCustomList) {
 			
 			RecipeEntityPojo recipeDietCustomEntityPojo = buildEntityToPojoUtil.generateRecipePojo(null, dietCustom.getRecipe());
 			
 			List<DietFoodResumePojo> dietFoodDietCustomResumeEntityPojos = new ArrayList<>();
 			
-			for (DietFood dietFood: dietCustom.getDietFoods()) {
+			for (DietFoodEntity dietFood: dietCustom.getDietFoods()) {
 				
 				DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
 				dietFoodResumeEntityPojo.setPortions(dietFood.getPortions());
@@ -224,15 +224,15 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public GetDietCustomDetailDataPojo executeGetDietCustomDetail(GetDietCustomRequestPojo requestPojo) {
 		
-		Diet dietBase = dietRepository.getDietBase();
-		Diet dietCustom = (Diet) genericPersistance.findById(Diet.class, requestPojo.getId());
+		DietEntity dietBase = dietRepository.getDietBase();
+		DietEntity dietCustom = (DietEntity) genericPersistance.findById(DietEntity.class, requestPojo.getId());
 		
 		DietEntityPojo dietBaseDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietBase);
 		RecipeEntityPojo recipeDietCustomEntityPojo = buildEntityToPojoUtil.generateRecipePojo(null, dietCustom.getRecipe());
 		
 		List<DietFoodResumePojo> dietFoodDietCustomResumeEntityPojos = new ArrayList<>();
 		
-		for (DietFood dietFood: dietCustom.getDietFoods()) {
+		for (DietFoodEntity dietFood: dietCustom.getDietFoods()) {
 			
 			DietFoodResumePojo dietFoodResumeEntityPojo = (DietFoodResumePojo) buildEntityToPojoUtil.generateDietFoodPojo(new DietFoodResumePojo(), dietFood, true);
 			dietFoodResumeEntityPojo.setIdDietFood(dietFood.getId());
@@ -267,7 +267,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public void executeDeleteDietCustom(DeleteDietCustomRequestPojo requestPojo) {
 		
-		Diet dietCustom = (Diet) genericPersistance.findById(Diet.class, requestPojo.getId());
+		DietEntity dietCustom = (DietEntity) genericPersistance.findById(DietEntity.class, requestPojo.getId());
 		deleteDiet(dietCustom);
 		
 	}

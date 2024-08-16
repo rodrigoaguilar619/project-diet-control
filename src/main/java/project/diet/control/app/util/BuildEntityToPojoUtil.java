@@ -1,10 +1,10 @@
 package project.diet.control.app.util;
 
-import project.diet.control.app.beans.entity.Diet;
-import project.diet.control.app.beans.entity.DietFood;
-import project.diet.control.app.beans.entity.Food;
-import project.diet.control.app.beans.entity.NutritionGoal;
-import project.diet.control.app.beans.entity.Recipe;
+import project.diet.control.app.beans.entity.DietEntity;
+import project.diet.control.app.beans.entity.DietFoodEntity;
+import project.diet.control.app.beans.entity.FoodEntity;
+import project.diet.control.app.beans.entity.NutritionGoalEntity;
+import project.diet.control.app.beans.entity.RecipeEntity;
 import project.diet.control.app.beans.pojos.diet.DietResumePojo;
 import project.diet.control.app.beans.pojos.entity.DietEntityPojo;
 import project.diet.control.app.beans.pojos.entity.FoodEntityPojo;
@@ -13,7 +13,7 @@ import project.diet.control.app.beans.pojos.entity.RecipeEntityPojo;
 
 public class BuildEntityToPojoUtil {
 
-	public FoodEntityPojo generateFoodPojo(FoodEntityPojo foodEntityPojo, Food foodEntity) {
+	public FoodEntityPojo generateFoodPojo(FoodEntityPojo foodEntityPojo, FoodEntity foodEntity) {
 		
 		if (foodEntityPojo == null)
 			foodEntityPojo = new FoodEntityPojo();
@@ -42,7 +42,7 @@ public class BuildEntityToPojoUtil {
 		return foodEntityPojo;
 	}
 	
-	public FoodEntityPojo generateDietFoodPojo(FoodEntityPojo foodEntityPojo, DietFood dietFoodEntity, boolean mergeUnityGrams) {
+	public FoodEntityPojo generateDietFoodPojo(FoodEntityPojo foodEntityPojo, DietFoodEntity dietFoodEntity, boolean mergeUnityGrams) {
 		
 		if (foodEntityPojo == null)
 			foodEntityPojo = new FoodEntityPojo();
@@ -71,7 +71,7 @@ public class BuildEntityToPojoUtil {
 		return foodEntityPojo;
 	}
 	
-	public RecipeEntityPojo generateRecipePojo(RecipeEntityPojo recipeEntityPojo, Recipe recipeEntity) {
+	public RecipeEntityPojo generateRecipePojo(RecipeEntityPojo recipeEntityPojo, RecipeEntity recipeEntity) {
 		
 		if (recipeEntityPojo == null)
 			recipeEntityPojo = new RecipeEntityPojo();
@@ -83,7 +83,7 @@ public class BuildEntityToPojoUtil {
 		return recipeEntityPojo;
 	}
 	
-	public DietEntityPojo generateDietPojo(DietEntityPojo dietEntityPojo, Diet dietEntity) {
+	public DietEntityPojo generateDietPojo(DietEntityPojo dietEntityPojo, DietEntity dietEntity) {
 		
 		if (dietEntityPojo == null)
 			dietEntityPojo = new DietEntityPojo();
@@ -107,7 +107,7 @@ public class BuildEntityToPojoUtil {
 		return dietEntityPojo;
 	}
 	
-	public DietResumePojo generateDietResumePojo(DietResumePojo dietResumePojo, Diet dietEntity) {
+	public DietResumePojo generateDietResumePojo(DietResumePojo dietResumePojo, DietEntity dietEntity) {
 		
 		if (dietResumePojo == null)
 			dietResumePojo = new DietResumePojo();
@@ -119,7 +119,7 @@ public class BuildEntityToPojoUtil {
 		return dietResumePojo;
 	}
 	
-	public NutritionGoalEntityPojo generateNutritionGoalEntityPojo(NutritionGoalEntityPojo nutritionGoalEntityPojo, NutritionGoal nutritionGoalEntity) {
+	public NutritionGoalEntityPojo generateNutritionGoalEntityPojo(NutritionGoalEntityPojo nutritionGoalEntityPojo, NutritionGoalEntity nutritionGoalEntity) {
 		
 		if (nutritionGoalEntityPojo == null)
 			nutritionGoalEntityPojo = new NutritionGoalEntityPojo();
@@ -141,7 +141,7 @@ public class BuildEntityToPojoUtil {
 		return nutritionGoalEntityPojo;
 	}
 	
-	public DietEntityPojo generateNutritionalGoalPojo(DietEntityPojo nutritionalGoalsDataPojo, NutritionGoal nutritionGoalEntity) {
+	public DietEntityPojo generateNutritionalGoalPojo(DietEntityPojo nutritionalGoalsDataPojo, NutritionGoalEntity nutritionGoalEntity) {
 		
 		if (nutritionalGoalsDataPojo == null)
 			nutritionalGoalsDataPojo = new DietEntityPojo();
