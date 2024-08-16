@@ -3,7 +3,6 @@ package project.diet.control.app.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import project.diet.control.app.beans.entity.DietEntity;
 import project.diet.control.app.beans.entity.DietFoodEntity;
 import project.diet.control.app.beans.entity.FoodEntity;
 import project.diet.control.app.beans.entity.NutritionGoalEntity;
@@ -105,8 +104,8 @@ public class BuildPojoToEntityUtil {
 		
 		mapNutrientFood(nutrientPojo, food, dietFoodEntityPojo.getPortions());
 		
-		dietFoodEntity.setFood(food);
-		dietFoodEntity.setDiet(new DietEntity(idRecipe));
+		dietFoodEntity.setIdFood(food.getId());
+		dietFoodEntity.setIdDiet(idRecipe);
 		dietFoodEntity.setPortions(dietFoodEntityPojo.getPortions());
 		dietFoodEntity.setTotalCalories(nutrientPojo.getTotalCalories());
 		dietFoodEntity.setTotalProteins(nutrientPojo.getTotalProteins());

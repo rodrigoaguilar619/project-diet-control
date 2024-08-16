@@ -14,6 +14,7 @@ public class CatalogDietControlDefinition implements CatalogDefinition {
 	public CatalogDietControlDefinition() {
 		
 		catalogs.put("food", FoodEntity.class);
+		
 	}
 
 	@SuppressWarnings("rawtypes")

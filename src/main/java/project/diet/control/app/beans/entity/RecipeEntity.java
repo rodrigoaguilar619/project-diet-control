@@ -3,11 +3,6 @@ package project.diet.control.app.beans.entity;
 import java.io.Serializable;
 import jakarta.persistence.*;
 
-
-/**
- * The persistent class for the recipe database table.
- * 
- */
 @Entity
 @Table(name = "recipe")
 public class RecipeEntity implements Serializable {
@@ -21,7 +16,6 @@ public class RecipeEntity implements Serializable {
 
 	private String title;
 
-	//bi-directional one-to-one association to Diet
 	@OneToOne(mappedBy="recipe", fetch=FetchType.LAZY)
 	private DietEntity diet;
 
@@ -53,8 +47,8 @@ public class RecipeEntity implements Serializable {
 		return this.diet;
 	}
 
-	public void setDiet(DietEntity diet) {
+	/*public void setDiet(DietEntity diet) {
 		this.diet = diet;
-	}
+	}*/
 
 }

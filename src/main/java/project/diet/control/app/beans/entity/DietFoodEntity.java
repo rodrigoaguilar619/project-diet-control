@@ -6,11 +6,6 @@ import project.diet.control.app.beans.entity.generic.GenericDietEntity;
 
 import java.math.BigDecimal;
 
-
-/**
- * The persistent class for the diet_food database table.
- * 
- */
 @Entity
 @Table(name="diet_food")
 public class DietFoodEntity extends GenericDietEntity {
@@ -24,15 +19,19 @@ public class DietFoodEntity extends GenericDietEntity {
 	
 	@Column(name="unities")
 	private BigDecimal unities;
+	
+	@Column(name="id_food")
+	private Integer idFood;
+	
+	@Column(name="id_diet")
+	private Integer idDiet;
 
-	//bi-directional many-to-one association to Food
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_food")
+	@JoinColumn(name="id_food", insertable = false, updatable = false)
 	private FoodEntity food;
 
-	//bi-directional many-to-one association to Diet
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_diet")
+	@JoinColumn(name="id_diet", insertable = false, updatable = false)
 	private DietEntity diet;
 
 	public int getId() {
@@ -41,6 +40,22 @@ public class DietFoodEntity extends GenericDietEntity {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Integer getIdFood() {
+		return idFood;
+	}
+
+	public void setIdFood(Integer idFood) {
+		this.idFood = idFood;
+	}
+
+	public Integer getIdDiet() {
+		return idDiet;
+	}
+
+	public void setIdDiet(Integer idDiet) {
+		this.idDiet = idDiet;
 	}
 
 	public BigDecimal getPortions() {

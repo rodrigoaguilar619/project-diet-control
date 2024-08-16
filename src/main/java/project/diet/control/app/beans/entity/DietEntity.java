@@ -4,13 +4,9 @@ import jakarta.persistence.*;
 
 import project.diet.control.app.beans.entity.generic.GenericDietEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * The persistent class for the diet database table.
- * 
- */
 @Entity
 @Table(name = "diet")
 public class DietEntity extends GenericDietEntity {
@@ -24,14 +20,12 @@ public class DietEntity extends GenericDietEntity {
 	@Column(name="is_base")
 	private Boolean isBase;
 
-	//bi-directional one-to-one association to Recipe
 	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_recipe")
+	@JoinColumn(name="id_recipe", insertable = false, updatable = false)
 	private RecipeEntity recipe;
 
-	//bi-directional many-to-one association to DietFood
-	@OneToMany(mappedBy="diet")
-	private List<DietFoodEntity> dietFoods;
+	@OneToMany(mappedBy="diet", fetch = FetchType.LAZY)
+	private List<DietFoodEntity> dietFoods = new ArrayList<>();
 
 	public DietEntity() {
 	}
@@ -71,20 +65,6 @@ public class DietEntity extends GenericDietEntity {
 
 	public void setDietFoods(List<DietFoodEntity> dietFoods) {
 		this.dietFoods = dietFoods;
-	}
-
-	public DietFoodEntity addDietFood(DietFoodEntity dietFood) {
-		getDietFoods().add(dietFood);
-		dietFood.setDiet(this);
-
-		return dietFood;
-	}
-
-	public DietFoodEntity removeDietFood(DietFoodEntity dietFood) {
-		getDietFoods().remove(dietFood);
-		dietFood.setDiet(null);
-
-		return dietFood;
 	}
 
 }

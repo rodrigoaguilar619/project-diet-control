@@ -6,11 +6,6 @@ import jakarta.persistence.*;
 
 import project.diet.control.app.beans.entity.generic.GenericNutrientEntity;
 
-
-/**
- * The persistent class for the nutrition_goals database table.
- * 
- */
 @Entity
 @Table(name="nutrition_goals")
 public class NutritionGoalEntity extends GenericNutrientEntity {

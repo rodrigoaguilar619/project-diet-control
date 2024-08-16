@@ -6,13 +6,9 @@ import jakarta.persistence.*;
 
 import project.diet.control.app.beans.entity.generic.GenericNutrientEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * The persistent class for the food database table.
- * 
- */
 @Entity
 @Table(name = "food")
 public class FoodEntity extends GenericNutrientEntity {
@@ -44,9 +40,8 @@ public class FoodEntity extends GenericNutrientEntity {
 	@Column(name="unity_grams")
 	private BigDecimal unityGrams;
 
-	//bi-directional many-to-one association to DietFood
-	@OneToMany(mappedBy="food")
-	private List<DietFoodEntity> dietFoods;
+	@OneToMany(mappedBy="food", fetch = FetchType.LAZY)
+	private List<DietFoodEntity> dietFoods = new ArrayList<>();
 
 	public Integer getId() {
 		return this.id;
@@ -134,20 +129,6 @@ public class FoodEntity extends GenericNutrientEntity {
 
 	public void setDietFoods(List<DietFoodEntity> dietFoods) {
 		this.dietFoods = dietFoods;
-	}
-
-	public DietFoodEntity addDietFood(DietFoodEntity dietFood) {
-		getDietFoods().add(dietFood);
-		dietFood.setFood(this);
-
-		return dietFood;
-	}
-
-	public DietFoodEntity removeDietFood(DietFoodEntity dietFood) {
-		getDietFoods().remove(dietFood);
-		dietFood.setFood(null);
-
-		return dietFood;
 	}
 
 }
