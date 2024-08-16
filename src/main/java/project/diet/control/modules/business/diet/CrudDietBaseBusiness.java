@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
+import lib.base.backend.persistance.GenericPersistence;
 import project.diet.control.app.beans.entity.DietEntity;
 import project.diet.control.app.beans.entity.DietFoodEntity;
 import project.diet.control.app.beans.pojos.diet.DietFoodResumePojo;
@@ -17,10 +18,19 @@ import project.diet.control.app.beans.pojos.entity.RecipeEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.diet.AddEditDietDataPojo;
 import project.diet.control.app.beans.pojos.petition.data.diet.GetDietBaseDataPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.RegisterDietBaseRequestPojo;
+import project.diet.control.app.repository.DietRepositoryImpl;
+import project.diet.control.config.helper.DietHelper;
 
 @Component
 public class CrudDietBaseBusiness extends CrudDietBusiness {
 	
+	
+	
+	@SuppressWarnings("rawtypes")
+	public CrudDietBaseBusiness(GenericPersistence genericPersistance, DietRepositoryImpl dietRepository, DietHelper dietHelper) {
+		super(genericPersistance, dietRepository, dietHelper);
+	}
+
 	@SuppressWarnings("unchecked")
 	@Transactional(rollbackFor = Exception.class)
 	public AddEditDietDataPojo executeRegisterDietBase(RegisterDietBaseRequestPojo requestPojo) throws BusinessException {

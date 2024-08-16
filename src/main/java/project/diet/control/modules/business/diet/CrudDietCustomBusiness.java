@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
+import lib.base.backend.persistance.GenericPersistence;
 import project.diet.control.app.beans.entity.DietEntity;
 import project.diet.control.app.beans.entity.DietFoodEntity;
 import project.diet.control.app.beans.entity.NutritionGoalEntity;
@@ -28,10 +29,17 @@ import project.diet.control.app.beans.pojos.petition.request.diet.DeleteDietCust
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomDetailListRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.RegisterDietBaseRequestPojo;
+import project.diet.control.app.repository.DietRepositoryImpl;
+import project.diet.control.config.helper.DietHelper;
 
 @Component
 public class CrudDietCustomBusiness extends CrudDietBusiness {
 	
+	@SuppressWarnings("rawtypes")
+	public CrudDietCustomBusiness(GenericPersistence genericPersistance, DietRepositoryImpl dietRepository, DietHelper dietHelper) {
+		super(genericPersistance, dietRepository, dietHelper);
+	}
+
 	@Transactional(rollbackFor = Exception.class)
 	public AddEditDietDataPojo executeRegisterDietBase(RegisterDietBaseRequestPojo requestPojo) throws BusinessException {
 		

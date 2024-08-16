@@ -3,12 +3,13 @@ package project.diet.control.modules.business.diet;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
+import lib.base.backend.persistance.GenericPersistence;
+import lombok.RequiredArgsConstructor;
 import project.diet.control.app.beans.entity.DietEntity;
 import project.diet.control.app.beans.entity.DietFoodEntity;
 import project.diet.control.app.beans.entity.FoodEntity;
@@ -20,14 +21,14 @@ import project.diet.control.app.repository.DietRepositoryImpl;
 import project.diet.control.config.helper.DietHelper;
 import project.diet.control.modules.business.MainBusiness;
 
+@RequiredArgsConstructor
 @Component
 public class CrudDietBusiness extends MainBusiness {
 	
-	@Autowired
-	DietRepositoryImpl dietRepository;
-	
-	@Autowired
-	DietHelper dietHelper;
+	@SuppressWarnings("rawtypes")
+	protected final GenericPersistence genericPersistance;
+	protected final DietRepositoryImpl dietRepository;
+	protected final DietHelper dietHelper;
 	
 	@SuppressWarnings("unchecked")
 	public Integer setAddEditDiet(DietEntity dietEntity, DietPojo dietEntityPojo, CrudOptionsEnum crudOptionsEnum) {

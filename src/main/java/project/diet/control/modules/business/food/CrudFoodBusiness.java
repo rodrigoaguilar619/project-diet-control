@@ -3,12 +3,13 @@ package project.diet.control.modules.business.food;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
+import lib.base.backend.persistance.GenericPersistence;
+import lombok.RequiredArgsConstructor;
 import project.diet.control.app.beans.entity.FoodEntity;
 import project.diet.control.app.beans.pojos.entity.FoodEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.food.AddEditFoodDataPojo;
@@ -21,11 +22,13 @@ import project.diet.control.app.beans.pojos.petition.request.food.GetFoodRequest
 import project.diet.control.app.repository.FoodRepositoryImpl;
 import project.diet.control.modules.business.MainBusiness;
 
+@RequiredArgsConstructor
 @Component
 public class CrudFoodBusiness extends MainBusiness {
 	
-	@Autowired
-	FoodRepositoryImpl foodRepository;
+	@SuppressWarnings("rawtypes")
+	private final GenericPersistence genericPersistance;
+	private final FoodRepositoryImpl foodRepository;
 	
 	private String messageFoodNotFound(Integer idFood) {
 		

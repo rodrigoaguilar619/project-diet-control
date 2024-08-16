@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import lib.base.backend.enumerators.CrudOptionsEnum;
+import lib.base.backend.persistance.GenericPersistence;
+import lombok.RequiredArgsConstructor;
 import project.diet.control.app.beans.entity.NutritionGoalEntity;
 import project.diet.control.app.beans.pojos.entity.NutritionGoalEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.admin.GetNutritionGoalDataPojo;
@@ -14,8 +16,12 @@ import project.diet.control.app.beans.pojos.petition.request.admin.GetNutritionG
 import project.diet.control.app.beans.pojos.petition.request.admin.RegisterNutritionGoalRequestPojo;
 import project.diet.control.modules.business.MainBusiness;
 
+@RequiredArgsConstructor
 @Component
 public class NutritionGoalsBusiness extends MainBusiness {
+	
+	@SuppressWarnings("rawtypes")
+	private final GenericPersistence genericPersistance;
 
 	@SuppressWarnings("unchecked")
 	public Integer setAddEditNutritionGoal(NutritionGoalEntity nutritionGoalEntity, NutritionGoalEntityPojo nutritionGoalEntityPojo, CrudOptionsEnum crudOptionsEnum) {

@@ -9,13 +9,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import lib.base.backend.persistance.GenericPersistence;
 import lib.base.backend.pojo.files.FilePojo;
 import lib.base.backend.pojo.pdf.jasper.PdfReportJasperConfigPojo;
 import lib.base.backend.utils.pdf.BuildPdfJasperUtil;
+import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.JRException;
 import project.diet.control.app.beans.entity.DietEntity;
 import project.diet.control.app.beans.entity.NutritionGoalEntity;
@@ -26,14 +27,15 @@ import project.diet.control.app.beans.pojos.entity.RecipeEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.diet.GetDietCustomReportDataPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomReportRequestPojo;
 import project.diet.control.app.repository.DietRepositoryImpl;
-import project.diet.control.app.util.DietUtil;
 import project.diet.control.modules.business.MainBusiness;
 
+@RequiredArgsConstructor
 @Component
 public class ReportDietCustomBusiness extends MainBusiness {
 	
-	@Autowired
-	DietRepositoryImpl dietRepository;
+	@SuppressWarnings("rawtypes")
+	private final GenericPersistence genericPersistance;
+	private final DietRepositoryImpl dietRepository;
 	
 	private String setDecimalScale(BigDecimal number) {
 		
