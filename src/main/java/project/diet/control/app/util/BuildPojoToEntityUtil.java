@@ -40,8 +40,6 @@ public class BuildPojoToEntityUtil {
 	
 	public void mapNutrientFood(NutrientPojo nutrientPojo, Food food, BigDecimal portions) {
 		
-		//Food food = (Food) genericCustomPersistance.findById(Food.class, idFood);
-		
 		nutrientPojo.setTotalCalories(nutrientPojo.getTotalCalories().add(food.getCalories().multiply(portions)));
 		nutrientPojo.setTotalProteins(nutrientPojo.getTotalProteins().add(food.getProteins().multiply(portions)));
 		nutrientPojo.setTotalCarbohydrates(nutrientPojo.getTotalCarbohydrates().add(food.getCarbohydrates().multiply(portions)));
@@ -106,8 +104,6 @@ public class BuildPojoToEntityUtil {
 		NutrientPojo nutrientPojo = initNutrient();
 		
 		mapNutrientFood(nutrientPojo, food, dietFoodEntityPojo.getPortions());
-		
-		//Food food = (Food) genericCustomPersistance.findById(Food.class, dietFoodEntityPojo.getId());
 		
 		dietFoodEntity.setFood(food);
 		dietFoodEntity.setDiet(new Diet(idRecipe));

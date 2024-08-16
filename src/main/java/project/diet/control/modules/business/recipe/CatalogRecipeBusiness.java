@@ -18,7 +18,7 @@ public class CatalogRecipeBusiness extends MainBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public List<CatalogPojo> getCatalog() throws BaseException {
 		
-		List<Recipe> catalogList = genericCustomPersistance.findAll(Recipe.class);
+		List<Recipe> catalogList = genericPersistance.findAll(Recipe.class);
 		
 		return catalogUtil.getCatalog(Recipe.class, catalogList, "id", "title");
 	}

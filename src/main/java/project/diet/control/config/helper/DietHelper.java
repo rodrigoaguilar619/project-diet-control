@@ -16,7 +16,7 @@ public class DietHelper {
 	
 	@SuppressWarnings("rawtypes")
 	@Autowired
-	protected GenericPersistence genericCustomPersistance;
+	protected GenericPersistence genericPersistance;
 	
 	private BuildPojoToEntityUtil buildPojoToEntityUtil = new BuildPojoToEntityUtil();
 
@@ -29,7 +29,7 @@ public class DietHelper {
 		NutrientPojo nutrientPojo = buildPojoToEntityUtil.initNutrient();
 		
 		for (DietFoodEntityPojo dietFoodEntityPojo: dietEntityPojo.getFoods()) {
-			Food food = (Food) genericCustomPersistance.findById(Food.class, dietFoodEntityPojo.getId());
+			Food food = (Food) genericPersistance.findById(Food.class, dietFoodEntityPojo.getId());
 			buildPojoToEntityUtil.mapNutrientFood(nutrientPojo, food, dietFoodEntityPojo.getPortions());
 		}
 		

@@ -37,20 +37,20 @@ public class CrudDietBusiness extends MainBusiness {
 		List<DietFood> dietFoods = new ArrayList<>();
 		for(DietFoodEntityPojo dietFoodEntityPojo: dietEntityPojo.getFoods()) {
 			
-			Food food = (Food) genericCustomPersistance.findById(Food.class, dietFoodEntityPojo.getId());
+			Food food = (Food) genericPersistance.findById(Food.class, dietFoodEntityPojo.getId());
 			DietFood dietFood = buildPojoToEntityUtil.generateDietFoodEntity(null, food, dietFoodEntityPojo, dietEntityPojo.getIdRecipe());
 			dietFoods.add(dietFood);
 		}
 		
 		if (crudOptionsEnum.getId() == CrudOptionsEnum.SAVE.getId()) {
-			genericCustomPersistance.save(dietEntity);
+			genericPersistance.save(dietEntity);
 		}
 		else if (crudOptionsEnum.getId() == CrudOptionsEnum.UPDATE.getId()) {
 			dietRepository.deleteDietFoods(dietEntityPojo.getIdRecipe());
-			genericCustomPersistance.update(dietEntity);
+			genericPersistance.update(dietEntity);
 		}
 		
-		genericCustomPersistance.save(dietFoods);
+		genericPersistance.save(dietFoods);
 		
 		return dietEntity.getIdRecipe();
 	}
@@ -60,7 +60,7 @@ public class CrudDietBusiness extends MainBusiness {
 		
 		if (diet != null) {
 			dietRepository.deleteDietFoods(diet.getIdRecipe());
-			genericCustomPersistance.delete(diet);
+			genericPersistance.delete(diet);
 		}
 	}
 	
@@ -90,7 +90,7 @@ public class CrudDietBusiness extends MainBusiness {
 		if (dietEntityPojo.getIdRecipe() == null)
 			throw new BusinessException("Diet id is null");
 		
-		Diet diet = (Diet) genericCustomPersistance.findById(Diet.class, dietEntityPojo.getIdRecipe());
+		Diet diet = (Diet) genericPersistance.findById(Diet.class, dietEntityPojo.getIdRecipe());
 		
 		if (diet == null)
 			throw new BusinessException("Diet id: " + dietEntityPojo.getIdRecipe() + " not found");

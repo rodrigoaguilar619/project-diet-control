@@ -35,7 +35,7 @@ public class CrudDietBaseBusiness extends CrudDietBusiness {
 		
 		if  (dietBase != null && requestPojo.getDiet().getIdRecipe() != dietBase.getRecipe().getId()) {
 			
-			Diet diet = (Diet) genericCustomPersistance.findById(Diet.class, requestPojo.getDiet().getIdRecipe());
+			Diet diet = (Diet) genericPersistance.findById(Diet.class, requestPojo.getDiet().getIdRecipe());
 			
 			if (diet != null)
 				throw new BusinessException("Diet custom already exist id: " + diet.getIdRecipe() + " title: " + diet.getRecipe().getTitle());

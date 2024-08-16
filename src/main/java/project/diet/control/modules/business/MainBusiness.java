@@ -12,7 +12,7 @@ public class MainBusiness {
 
 	@SuppressWarnings("rawtypes")
 	@Autowired
-	protected GenericPersistence genericCustomPersistance;
+	protected GenericPersistence genericPersistance;
 	
 	protected BuildPojoToEntityUtil buildPojoToEntityUtil = new BuildPojoToEntityUtil();
 	protected BuildEntityToPojoUtil buildEntityToPojoUtil = new BuildEntityToPojoUtil();

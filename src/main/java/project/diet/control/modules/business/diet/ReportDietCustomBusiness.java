@@ -128,9 +128,9 @@ public class ReportDietCustomBusiness extends MainBusiness {
 	public Map<String, Object> getParametersDietCustomReport(Integer id) {
 		
 		Diet dietBase = dietRepository.getDietBase();
-		Diet dietCustom = id != null ? (Diet) genericCustomPersistance.findById(Diet.class, id) : new Diet();
+		Diet dietCustom = id != null ? (Diet) genericPersistance.findById(Diet.class, id) : new Diet();
 
-		List<NutritionGoal> nutritionGoals = genericCustomPersistance.findAll(NutritionGoal.class);
+		List<NutritionGoal> nutritionGoals = genericPersistance.findAll(NutritionGoal.class);
 		NutritionGoal nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
 		
 		if (id == null)

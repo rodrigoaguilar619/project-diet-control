@@ -23,10 +23,10 @@ public class NutritionGoalsBusiness extends MainBusiness {
 		nutritionGoalEntity = buildPojoToEntityUtil.generateNutritionGoalEntity(nutritionGoalEntity, nutritionGoalEntityPojo);
 		
 		if (crudOptionsEnum.getId() == CrudOptionsEnum.SAVE.getId()) {
-			genericCustomPersistance.save(nutritionGoalEntity);
+			genericPersistance.save(nutritionGoalEntity);
 		}
 		else if (crudOptionsEnum.getId() == CrudOptionsEnum.UPDATE.getId()) {
-			genericCustomPersistance.update(nutritionGoalEntity);
+			genericPersistance.update(nutritionGoalEntity);
 		}
 		
 		return nutritionGoalEntity.getId();
@@ -36,7 +36,7 @@ public class NutritionGoalsBusiness extends MainBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public RegisterNutritionGoalDataPojo executeRegisterNutritionGoal(RegisterNutritionGoalRequestPojo requestPojo) {
 		
-		List<NutritionGoal> nutritionGoals = genericCustomPersistance.findAll(NutritionGoal.class);
+		List<NutritionGoal> nutritionGoals = genericPersistance.findAll(NutritionGoal.class);
 		NutritionGoal nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
 			
 		Integer id = setAddEditNutritionGoal(nutritionGoal, requestPojo.getNutritionGoal(), nutritionGoal == null ? CrudOptionsEnum.SAVE : CrudOptionsEnum.UPDATE);
@@ -51,7 +51,7 @@ public class NutritionGoalsBusiness extends MainBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public GetNutritionGoalDataPojo executeGetNutritionGoal(GetNutritionGoalRequestPojo requestPojo) {
 		
-		List<NutritionGoal> nutritionGoals = genericCustomPersistance.findAll(NutritionGoal.class);
+		List<NutritionGoal> nutritionGoals = genericPersistance.findAll(NutritionGoal.class);
 		NutritionGoal nutritionGoal = nutritionGoals != null && !nutritionGoals.isEmpty() ? nutritionGoals.get(0) : null;
 		
 		NutritionGoalEntityPojo nutritionGoalEntityPojo = nutritionGoal != null ? buildEntityToPojoUtil.generateNutritionGoalEntityPojo(null, nutritionGoal): null;

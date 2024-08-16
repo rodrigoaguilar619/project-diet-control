@@ -38,10 +38,10 @@ public class CrudFoodBusiness extends MainBusiness {
 		buildPojoToEntityUtil.generateFoodEntity(foodEntity, foodEntityPojo);
 		
 		if (crudOptionsEnum.getId() == CrudOptionsEnum.SAVE.getId()) {
-			genericCustomPersistance.save(foodEntity);
+			genericPersistance.save(foodEntity);
 		}
 		else if (crudOptionsEnum.getId() == CrudOptionsEnum.UPDATE.getId()) {
-			genericCustomPersistance.update(foodEntity);
+			genericPersistance.update(foodEntity);
 		}
 		
 		return foodEntity.getId();
@@ -73,7 +73,7 @@ public class CrudFoodBusiness extends MainBusiness {
 		if (foodEntityPojo.getId() == null)
 			throw new BusinessException("Food id is null");
 		
-		Food food = (Food) genericCustomPersistance.findById(Food.class, foodEntityPojo.getId());
+		Food food = (Food) genericPersistance.findById(Food.class, foodEntityPojo.getId());
 		
 		if (food == null)
 			throw new BusinessException(messageFoodNotFound(foodEntityPojo.getId()));
@@ -99,7 +99,7 @@ public class CrudFoodBusiness extends MainBusiness {
 	@Transactional(rollbackFor = Exception.class)
 	public GetFoodListDataPojo executeGetFoods() {
 		
-		List<Food> foods = genericCustomPersistance.findAll(Food.class);
+		List<Food> foods = genericPersistance.findAll(Food.class);
 		List<FoodEntityPojo> foodEntityPojos = new ArrayList<>();
 		
 		for (Food food: foods) {
@@ -120,7 +120,7 @@ public class CrudFoodBusiness extends MainBusiness {
 		if (requestPojo.getId() == null)
 			throw new BusinessException("Id can´t be null");
 		
-		Food food = (Food) genericCustomPersistance.findById(Food.class, requestPojo.getId());
+		Food food = (Food) genericPersistance.findById(Food.class, requestPojo.getId());
 		
 		if (food == null)
 			throw new BusinessException(messageFoodNotFound(requestPojo.getId()));
@@ -128,7 +128,7 @@ public class CrudFoodBusiness extends MainBusiness {
 		if (foodRepository.countRegisterDietFood(requestPojo.getId()) > 0)
 			throw new BusinessException("Id food is used on a diet custom");
 		
-		genericCustomPersistance.delete(food);
+		genericPersistance.delete(food);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -138,7 +138,7 @@ public class CrudFoodBusiness extends MainBusiness {
 		if (requestPojo.getId() == null)
 			throw new BusinessException("Id can´t be null");
 		
-		Food food = (Food) genericCustomPersistance.findById(Food.class, requestPojo.getId());
+		Food food = (Food) genericPersistance.findById(Food.class, requestPojo.getId());
 		
 		if (food == null)
 			throw new BusinessException(messageFoodNotFound(requestPojo.getId()));
