@@ -21,7 +21,6 @@ class ReportDietCustomControllerTest extends ProjectIntegrationTest {
 	@Autowired
 	ReportDietCustomController reportDietCustomController;
 
-	//TODO: store filebase64 on path and ignore that path in git
 	@Test
 	void testReportDiet() throws FileNotFoundException, JRException {
 		

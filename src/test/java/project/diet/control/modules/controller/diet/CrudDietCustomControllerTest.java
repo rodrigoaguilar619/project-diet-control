@@ -27,6 +27,7 @@ import project.diet.control.app.beans.pojos.petition.request.diet.DeleteDietCust
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomDetailListRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomListRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomRequestPojo;
+import project.diet.control.app.vo.catalogs.CatalogsErrorMessage;
 
 @SuppressWarnings("unchecked")
 class CrudDietCustomControllerTest extends ProjectIntegrationTest {
@@ -64,7 +65,7 @@ class CrudDietCustomControllerTest extends ProjectIntegrationTest {
 	}
 	
 	@Test
-	void testAddFood_ExceptionDietBaseExists() throws BusinessException {
+	void testAddFood_ExceptionDietCustomExists() throws BusinessException {
 		
 		DietFoodEntityPojo dietFoodEntityPojo1 = new DietFoodEntityPojo();
 		dietFoodEntityPojo1.setId(1);
@@ -90,11 +91,11 @@ class CrudDietCustomControllerTest extends ProjectIntegrationTest {
 			crudDietCustomController.addDietCustom(requestPojo);
 		});
 		
-		assertEquals(exception.getMessage(), "Diet custom already exist id: 1 title: Diet Base"); //TODO: change message from static param
+		assertEquals(CatalogsErrorMessage.getErrorMsgDietCustomExist(1, "Diet Base"), exception.getMessage());
 	}
 
 	@Test
-	void testEditFood() throws BusinessException {
+	void testEditDietCustom() throws BusinessException {
 
 		DietFoodEntityPojo dietFoodEntityPojo1 = new DietFoodEntityPojo();
 		dietFoodEntityPojo1.setId(1);
