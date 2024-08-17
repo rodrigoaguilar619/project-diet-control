@@ -18,6 +18,7 @@ import project.diet.control.app.beans.pojos.entity.DietFoodEntityPojo;
 import project.diet.control.app.beans.pojos.petition.data.diet.AddEditDietDataPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.AddEditDietRequestPojo;
 import project.diet.control.app.repository.DietRepositoryImpl;
+import project.diet.control.app.vo.catalogs.CatalogsErrorMessage;
 import project.diet.control.config.helper.DietHelper;
 import project.diet.control.modules.business.MainBusiness;
 
@@ -69,7 +70,7 @@ public class CrudDietBusiness extends MainBusiness {
 	public AddEditDietDataPojo executeAddDiet(AddEditDietRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getDiet() == null)
-			throw new BusinessException("Diet data not found on request");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietNotFoundRequest());
 			
 		Integer id = setAddEditDiet(new DietEntity(), requestPojo.getDiet(), CrudOptionsEnum.SAVE);
 		
@@ -86,15 +87,15 @@ public class CrudDietBusiness extends MainBusiness {
 		DietPojo dietEntityPojo = requestPojo.getDiet();
 		
 		if (dietEntityPojo == null)
-			throw new BusinessException("Diet data not found on request");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietNotFoundRequest());
 		
 		if (dietEntityPojo.getIdRecipe() == null)
-			throw new BusinessException("Diet id is null");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietIdIsNull());
 		
 		DietEntity diet = (DietEntity) genericPersistance.findById(DietEntity.class, dietEntityPojo.getIdRecipe());
 		
 		if (diet == null)
-			throw new BusinessException("Diet id: " + dietEntityPojo.getIdRecipe() + " not found");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietIdNotFound(dietEntityPojo.getIdRecipe()));
 			
 		Integer id = setAddEditDiet(diet, dietEntityPojo, CrudOptionsEnum.UPDATE);
 		

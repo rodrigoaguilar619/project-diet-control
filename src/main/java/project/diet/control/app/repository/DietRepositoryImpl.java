@@ -20,8 +20,12 @@ import project.diet.control.app.beans.entity.DietEntity_;
 @Repository
 public class DietRepositoryImpl extends MainRepository {
 
-	@Autowired
 	EntityManager em;
+	
+	@Autowired
+	public DietRepositoryImpl(EntityManager em) {
+		this.em = em;
+	}
 	
 	public void deleteDietFoods(Integer idRecipe) {
 		

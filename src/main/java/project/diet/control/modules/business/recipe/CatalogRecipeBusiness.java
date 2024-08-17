@@ -21,7 +21,6 @@ public class CatalogRecipeBusiness extends MainBusiness {
 	private final GenericPersistence genericPersistance;
 	
 	@SuppressWarnings("unchecked")
-	@Transactional(rollbackFor = Exception.class)
 	public List<CatalogPojo> getCatalog() throws BaseException {
 		
 		List<RecipeEntity> catalogList = genericPersistance.findAll(RecipeEntity.class);

@@ -20,6 +20,7 @@ import project.diet.control.app.beans.pojos.petition.request.food.AddEditFoodsRe
 import project.diet.control.app.beans.pojos.petition.request.food.DeleteFoodRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.food.GetFoodRequestPojo;
 import project.diet.control.app.repository.FoodRepositoryImpl;
+import project.diet.control.app.vo.catalogs.CatalogsErrorMessage;
 import project.diet.control.modules.business.MainBusiness;
 
 @RequiredArgsConstructor
@@ -29,11 +30,6 @@ public class CrudFoodBusiness extends MainBusiness {
 	@SuppressWarnings("rawtypes")
 	private final GenericPersistence genericPersistance;
 	private final FoodRepositoryImpl foodRepository;
-	
-	private String messageFoodNotFound(Integer idFood) {
-		
-		return "Food id: " + idFood + " not found";
-	}
 	
 	@SuppressWarnings("unchecked")
 	public Integer setAddEditFood(FoodEntity foodEntity, FoodEntityPojo foodEntityPojo, CrudOptionsEnum crudOptionsEnum) {
@@ -54,7 +50,7 @@ public class CrudFoodBusiness extends MainBusiness {
 	public AddEditFoodDataPojo executeAddFood(AddEditFoodRequestPojo addEditFoodRequestPojo) throws BusinessException {
 		
 		if (addEditFoodRequestPojo.getFood() == null)
-			throw new BusinessException("Food data not found on request");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgFoodNotFoundRequest());
 			
 		Integer id = setAddEditFood(new FoodEntity(), addEditFoodRequestPojo.getFood(), CrudOptionsEnum.SAVE);
 		
@@ -71,15 +67,15 @@ public class CrudFoodBusiness extends MainBusiness {
 		FoodEntityPojo foodEntityPojo = addEditFoodRequestPojo.getFood();
 		
 		if (foodEntityPojo == null)
-			throw new BusinessException("Food data not found on request");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgFoodNotFoundRequest());
 		
 		if (foodEntityPojo.getId() == null)
-			throw new BusinessException("Food id is null");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgFoodIdIsNull());
 		
 		FoodEntity food = (FoodEntity) genericPersistance.findById(FoodEntity.class, foodEntityPojo.getId());
 		
 		if (food == null)
-			throw new BusinessException(messageFoodNotFound(foodEntityPojo.getId()));
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgFoodIdNotFound(foodEntityPojo.getId()));
 			
 		Integer id = setAddEditFood(food, addEditFoodRequestPojo.getFood(), CrudOptionsEnum.UPDATE);
 		
@@ -121,15 +117,15 @@ public class CrudFoodBusiness extends MainBusiness {
 	public void executeDeleteFood(DeleteFoodRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getId() == null)
-			throw new BusinessException("Id can´t be null");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgFoodIdIsNull());
 		
 		FoodEntity food = (FoodEntity) genericPersistance.findById(FoodEntity.class, requestPojo.getId());
 		
 		if (food == null)
-			throw new BusinessException(messageFoodNotFound(requestPojo.getId()));
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgFoodIdNotFound(requestPojo.getId()));
 		
 		if (foodRepository.countRegisterDietFood(requestPojo.getId()) > 0)
-			throw new BusinessException("Id food is used on a diet custom");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgFoodIdUsedOnDietCustom());
 		
 		genericPersistance.delete(food);
 	}
@@ -144,7 +140,7 @@ public class CrudFoodBusiness extends MainBusiness {
 		FoodEntity food = (FoodEntity) genericPersistance.findById(FoodEntity.class, requestPojo.getId());
 		
 		if (food == null)
-			throw new BusinessException(messageFoodNotFound(requestPojo.getId()));
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgFoodIdNotFound(requestPojo.getId()));
 		
 		FoodEntityPojo foodEntityPojo = buildEntityToPojoUtil.generateFoodPojo(new FoodEntityPojo(), food);
 		

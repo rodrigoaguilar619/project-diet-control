@@ -17,8 +17,12 @@ import project.diet.control.modules.business.recipe.CatalogRecipeBusiness;
 @RestController
 public class CatalogRecipeController {
 
-	@Autowired
 	CatalogRecipeBusiness catalogRecipeBusiness;
+	
+	@Autowired
+	public CatalogRecipeController(CatalogRecipeBusiness catalogRecipeBusiness) {
+		this.catalogRecipeBusiness = catalogRecipeBusiness;
+	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = CatalogsUri.API_RECIPE_CATALOG_GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

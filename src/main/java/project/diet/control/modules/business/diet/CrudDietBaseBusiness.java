@@ -19,6 +19,7 @@ import project.diet.control.app.beans.pojos.petition.data.diet.AddEditDietDataPo
 import project.diet.control.app.beans.pojos.petition.data.diet.GetDietBaseDataPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.RegisterDietBaseRequestPojo;
 import project.diet.control.app.repository.DietRepositoryImpl;
+import project.diet.control.app.vo.catalogs.CatalogsErrorMessage;
 import project.diet.control.config.helper.DietHelper;
 
 @Component
@@ -36,7 +37,7 @@ public class CrudDietBaseBusiness extends CrudDietBusiness {
 	public AddEditDietDataPojo executeRegisterDietBase(RegisterDietBaseRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getDiet() == null)
-			throw new BusinessException("Diet data not found on request");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietNotFoundRequest());
 		
 		requestPojo.getDiet().setIsBase(true);
 		
@@ -48,7 +49,7 @@ public class CrudDietBaseBusiness extends CrudDietBusiness {
 			DietEntity diet = (DietEntity) genericPersistance.findById(DietEntity.class, requestPojo.getDiet().getIdRecipe());
 			
 			if (diet != null)
-				throw new BusinessException("Diet custom already exist id: " + diet.getIdRecipe() + " title: " + diet.getRecipe().getTitle());
+				throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietBaseExist(diet.getIdRecipe(), diet.getRecipe().getTitle()));
 		}
 		
 		Integer id = setAddEditDiet(null, requestPojo.getDiet(), CrudOptionsEnum.SAVE);

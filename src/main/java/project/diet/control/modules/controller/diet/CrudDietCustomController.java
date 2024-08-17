@@ -25,8 +25,12 @@ import project.diet.control.modules.business.diet.CrudDietCustomBusiness;
 @RestController
 public class CrudDietCustomController {
 
-	@Autowired
 	CrudDietCustomBusiness crudDietCustomBusiness;
+	
+	@Autowired
+	public CrudDietCustomController(CrudDietCustomBusiness crudDietCustomBusiness) {
+		this.crudDietCustomBusiness = crudDietCustomBusiness;
+	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = CatalogsUri.API_DIET_DIET_CUSTOM_ADD, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -19,8 +19,12 @@ import project.diet.control.modules.business.diet.CrudDietBaseBusiness;
 @RestController
 public class CrudDietBaseController {
 
-	@Autowired
 	CrudDietBaseBusiness crudDietBaseBusiness;
+	
+	@Autowired
+	public CrudDietBaseController(CrudDietBaseBusiness crudDietBaseBusiness) {
+		this.crudDietBaseBusiness = crudDietBaseBusiness;
+	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = CatalogsUri.API_DIET_DIET_BASE_REGISTER, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

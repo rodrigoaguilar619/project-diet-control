@@ -19,8 +19,12 @@ import project.diet.control.modules.business.diet.ReportDietCustomBusiness;
 @RestController
 public class ReportDietCustomController {
 
-	@Autowired
 	ReportDietCustomBusiness reportDietCustomBusiness;
+	
+	@Autowired
+	public ReportDietCustomController(ReportDietCustomBusiness reportDietCustomBusiness) {
+		this.reportDietCustomBusiness = reportDietCustomBusiness;
+	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = CatalogsUri.API_DIET_DIET_REPORT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -30,6 +30,7 @@ import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomD
 import project.diet.control.app.beans.pojos.petition.request.diet.GetDietCustomRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.diet.RegisterDietBaseRequestPojo;
 import project.diet.control.app.repository.DietRepositoryImpl;
+import project.diet.control.app.vo.catalogs.CatalogsErrorMessage;
 import project.diet.control.config.helper.DietHelper;
 
 @Component
@@ -44,7 +45,7 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	public AddEditDietDataPojo executeRegisterDietBase(RegisterDietBaseRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getDiet() == null)
-			throw new BusinessException("Diet data not found on request");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietNotFoundRequest());
 		
 		requestPojo.getDiet().setIsBase(true);
 		
@@ -83,12 +84,12 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 	public AddEditDietDataPojo executeAddDiet(AddEditDietRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getDiet() == null)
-			throw new BusinessException("Diet custom data not found on request");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietCustomDataNotFoundRequest());
 		
 		DietEntity diet = (DietEntity) genericPersistance.findById(DietEntity.class, requestPojo.getDiet().getIdRecipe());
 		
 		if (diet != null)
-			throw new BusinessException("Diet custom already exist id: " + diet.getIdRecipe() + " title: " + diet.getRecipe().getTitle());
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietCustomExist(diet.getIdRecipe(), diet.getRecipe().getTitle()));
 		
 		requestPojo.getDiet().setIsBase(false);
 		
@@ -108,20 +109,20 @@ public class CrudDietCustomBusiness extends CrudDietBusiness {
 		DietPojo dietPojo = requestPojo.getDiet();
 		
 		if (dietPojo == null)
-			throw new BusinessException("Diet custom data not found on request");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietCustomDataNotFoundRequest());
 		
 		if (dietPojo.getIdRecipe() == null)
-			throw new BusinessException("Diet id is null");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietIdIsNull());
 		
 		requestPojo.getDiet().setIsBase(false);
 		
 		DietEntity diet = (DietEntity) genericPersistance.findById(DietEntity.class, dietPojo.getIdRecipe());
 		
 		if (diet == null)
-			throw new BusinessException("Diet id: " + dietPojo.getIdRecipe() + " not found");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietIdNotFound(dietPojo.getIdRecipe()));
 		
 		if (Boolean.TRUE.equals(diet.getIsBase()))
-			throw new BusinessException("Diet id: " + dietPojo.getIdRecipe() + " is a base diet, can be edited as custom");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgDietIsDateBase(dietPojo.getIdRecipe()));
 			
 		Integer id = setAddEditDiet(diet, dietPojo, CrudOptionsEnum.UPDATE);
 		

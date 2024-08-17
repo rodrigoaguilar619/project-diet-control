@@ -19,6 +19,7 @@ import project.diet.control.app.beans.pojos.petition.request.recipe.AddEditRecip
 import project.diet.control.app.beans.pojos.petition.request.recipe.DeleteRecipeRequestPojo;
 import project.diet.control.app.beans.pojos.petition.request.recipe.GetRecipeRequestPojo;
 import project.diet.control.app.repository.DietRepositoryImpl;
+import project.diet.control.app.vo.catalogs.CatalogsErrorMessage;
 import project.diet.control.modules.business.MainBusiness;
 
 @RequiredArgsConstructor
@@ -28,11 +29,6 @@ public class CrudRecipeBusiness extends MainBusiness {
 	@SuppressWarnings("rawtypes")
 	private final GenericPersistence genericPersistance;
 	private final DietRepositoryImpl dietRepository;
-	
-	private String messageRecipeNotFound(Integer idRecipe) {
-		
-		return "Recipe id: " + idRecipe + " not found";
-	}
 	
 	@SuppressWarnings("unchecked")
 	public Integer setAddEditRecipe(RecipeEntity recipeEntity, RecipeEntityPojo recipeEntityPojo, CrudOptionsEnum crudOptionsEnum) {
@@ -53,7 +49,7 @@ public class CrudRecipeBusiness extends MainBusiness {
 	public AddEditRecipeDataPojo executeAddRecipe(AddEditRecipeRequestPojo addEditRecipeRequestPojo) throws BusinessException {
 		
 		if (addEditRecipeRequestPojo.getRecipe() == null)
-			throw new BusinessException("Recipe data not found on request");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgRecipeNotFoundRequest());
 			
 		Integer id = setAddEditRecipe(new RecipeEntity(), addEditRecipeRequestPojo.getRecipe(), CrudOptionsEnum.SAVE);
 		
@@ -70,15 +66,15 @@ public class CrudRecipeBusiness extends MainBusiness {
 		RecipeEntityPojo recipeEntityPojo = addEditRecipeRequestPojo.getRecipe();
 		
 		if (recipeEntityPojo == null)
-			throw new BusinessException("Recipe data not found on request");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgRecipeNotFoundRequest());
 		
 		if (recipeEntityPojo.getId() == null)
-			throw new BusinessException("Recipe id is null");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgRecipeIdIsNull());
 		
 		RecipeEntity recipe = (RecipeEntity) genericPersistance.findById(RecipeEntity.class, recipeEntityPojo.getId());
 		
 		if (recipe == null)
-			throw new BusinessException(messageRecipeNotFound(recipeEntityPojo.getId()));
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgRecipeIdNotFound(recipeEntityPojo.getId()));
 			
 		Integer id = setAddEditRecipe(recipe, addEditRecipeRequestPojo.getRecipe(), CrudOptionsEnum.UPDATE);
 		
@@ -93,15 +89,15 @@ public class CrudRecipeBusiness extends MainBusiness {
 	public void executeDeleteRecipe(DeleteRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getId() == null)
-			throw new BusinessException("Id can´t be null");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgRecipeIdIsNull());
 		
 		RecipeEntity recipe = (RecipeEntity) genericPersistance.findById(RecipeEntity.class, requestPojo.getId());
 		
 		if (recipe == null)
-			throw new BusinessException(messageRecipeNotFound(requestPojo.getId()));
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgRecipeIdNotFound(requestPojo.getId()));
 		
 		if (dietRepository.countRegisterDiet(requestPojo.getId()) > 0)
-			throw new BusinessException("Recipe is use on a diet");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgRecipeIdUsedOnDietCustom());
 		
 		genericPersistance.delete(recipe);
 	}
@@ -111,12 +107,12 @@ public class CrudRecipeBusiness extends MainBusiness {
 	public GetRecipeDataPojo executeGetRecipe(GetRecipeRequestPojo requestPojo) throws BusinessException {
 		
 		if (requestPojo.getId() == null)
-			throw new BusinessException("Id can´t be null");
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgRecipeIdIsNull());
 		
 		RecipeEntity recipe = (RecipeEntity) genericPersistance.findById(RecipeEntity.class, requestPojo.getId());
 		
 		if (recipe == null)
-			throw new BusinessException(messageRecipeNotFound(requestPojo.getId()));
+			throw new BusinessException(CatalogsErrorMessage.getErrorMsgRecipeIdNotFound(requestPojo.getId()));
 		
 		RecipeEntityPojo recipeEntityPojo = buildEntityToPojoUtil.generateRecipePojo(new RecipeEntityPojo(), recipe);
 		

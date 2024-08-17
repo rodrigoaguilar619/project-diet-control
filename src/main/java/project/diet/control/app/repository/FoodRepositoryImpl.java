@@ -16,8 +16,12 @@ import project.diet.control.app.beans.entity.FoodEntity_;
 @Repository
 public class FoodRepositoryImpl extends MainRepository {
 
-	@Autowired
 	EntityManager em;
+	
+	@Autowired
+	public FoodRepositoryImpl(EntityManager em) {
+		this.em = em;
+	}
 	
 	public long countRegisterDietFood(Integer idFood) {
 		

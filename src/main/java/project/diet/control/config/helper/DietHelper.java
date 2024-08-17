@@ -15,10 +15,15 @@ import project.diet.control.app.util.BuildPojoToEntityUtil;
 public class DietHelper {
 	
 	@SuppressWarnings("rawtypes")
-	@Autowired
 	protected GenericPersistence genericPersistance;
 	
 	private BuildPojoToEntityUtil buildPojoToEntityUtil = new BuildPojoToEntityUtil();
+	
+	@SuppressWarnings("rawtypes")
+	@Autowired
+	public DietHelper(GenericPersistence genericPersistance) {
+		this.genericPersistance = genericPersistance;
+	}
 
 	@SuppressWarnings("unchecked")
 	public DietEntity generateDietEntity(DietEntity dietEntity, DietPojo dietEntityPojo) {

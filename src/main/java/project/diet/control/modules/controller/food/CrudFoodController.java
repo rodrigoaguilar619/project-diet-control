@@ -22,8 +22,12 @@ import project.diet.control.modules.business.food.CrudFoodBusiness;
 @RestController
 public class CrudFoodController {
 
-	@Autowired
 	CrudFoodBusiness crudFoodBusiness;
+	
+	@Autowired
+	public CrudFoodController(CrudFoodBusiness crudFoodBusiness) {
+		this.crudFoodBusiness = crudFoodBusiness;
+	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = CatalogsUri.API_FOOD_ADD, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

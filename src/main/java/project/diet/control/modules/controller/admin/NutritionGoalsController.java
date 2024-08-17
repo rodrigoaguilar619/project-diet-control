@@ -18,8 +18,12 @@ import project.diet.control.modules.business.admin.NutritionGoalsBusiness;
 @RestController
 public class NutritionGoalsController {
 
-	@Autowired
 	NutritionGoalsBusiness nutritionGoalsBusiness;
+	
+	@Autowired
+	public NutritionGoalsController(NutritionGoalsBusiness nutritionGoalsBusiness) {
+		this.nutritionGoalsBusiness = nutritionGoalsBusiness;
+	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(path = CatalogsUri.API_ADMIN_NUTRITION_GOALS_REGISTER, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
