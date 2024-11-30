@@ -54,6 +54,9 @@ public class DietHelper {
 		dietEntity.setTotalCholesterol(nutrientPojo.getTotalCholesterols());
 		dietEntity.setTotalFiber(nutrientPojo.getTotalFiber());
 		dietEntity.setTotalSodium(nutrientPojo.getTotalSodium());
+		dietEntity.setTotalCostCalorie(nutrientPojo.getTotalCostCalorie());
+		dietEntity.setTotalCostProtein(nutrientPojo.getTotalCostProtein());
+		dietEntity.setTotalCostGram(nutrientPojo.getTotalCostGram());
 		
 		return dietEntity;
 	}

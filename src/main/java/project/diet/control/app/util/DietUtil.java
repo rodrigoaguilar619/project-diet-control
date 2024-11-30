@@ -70,6 +70,9 @@ public class DietUtil {
 		foodEntityPojo.setFiber(BigDecimal.valueOf(0.0));
 		foodEntityPojo.setSodium(BigDecimal.valueOf(0.0));
 		foodEntityPojo.setCholesterol(BigDecimal.valueOf(0.0));
+		foodEntityPojo.setCostGram(BigDecimal.valueOf(0.0));
+		foodEntityPojo.setCostCalorie(BigDecimal.valueOf(0.0));
+		foodEntityPojo.setCostProtein(BigDecimal.valueOf(0.0));
 		
 		for (DietFoodEntity dietFood: dietFoods) {
 			
@@ -87,6 +90,9 @@ public class DietUtil {
 			foodEntityPojo.setFiber(foodEntityPojo.getFiber().add(dietFood.getTotalFiber()));
 			foodEntityPojo.setCholesterol(foodEntityPojo.getCholesterol().add(dietFood.getTotalCholesterol()));
 			foodEntityPojo.setSodium(foodEntityPojo.getSodium().add(dietFood.getTotalSodium()));
+			foodEntityPojo.setCostGram(foodEntityPojo.getCostGram().add(dietFood.getTotalCostGram()));
+			foodEntityPojo.setCostCalorie(foodEntityPojo.getCostCalorie().add(dietFood.getTotalCostCalorie()));
+			foodEntityPojo.setCostProtein(foodEntityPojo.getCostProtein().add(dietFood.getTotalCostProtein()));
 		}
 		
 		return foodEntityPojo;

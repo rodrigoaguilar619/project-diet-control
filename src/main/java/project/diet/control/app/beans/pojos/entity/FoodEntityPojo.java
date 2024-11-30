@@ -23,9 +23,11 @@ public class FoodEntityPojo extends GenericNutrientEntityPojo {
 	
 	private BigDecimal proteins;
 	
-	private BigDecimal price;
-	
 	private BigDecimal costCalorie;
 	
 	private BigDecimal costProtein;
+	
+	private BigDecimal costKilo;
+	
+	private BigDecimal costGram;
 }

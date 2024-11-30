@@ -13,7 +13,6 @@ public abstract class FoodEntity_ {
 	public static SingularAttribute<FoodEntity, BigDecimal> carbohydrates;
 	public static SingularAttribute<FoodEntity, BigDecimal> quantityGrams;
 	public static SingularAttribute<FoodEntity, BigDecimal> unityGrams;
-	public static SingularAttribute<FoodEntity, BigDecimal> price;
 	public static SingularAttribute<FoodEntity, BigDecimal> proteins;
 	public static SingularAttribute<FoodEntity, BigDecimal> fat;
 	public static SingularAttribute<FoodEntity, String> description;
@@ -31,12 +30,13 @@ public abstract class FoodEntity_ {
 	public static SingularAttribute<FoodEntity, BigDecimal> cholesterol;
 	public static SingularAttribute<FoodEntity, BigDecimal> sodium;
 	public static ListAttribute<FoodEntity, DietFoodEntity> dietFoods;
+	public static SingularAttribute<FoodEntity, BigDecimal> costKilo;
+	public static SingularAttribute<FoodEntity, BigDecimal> costGram;
 	
 
 	public static final String CARBOHYDRATES = "carbohydrates";
 	public static final String QUANTITY_GRAMS = "quantityGrams";
 	public static final String UNITY_GRAMS = "unityGrams";
-	public static final String PRICE = "price";
 	public static final String PROTEINS = "proteins";
 	public static final String FAT = "fat";
 	public static final String DESCRIPTION = "description";
@@ -54,6 +54,8 @@ public abstract class FoodEntity_ {
 	public static final String FIBER = "fiber";
 	public static final String CHOLESTEROL = "cholesterol";
 	public static final String SODIUM = "sodium";
+	public static final String COST_KILO = "costKilo";
+	public static final String COST_GRAM = "costGram";
 
 }
 

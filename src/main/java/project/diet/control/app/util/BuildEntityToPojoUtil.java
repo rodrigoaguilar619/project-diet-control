@@ -25,7 +25,6 @@ public class BuildEntityToPojoUtil {
 		foodEntityPojo.setFat(foodEntity.getFat());
 		foodEntityPojo.setProteins(foodEntity.getProteins());
 		foodEntityPojo.setQuantityGrams(foodEntity.getQuantityGrams());
-		foodEntityPojo.setPrice(foodEntity.getPrice());
 		foodEntityPojo.setCostCalorie(foodEntity.getCostCalorie());
 		foodEntityPojo.setCostProtein(foodEntity.getCostProtein());
 		foodEntityPojo.setUnityGrams(foodEntity.getUnityGrams());
@@ -38,6 +37,8 @@ public class BuildEntityToPojoUtil {
 		foodEntityPojo.setCholesterol(foodEntity.getCholesterol());
 		foodEntityPojo.setSodium(foodEntity.getSodium());
 		foodEntityPojo.setFiber(foodEntity.getFiber());
+		foodEntityPojo.setCostKilo(foodEntity.getCostKilo());
+		foodEntityPojo.setCostGram(foodEntity.getCostGram());
 		
 		return foodEntityPojo;
 	}
@@ -54,9 +55,6 @@ public class BuildEntityToPojoUtil {
 		foodEntityPojo.setFat(dietFoodEntity.getTotalFat());
 		foodEntityPojo.setProteins(dietFoodEntity.getTotalProteins());
 		foodEntityPojo.setQuantityGrams(dietFoodEntity.getTotalQuantityGrams());
-		foodEntityPojo.setPrice(dietFoodEntity.getFood().getPrice());
-		foodEntityPojo.setCostCalorie(dietFoodEntity.getFood().getCostCalorie());
-		foodEntityPojo.setCostProtein(dietFoodEntity.getFood().getCostProtein());
 		foodEntityPojo.setUnityGrams(dietFoodEntity.getFood().getUnityGrams());
 		foodEntityPojo.setFatMono(dietFoodEntity.getTotalFatMono());
 		foodEntityPojo.setFatPoli(dietFoodEntity.getTotalFatPoli());
@@ -67,6 +65,10 @@ public class BuildEntityToPojoUtil {
 		foodEntityPojo.setCholesterol(dietFoodEntity.getTotalCholesterol());
 		foodEntityPojo.setFiber(dietFoodEntity.getTotalFiber());
 		foodEntityPojo.setSodium(dietFoodEntity.getTotalSodium());
+		foodEntityPojo.setCostKilo(dietFoodEntity.getFood().getCostKilo());
+		foodEntityPojo.setCostGram(dietFoodEntity.getTotalCostGram());
+		foodEntityPojo.setCostCalorie(dietFoodEntity.getTotalCostCalorie());
+		foodEntityPojo.setCostProtein(dietFoodEntity.getTotalCostProtein());
 		
 		return foodEntityPojo;
 	}
@@ -103,6 +105,9 @@ public class BuildEntityToPojoUtil {
 		dietEntityPojo.setTotalCholesterol(dietEntity.getTotalCholesterol());
 		dietEntityPojo.setTotalFiber(dietEntity.getTotalFiber());
 		dietEntityPojo.setTotalSodium(dietEntity.getTotalSodium());
+		dietEntityPojo.setTotalCostCalorie(dietEntity.getTotalCostCalorie());
+		dietEntityPojo.setTotalCostProtein(dietEntity.getTotalCostProtein());
+		dietEntityPojo.setTotalCostGram(dietEntity.getTotalCostGram());
 		
 		return dietEntityPojo;
 	}

@@ -43,7 +43,6 @@ class CrudFoodControllerTest extends ProjectIntegrationTest {
 		foodEntityPojo.setFatTrans(new BigDecimal(11));
 		foodEntityPojo.setProteins(new BigDecimal(12));
 		foodEntityPojo.setCholesterol(new BigDecimal(13));
-		foodEntityPojo.setPrice(new BigDecimal(100));
 		foodEntityPojo.setUnityGrams(new BigDecimal(120));
 		foodEntityPojo.setQuantityGrams(new BigDecimal(110));
 		foodEntityPojo.setDescription("Food test");
@@ -71,7 +70,6 @@ class CrudFoodControllerTest extends ProjectIntegrationTest {
 		foodEntityPojo.setFatTrans(new BigDecimal(11));
 		foodEntityPojo.setProteins(new BigDecimal(12));
 		foodEntityPojo.setCholesterol(new BigDecimal(13));
-		foodEntityPojo.setPrice(new BigDecimal(100));
 		foodEntityPojo.setUnityGrams(new BigDecimal(120));
 		foodEntityPojo.setQuantityGrams(new BigDecimal(110));
 		foodEntityPojo.setDescription("Food test");
@@ -121,7 +119,6 @@ class CrudFoodControllerTest extends ProjectIntegrationTest {
 		foodEntityPojo1.setFatTrans(new BigDecimal(11));
 		foodEntityPojo1.setProteins(new BigDecimal(12));
 		foodEntityPojo1.setCholesterol(new BigDecimal(13));
-		foodEntityPojo1.setPrice(new BigDecimal(100));
 		foodEntityPojo1.setUnityGrams(new BigDecimal(120));
 		foodEntityPojo1.setQuantityGrams(new BigDecimal(110));
 		foodEntityPojo1.setDescription("Food test");
@@ -136,7 +133,6 @@ class CrudFoodControllerTest extends ProjectIntegrationTest {
 		foodEntityPojo2.setFatTrans(new BigDecimal(11));
 		foodEntityPojo2.setProteins(new BigDecimal(12));
 		foodEntityPojo2.setCholesterol(new BigDecimal(13));
-		foodEntityPojo2.setPrice(new BigDecimal(100));
 		foodEntityPojo2.setUnityGrams(new BigDecimal(120));
 		foodEntityPojo2.setQuantityGrams(new BigDecimal(110));
 		foodEntityPojo2.setDescription("Food test 2");

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="diet_control_resume_totals" pageWidth="1092" pageHeight="1095" orientation="Landscape" columnWidth="1002" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7393822-2ab9-4f91-8f4f-a2f4fc7c863a">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="diet_control_resume_totals" pageWidth="1252" pageHeight="1095" orientation="Landscape" columnWidth="1212" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7393822-2ab9-4f91-8f4f-a2f4fc7c863a">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="rowCellHeader" mode="Opaque" backcolor="#B4B0B0" hTextAlign="Center" vTextAlign="Middle" isBold="true">
 		<box>
@@ -65,7 +65,7 @@
 	<detail>
 		<band height="235" splitType="Stretch">
 			<componentElement>
-				<reportElement x="37" y="10" width="982" height="49" uuid="0cc1c22c-b9d0-47ae-8475-89285494272b">
+				<reportElement x="37" y="10" width="1163" height="49" uuid="0cc1c22c-b9d0-47ae-8475-89285494272b">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -126,7 +126,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="07c10e73-ccfb-4de1-b7d3-9eb8ecde1a38">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -144,7 +144,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="45a2b597-19cf-44da-af77-1a20708ba6af">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -162,7 +162,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="f895eda7-aef5-452b-af65-ebacb4c98e4c">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -180,7 +180,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="5155a98d-bfb2-4990-a159-a65655ebfea3">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -198,7 +198,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="c1cf90bd-5379-41a0-b2eb-2b872179dd4c">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -216,7 +216,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="4aa35844-a7f1-40ed-b928-b6b91a8ba880">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -234,7 +234,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="198e304b-886d-4029-bd25-533abb87ea56">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -252,7 +252,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="792c3572-dbae-4867-bcd0-6f101c9665f5">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column11"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -270,7 +270,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="daf4d43a-2a21-489c-b997-259aa00a1e41">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column12"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -288,7 +288,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="45256fe3-e88f-42d2-b97c-d5d2364ff4ac">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column13"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -306,7 +306,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="127b962a-d2ad-4db8-a9b3-43a479cce4ec">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column14"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -324,7 +324,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="71ec5632-8a57-453d-984b-17cc48547da8">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column15"/>
 						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -341,10 +341,65 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
+					<jr:column width="60" uuid="ac723a3b-997e-4a90-8df3-fd914a87eaa6">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column16"/>
+						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
+							<staticText>
+								<reportElement style="rowTextHeader" x="0" y="0" width="60" height="30" uuid="de7dd622-55db-460d-aebb-907fd94fa347"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total Cost Grams]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="rowCellData" height="20">
+							<textField>
+								<reportElement style="rowTextData" x="0" y="0" width="60" height="20" uuid="d6978c55-53dc-48d3-9fd3-97da9439302d"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{_THIS}.get("cost_grams")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="165e7a2f-c39f-4614-ab57-57e33e947411">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column17"/>
+						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
+							<staticText>
+								<reportElement style="rowTextHeader" x="0" y="0" width="60" height="30" uuid="c25deb4d-b772-4d79-9001-6ce3713ae481"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total Cost Calories]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="rowCellData" height="20">
+							<textField>
+								<reportElement style="rowTextData" x="0" y="0" width="60" height="20" uuid="2abf7692-8df0-4598-aca0-9f2147b329d0">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								</reportElement>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{_THIS}.get("cost_calories")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="9e2364f6-0c16-41ca-b722-2a2644211426">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column18"/>
+						<jr:columnHeader style="rowCellHeader" height="30" rowSpan="1">
+							<staticText>
+								<reportElement style="rowTextHeader" x="0" y="0" width="60" height="30" uuid="69c45533-bafe-452b-b65d-56bcb4cbc549"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total Cost Proteins]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="rowCellData" height="20">
+							<textField>
+								<reportElement style="rowTextData" x="0" y="0" width="60" height="20" uuid="07505580-d2ae-4872-a700-b6328639dab1">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								</reportElement>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{_THIS}.get("cost_proteins")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
 				</jr:table>
 			</componentElement>
 			<staticText>
-				<reportElement positionType="Float" x="36" y="70" width="980" height="20" uuid="900d4d83-f4b9-4848-8fd9-28a00ff6e3e6">
+				<reportElement positionType="Float" x="36" y="70" width="1160" height="20" uuid="900d4d83-f4b9-4848-8fd9-28a00ff6e3e6">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -362,7 +417,7 @@
 				<text><![CDATA[DIET BASE]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement positionType="Float" x="36" y="90" width="984" height="39" uuid="003f0fc4-5e86-474a-8e7f-ea9ef8187932">
+				<reportElement positionType="Float" x="36" y="90" width="1164" height="39" uuid="003f0fc4-5e86-474a-8e7f-ea9ef8187932">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -388,7 +443,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="29f62bf4-8a81-488f-9dd3-f8bde6a50826">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -424,7 +479,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="aa234a1f-dac9-4efc-a3de-f88374159935">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<staticText>
 								<reportElement style="rowTextHeader" x="0" y="0" width="50" height="20" uuid="0dc4f68e-d8ef-458e-b8ec-d23b1de48400"/>
@@ -441,7 +496,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="38112004-848e-4d07-adc3-d4d562f596ec">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -459,7 +514,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="a3b204af-3584-4ea2-b674-a8050456435a">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -477,7 +532,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="0b815322-5dad-4b1f-9e2e-8ca23d137d9a">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -495,7 +550,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="111f46a1-2ef7-4c48-af34-e25bca242558">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -513,7 +568,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="cdafe625-f65a-4e21-9c34-b748fdbd96db">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -531,7 +586,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="0d035dac-2875-45c2-b385-fc8362f208c3">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -549,7 +604,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="f3fa8502-267b-4d78-ba26-90d8b88ab9bd">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column11"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -567,7 +622,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="ef372a0b-db72-4325-832d-fa364fc80528">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column12"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -585,7 +640,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="12ee433c-04f5-4f8a-97d7-1d1a54e04bd9">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column13"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -603,7 +658,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="5d096e67-48c1-466f-be23-a3f375448668">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column14"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -621,7 +676,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="0024dded-4672-42fe-b161-9c0d26f6207b">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column15"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -639,7 +694,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="457c872d-31f6-49a2-9297-bf39bd257646">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column16"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -657,7 +712,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="c8c6fcb5-6b93-4310-84e8-e582c2033bdf">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column17"/>
 						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -674,10 +729,61 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
+					<jr:column width="60" uuid="8b203796-28f5-4b17-bb87-e09b4e694ca5">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column18"/>
+						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
+							<staticText>
+								<reportElement style="rowTextHeader" x="0" y="0" width="60" height="20" uuid="e36d4341-e1b7-4d18-a9d0-f344561c8929"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total Cost Grams]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="rowCellData" height="20">
+							<textField>
+								<reportElement style="rowTextData" x="0" y="0" width="60" height="20" uuid="e364d36a-b4c0-4102-8536-ebc8d159bb58"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{_THIS}.get("cost_grams")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="46dbd86d-48b8-4c5b-a599-30c3b6cd4fc1">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column19"/>
+						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
+							<staticText>
+								<reportElement style="rowTextHeader" x="0" y="0" width="60" height="20" uuid="33f286fc-25c3-4cb5-871a-0d50d09214f8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total Cost Calories]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="rowCellData" height="20">
+							<textField>
+								<reportElement style="rowTextData" x="0" y="0" width="60" height="20" uuid="60a0b85b-3311-4005-acc6-b81663659de6"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{_THIS}.get("cost_calories")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="7ec6322c-cf4d-48c6-addc-c010ae701311">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column20"/>
+						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
+							<staticText>
+								<reportElement style="rowTextHeader" x="0" y="0" width="60" height="20" uuid="58c87603-ee9c-48e5-9bdc-9e85f817d9d1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total Cost Proteins]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="rowCellData" height="20">
+							<textField>
+								<reportElement style="rowTextData" x="0" y="0" width="60" height="20" uuid="55c88ee1-239c-418b-9b6c-70a17472c138"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{_THIS}.get("cost_proteins")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
 				</jr:table>
 			</componentElement>
 			<staticText>
-				<reportElement positionType="Float" x="36" y="138" width="980" height="20" uuid="61f7ef5f-054f-428d-8277-b098ef07ae31">
+				<reportElement positionType="Float" x="36" y="138" width="1160" height="20" uuid="61f7ef5f-054f-428d-8277-b098ef07ae31">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -694,7 +800,7 @@
 				<text><![CDATA[DIET CUSTOM]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement positionType="Float" x="36" y="158" width="982" height="39" uuid="0bb0a5c5-4b0b-4461-a5a8-54f2a3fa7c07">
+				<reportElement positionType="Float" x="36" y="158" width="1164" height="39" uuid="0bb0a5c5-4b0b-4461-a5a8-54f2a3fa7c07">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1003,6 +1109,57 @@
 								<reportElement style="rowTextData" x="0" y="0" width="50" height="20" uuid="dfd76514-691d-436c-ad30-a3da547e055c"/>
 								<textElement verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{_THIS}.get("sodium")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="8b203796-28f5-4b17-bb87-e09b4e694ca5">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column18"/>
+						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
+							<staticText>
+								<reportElement style="rowTextHeader" x="0" y="0" width="60" height="20" uuid="e36d4341-e1b7-4d18-a9d0-f344561c8929"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total Cost Grams]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="rowCellData" height="20">
+							<textField>
+								<reportElement style="rowTextData" x="0" y="0" width="60" height="20" uuid="e364d36a-b4c0-4102-8536-ebc8d159bb58"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{_THIS}.get("cost_grams")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="46dbd86d-48b8-4c5b-a599-30c3b6cd4fc1">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column19"/>
+						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
+							<staticText>
+								<reportElement style="rowTextHeader" x="0" y="0" width="60" height="20" uuid="33f286fc-25c3-4cb5-871a-0d50d09214f8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total Cost Calories]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="rowCellData" height="20">
+							<textField>
+								<reportElement style="rowTextData" x="0" y="0" width="60" height="20" uuid="60a0b85b-3311-4005-acc6-b81663659de6"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{_THIS}.get("cost_calories")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="7ec6322c-cf4d-48c6-addc-c010ae701311">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column20"/>
+						<jr:columnHeader style="rowCellHeader" height="20" rowSpan="1">
+							<staticText>
+								<reportElement style="rowTextHeader" x="0" y="0" width="60" height="20" uuid="58c87603-ee9c-48e5-9bdc-9e85f817d9d1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total Cost Proteins]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="rowCellData" height="20">
+							<textField>
+								<reportElement style="rowTextData" x="0" y="0" width="60" height="20" uuid="55c88ee1-239c-418b-9b6c-70a17472c138"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{_THIS}.get("cost_proteins")]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

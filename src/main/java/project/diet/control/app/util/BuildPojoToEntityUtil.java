@@ -3,6 +3,7 @@ package project.diet.control.app.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import lib.base.backend.utils.CalculatorFormulaUtil;
 import project.diet.control.app.beans.entity.DietFoodEntity;
 import project.diet.control.app.beans.entity.FoodEntity;
 import project.diet.control.app.beans.entity.NutritionGoalEntity;
@@ -14,6 +15,8 @@ import project.diet.control.app.beans.pojos.entity.NutritionGoalEntityPojo;
 import project.diet.control.app.beans.pojos.entity.RecipeEntityPojo;
 
 public class BuildPojoToEntityUtil {
+	
+	private CalculatorFormulaUtil calculatorFormulaUtil = new CalculatorFormulaUtil();
 
 	public NutrientPojo initNutrient() {
 		
@@ -33,17 +36,24 @@ public class BuildPojoToEntityUtil {
 		nutrientPojo.setTotalFiber(BigDecimal.valueOf(0.0));
 		nutrientPojo.setTotalCholesterols(BigDecimal.valueOf(0.0));
 		nutrientPojo.setTotalSodium(BigDecimal.valueOf(0.0));
+		nutrientPojo.setTotalCostProtein(BigDecimal.valueOf(0.0));
+		nutrientPojo.setTotalCostCalorie(BigDecimal.valueOf(0.0));
+		nutrientPojo.setTotalCostGram(BigDecimal.valueOf(0.0));
 		
 		return nutrientPojo;
 	}
 	
 	public void mapNutrientFood(NutrientPojo nutrientPojo, FoodEntity food, BigDecimal portions) {
 		
-		nutrientPojo.setTotalCalories(nutrientPojo.getTotalCalories().add(food.getCalories().multiply(portions)));
-		nutrientPojo.setTotalProteins(nutrientPojo.getTotalProteins().add(food.getProteins().multiply(portions)));
+		BigDecimal subTotalGrams = food.getQuantityGrams().multiply(portions);
+		BigDecimal subTotalCalories = food.getCalories().multiply(portions);
+		BigDecimal subTotalProteins = food.getProteins().multiply(portions);
+		
+		nutrientPojo.setTotalGrams(nutrientPojo.getTotalGrams().add(subTotalGrams));
+		nutrientPojo.setTotalCalories(nutrientPojo.getTotalCalories().add(subTotalCalories));
+		nutrientPojo.setTotalProteins(nutrientPojo.getTotalProteins().add(subTotalProteins));
 		nutrientPojo.setTotalCarbohydrates(nutrientPojo.getTotalCarbohydrates().add(food.getCarbohydrates().multiply(portions)));
 		nutrientPojo.setTotalFats(nutrientPojo.getTotalFats().add(food.getFat().multiply(portions)));
-		nutrientPojo.setTotalGrams(nutrientPojo.getTotalGrams().add(food.getQuantityGrams().multiply(portions)));
 		nutrientPojo.setTotalFatMonos(nutrientPojo.getTotalFatMonos().add(food.getFatMono().multiply(portions)));
 		nutrientPojo.setTotalFatPolis(nutrientPojo.getTotalFatPolis().add(food.getFatPoli().multiply(portions)));
 		nutrientPojo.setTotalFatSats(nutrientPojo.getTotalFatSats().add(food.getFatSat().multiply(portions)));
@@ -53,6 +63,10 @@ public class BuildPojoToEntityUtil {
 		nutrientPojo.setTotalFiber(nutrientPojo.getTotalFiber().add(food.getFiber().multiply(portions)));
 		nutrientPojo.setTotalCholesterols(nutrientPojo.getTotalCholesterols().add(food.getCholesterol().multiply(portions)));
 		nutrientPojo.setTotalSodium(nutrientPojo.getTotalSodium().add(food.getSodium().multiply(portions)));
+		
+		nutrientPojo.setTotalCostGram(nutrientPojo.getTotalCostGram().add(food.getCostGram().multiply(subTotalGrams)));
+		nutrientPojo.setTotalCostCalorie(nutrientPojo.getTotalCostCalorie().add(food.getCostCalorie().multiply(subTotalCalories)));
+		nutrientPojo.setTotalCostProtein(nutrientPojo.getTotalCostProtein().add(food.getCostProtein().multiply(subTotalProteins)));
 	}
 
 	public FoodEntity generateFoodEntity(FoodEntity foodEntity, FoodEntityPojo foodEntityPojo) {
@@ -67,9 +81,6 @@ public class BuildPojoToEntityUtil {
 		foodEntity.setId(foodEntityPojo.getId());
 		foodEntity.setProteins(foodEntityPojo.getProteins());
 		foodEntity.setQuantityGrams(foodEntityPojo.getQuantityGrams());
-		foodEntity.setPrice(foodEntityPojo.getPrice());
-		foodEntity.setCostCalorie(foodEntityPojo.getCalories().compareTo(BigDecimal.valueOf(0.0)) == 0 ? BigDecimal.valueOf(0.0) : foodEntityPojo.getPrice().divide(foodEntityPojo.getCalories(), 2, RoundingMode.HALF_UP));
-		foodEntity.setCostProtein(foodEntityPojo.getProteins().compareTo(BigDecimal.valueOf(0.0)) == 0 ? BigDecimal.valueOf(0.0) : foodEntityPojo.getPrice().divide(foodEntityPojo.getProteins(), 2, RoundingMode.HALF_UP));
 		foodEntity.setUnityGrams(foodEntityPojo.getUnityGrams());
 		foodEntity.setFatMono(foodEntityPojo.getFatMono());
 		foodEntity.setFatPoli(foodEntityPojo.getFatPoli());
@@ -80,6 +91,15 @@ public class BuildPojoToEntityUtil {
 		foodEntity.setCholesterol(foodEntityPojo.getCholesterol());
 		foodEntity.setSodium(foodEntityPojo.getSodium());
 		foodEntity.setFiber(foodEntityPojo.getFiber());
+		foodEntity.setCostKilo(foodEntityPojo.getCostKilo());
+		
+		if(foodEntityPojo.getCostKilo() != null) {
+			BigDecimal caloriesByKilo = calculatorFormulaUtil.ruleOfThree(foodEntityPojo.getQuantityGrams(), foodEntityPojo.getCalories(), BigDecimal.valueOf(1000.0));
+			BigDecimal proteinsByKilo = calculatorFormulaUtil.ruleOfThree(foodEntityPojo.getQuantityGrams(), foodEntityPojo.getProteins(), BigDecimal.valueOf(1000.0));
+			foodEntity.setCostCalorie(calculatorFormulaUtil.ruleOfThree(caloriesByKilo, foodEntityPojo.getCostKilo(), BigDecimal.valueOf(1.0)));
+			foodEntity.setCostProtein(calculatorFormulaUtil.ruleOfThree(proteinsByKilo, foodEntityPojo.getCostKilo(), BigDecimal.valueOf(1.0)));
+			foodEntity.setCostGram(calculatorFormulaUtil.ruleOfThree(BigDecimal.valueOf(1000.0), foodEntityPojo.getCostKilo(), BigDecimal.valueOf(1.0)));
+		}
 		
 		return foodEntity;
 	}
@@ -122,6 +142,9 @@ public class BuildPojoToEntityUtil {
 		dietFoodEntity.setTotalCholesterol(nutrientPojo.getTotalCholesterols());
 		dietFoodEntity.setTotalFiber(nutrientPojo.getTotalFiber());
 		dietFoodEntity.setTotalSodium(nutrientPojo.getTotalSodium());
+		dietFoodEntity.setTotalCostCalorie(nutrientPojo.getTotalCostCalorie());
+		dietFoodEntity.setTotalCostProtein(nutrientPojo.getTotalCostProtein());
+		dietFoodEntity.setTotalCostGram(nutrientPojo.getTotalCostGram());
 		
 		return dietFoodEntity;
 	}

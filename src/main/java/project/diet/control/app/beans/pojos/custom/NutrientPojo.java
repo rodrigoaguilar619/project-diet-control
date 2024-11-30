@@ -35,4 +35,10 @@ public class NutrientPojo {
 	BigDecimal totalCholesterols = null;
 
 	BigDecimal totalSodium = null;
+	
+	BigDecimal totalCostProtein = null;
+	
+	BigDecimal totalCostCalorie = null;
+	
+	BigDecimal totalCostGram = null;
 }

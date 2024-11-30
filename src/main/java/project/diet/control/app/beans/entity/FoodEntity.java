@@ -23,18 +23,22 @@ public class FoodEntity extends GenericNutrientEntity {
 	private BigDecimal calories;
 
 	private BigDecimal carbohydrates;
+	
+	@Column(name="cost_kilo")
+	private BigDecimal costKilo;
 
 	@Column(name="cost_calorie")
 	private BigDecimal costCalorie;
 
 	@Column(name="cost_protein")
 	private BigDecimal costProtein;
+	
+	@Column(name="cost_gram")
+	private BigDecimal costGram;
 
 	private String description;
 
 	private BigDecimal fat;
-
-	private BigDecimal price;
 
 	@Column(name="quantity_grams")
 	private BigDecimal quantityGrams;

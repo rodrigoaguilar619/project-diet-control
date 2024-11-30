@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lib.base.backend.persistance.GenericPersistence;
 import lib.base.backend.pojo.files.FilePojo;
 import lib.base.backend.pojo.pdf.jasper.PdfReportJasperConfigPojo;
+import lib.base.backend.utils.FormatStringUtil;
 import lib.base.backend.utils.pdf.BuildPdfJasperUtil;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.JRException;
@@ -37,10 +38,20 @@ public class ReportDietCustomBusiness extends MainBusiness {
 	private final GenericPersistence genericPersistance;
 	private final DietRepositoryImpl dietRepository;
 	
+	FormatStringUtil formatStringUtil = new FormatStringUtil();
+	
 	private String setDecimalScale(BigDecimal number) {
 		
 		if (number != null)
 			return number.setScale(2, RoundingMode.HALF_UP).toPlainString();
+		else
+			return "";
+	}
+	
+	private String formatCurrency(BigDecimal number) {
+		
+		if (number != null)
+			return  formatStringUtil.formatCurrency(number.setScale(2, RoundingMode.HALF_UP));
 		else
 			return "";
 	}
@@ -64,6 +75,9 @@ public class ReportDietCustomBusiness extends MainBusiness {
 		parameters.put("fiber", setDecimalScale(dietEntityPojo.getTotalFiber()));
 		parameters.put("cholesterol", setDecimalScale(dietEntityPojo.getTotalCholesterol()));
 		parameters.put("sodium", setDecimalScale(dietEntityPojo.getTotalSodium()));
+		parameters.put("cost_grams", formatCurrency(dietEntityPojo.getTotalCostGram()));
+		parameters.put("cost_calories", formatCurrency(dietEntityPojo.getTotalCostCalorie()));
+		parameters.put("cost_proteins", formatCurrency(dietEntityPojo.getTotalCostProtein()));
 		
 		return parameters;
 	}
@@ -93,6 +107,9 @@ public class ReportDietCustomBusiness extends MainBusiness {
 			parameters.put("fiber", setDecimalScale(dietFoodResumePojo.getFiber()));
 			parameters.put("cholesterol", setDecimalScale(dietFoodResumePojo.getCholesterol()));
 			parameters.put("sodium", setDecimalScale(dietFoodResumePojo.getSodium()));
+			parameters.put("cost_grams", formatCurrency(dietFoodResumePojo.getCostGram()));
+			parameters.put("cost_calories", formatCurrency(dietFoodResumePojo.getCostCalorie()));
+			parameters.put("cost_proteins", formatCurrency(dietFoodResumePojo.getCostProtein()));
 			
 			parametersFoodList.add(parameters);
 		}
@@ -154,6 +171,9 @@ public class ReportDietCustomBusiness extends MainBusiness {
 		dietTotalsDataPojo.setTotalCholesterol(dietBase.getTotalCholesterol().add(dietCustom.getTotalCholesterol()));
 		dietTotalsDataPojo.setTotalFiber(dietBase.getTotalFiber().add(dietCustom.getTotalFiber()));
 		dietTotalsDataPojo.setTotalSodium(dietBase.getTotalSodium().add(dietCustom.getTotalSodium()));
+		dietTotalsDataPojo.setTotalCostGram(dietBase.getTotalCostGram().add(dietCustom.getTotalCostGram()));
+		dietTotalsDataPojo.setTotalCostCalorie(dietBase.getTotalCostCalorie().add(dietCustom.getTotalCostCalorie()));
+		dietTotalsDataPojo.setTotalCostProtein(dietBase.getTotalCostProtein().add(dietCustom.getTotalCostProtein()));
 		
 		DietEntityPojo dietBaseDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietBase);
 		DietEntityPojo dietCustomDataPojo = buildEntityToPojoUtil.generateDietPojo(null, dietCustom);

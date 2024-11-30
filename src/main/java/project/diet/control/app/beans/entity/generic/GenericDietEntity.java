@@ -56,4 +56,13 @@ public class GenericDietEntity implements Serializable {
 	@Column(name="total_quantity_grams")
 	private BigDecimal totalQuantityGrams;
 	
+	@Column(name="total_cost_protein")
+	private BigDecimal totalCostProtein;
+	
+	@Column(name="total_cost_calorie")
+	private BigDecimal totalCostCalorie;
+	
+	@Column(name="total_cost_gram")
+	private BigDecimal totalCostGram;
+	
 }

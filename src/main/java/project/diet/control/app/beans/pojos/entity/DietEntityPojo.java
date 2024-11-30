@@ -39,4 +39,10 @@ public class DietEntityPojo {
 	private BigDecimal totalCholesterol;
 
 	private BigDecimal totalSodium;
+	
+	private BigDecimal totalCostCalorie;
+	
+	private BigDecimal totalCostProtein;
+	
+	private BigDecimal totalCostGram;
 }

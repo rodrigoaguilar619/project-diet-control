@@ -28,6 +28,9 @@ public abstract class DietFoodEntity_ {
 	public static SingularAttribute<DietFoodEntity, BigDecimal> totalFiber;
 	public static SingularAttribute<DietFoodEntity, BigDecimal> totalCholesterol;
 	public static SingularAttribute<DietFoodEntity, BigDecimal> totalSodium;
+	public static SingularAttribute<DietFoodEntity, BigDecimal> totalCostProtein;
+	public static SingularAttribute<DietFoodEntity, BigDecimal> totalCostCalorie;
+	public static SingularAttribute<DietFoodEntity, BigDecimal> totalCostGram;
 
 	public static final String TOTAL_CARBOHYDRATES = "totalCarbohydrates";
 	public static final String TOTAL_FAT = "totalFat";
@@ -47,6 +50,9 @@ public abstract class DietFoodEntity_ {
 	public static final String TOTAL_FIBER = "totalFiber";
 	public static final String TOTAL_CHOLESTEROL = "totalCholesterol";
 	public static final String TOTAL_SODIUM = "totalSodium";
+	public static final String TOTAL_COST_PROTEIN = "totalCostProtein";
+	public static final String TOTAL_COST_CALORIE = "totalCostCalorie";
+	public static final String TOTAL_COST_GRAM = "totalCostGram";
 
 }
 
