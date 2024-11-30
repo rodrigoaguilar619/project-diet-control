@@ -10,7 +10,6 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
 import org.apache.commons.lang.StringEscapeUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.diet.control.app.beans.entity.DietEntity;
@@ -22,7 +21,6 @@ public class DietRepositoryImpl extends MainRepository {
 
 	EntityManager em;
 	
-	@Autowired
 	public DietRepositoryImpl(EntityManager em) {
 		this.em = em;
 	}

@@ -6,7 +6,6 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.diet.control.app.beans.entity.DietFoodEntity;
@@ -18,7 +17,6 @@ public class FoodRepositoryImpl extends MainRepository {
 
 	EntityManager em;
 	
-	@Autowired
 	public FoodRepositoryImpl(EntityManager em) {
 		this.em = em;
 	}

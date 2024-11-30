@@ -1,6 +1,5 @@
 package project.diet.control.modules.controller.recipe;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +22,6 @@ public class CrudRecipeController {
 
 	CrudRecipeBusiness crudRecipeBusiness;
 	
-	@Autowired
 	public CrudRecipeController(CrudRecipeBusiness crudRecipeBusiness) {
 		this.crudRecipeBusiness = crudRecipeBusiness;
 	}

@@ -1,6 +1,5 @@
 package project.diet.control.config.helper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import lib.base.backend.persistance.GenericPersistence;
@@ -20,7 +19,6 @@ public class DietHelper {
 	private BuildPojoToEntityUtil buildPojoToEntityUtil = new BuildPojoToEntityUtil();
 	
 	@SuppressWarnings("rawtypes")
-	@Autowired
 	public DietHelper(GenericPersistence genericPersistance) {
 		this.genericPersistance = genericPersistance;
 	}

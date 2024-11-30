@@ -1,6 +1,5 @@
 package project.diet.control.modules.controller.admin;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +19,6 @@ public class NutritionGoalsController {
 
 	NutritionGoalsBusiness nutritionGoalsBusiness;
 	
-	@Autowired
 	public NutritionGoalsController(NutritionGoalsBusiness nutritionGoalsBusiness) {
 		this.nutritionGoalsBusiness = nutritionGoalsBusiness;
 	}
