@@ -6,14 +6,14 @@
 	<parent>
 		<groupId>com.parent.project.web</groupId>
 		<artifactId>lib-parent-project-web</artifactId>
-		<version>4.0.0</version>
+		<version>5.0.0</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>project.diet.control</groupId>
 	<artifactId>project-diet-control</artifactId>
-	<version>7.0.0-SNAPSHOT</version>
+	<version>8.0.0-SNAPSHOT</version>
 	<packaging>${prop.packaging.type}</packaging>
 	<name>project-diet-control</name>
 	<description>Diet control project</description>
@@ -21,10 +21,18 @@
 	<properties>
 		<jar.name>${server.servlet.context-path}</jar.name>
 		<prop.main.class>project.diet.control.config.starter.AppDietControl</prop.main.class>
+		<custom.base.version>4.0.0</custom.base.version>
 		<test.skip>true</test.skip>
 	</properties>
 
 	<dependencies>
+		
+		<!-- custom dependencies -->
+		<dependency>
+			<groupId>lib.base.backend</groupId>
+			<artifactId>lib-base-backend</artifactId>
+			<version>${custom.base.version}</version>
+		</dependency>
 		
 		<dependency>
 		    <groupId>com.smattme</groupId>
