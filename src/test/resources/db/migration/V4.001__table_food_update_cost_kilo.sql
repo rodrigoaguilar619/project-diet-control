@@ -1,0 +1,9 @@
+UPDATE food SET cost_kilo=20.5 WHERE id>0;
+UPDATE food SET cost_calorie=0.4 WHERE id>0;
+UPDATE food SET cost_gram=0.5 WHERE id>0;
+UPDATE diet SET total_cost_gram=0.7 WHERE id_recipe>0;
+UPDATE diet SET total_cost_calorie=0.8 WHERE id_recipe>0;
+UPDATE diet SET total_cost_protein=0.9 WHERE id_recipe>0;
+UPDATE diet_food SET total_cost_gram=0.7 WHERE id>0;
+UPDATE diet_food SET total_cost_calorie=0.8 WHERE id>0;
+UPDATE diet_food SET total_cost_protein=0.9 WHERE id>0;

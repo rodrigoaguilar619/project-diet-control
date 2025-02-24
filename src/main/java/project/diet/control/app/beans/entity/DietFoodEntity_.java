@@ -32,27 +32,5 @@ public abstract class DietFoodEntity_ {
 	public static SingularAttribute<DietFoodEntity, BigDecimal> totalCostCalorie;
 	public static SingularAttribute<DietFoodEntity, BigDecimal> totalCostGram;
 
-	public static final String TOTAL_CARBOHYDRATES = "totalCarbohydrates";
-	public static final String TOTAL_FAT = "totalFat";
-	public static final String ID = "id";
-	public static final String TOTAL_CALORIES = "totalCalories";
-	public static final String DIET = "diet";
-	public static final String TOTAL_PROTEINS = "totalProteins";
-	public static final String TOTAL_QUANTITY_GRAMS = "totalQuantityGrams";
-	public static final String FOOD = "food";
-	public static final String UNITIES = "unitites";
-	public static final String TOTAL_FAT_MONO = "totalFatMono";
-	public static final String TOTAL_FAT_POLI = "totalFatPoli";
-	public static final String TOTAL_FAT_SAT = "totalFatSat";
-	public static final String TOTAL_FAT_TRANS = "totalFatTrans";
-	public static final String TOTAL_CARB_SUGAR = "totalCarbSugar";
-	public static final String TOTAL_CARB_SUGAR_ADDED = "totalCarbSugarAdded";
-	public static final String TOTAL_FIBER = "totalFiber";
-	public static final String TOTAL_CHOLESTEROL = "totalCholesterol";
-	public static final String TOTAL_SODIUM = "totalSodium";
-	public static final String TOTAL_COST_PROTEIN = "totalCostProtein";
-	public static final String TOTAL_COST_CALORIE = "totalCostCalorie";
-	public static final String TOTAL_COST_GRAM = "totalCostGram";
-
 }
 
