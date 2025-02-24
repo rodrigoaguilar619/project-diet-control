@@ -1,3 +1,5 @@
+INSERT INTO `user_data` VALUES (1,'0yMz2to1RjfWL/KiTAokfiIRAxLnUMd/yO4oNTAa817btuCWp8y6SFU6s7AmwJz4B7Z/NFpKXJVprBSWTTEa1w==','ADMIN',1);
+
 --
 -- Dumping data for table `diet`
 --

@@ -13,7 +13,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>project.diet.control</groupId>
 	<artifactId>project-diet-control</artifactId>
-	<version>8.0.0-SNAPSHOT</version>
+	<version>9.0.0-SNAPSHOT</version>
 	<packaging>${prop.packaging.type}</packaging>
 	<name>project-diet-control</name>
 	<description>Diet control project</description>
@@ -21,7 +21,7 @@
 	<properties>
 		<jar.name>${server.servlet.context-path}</jar.name>
 		<prop.main.class>project.diet.control.config.starter.AppDietControl</prop.main.class>
-		<custom.base.version>4.0.0</custom.base.version>
+		<custom.base.version>5.0.0</custom.base.version>
 		<test.skip>true</test.skip>
 	</properties>
 

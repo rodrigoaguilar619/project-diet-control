@@ -45,6 +45,9 @@ class CrudFoodControllerTest extends ProjectIntegrationTest {
 		foodEntityPojo.setCholesterol(new BigDecimal(13));
 		foodEntityPojo.setUnityGrams(new BigDecimal(120));
 		foodEntityPojo.setQuantityGrams(new BigDecimal(110));
+		foodEntityPojo.setCostCalorie(new BigDecimal(0.01));
+		foodEntityPojo.setCostProtein(new BigDecimal(0.02));
+		foodEntityPojo.setCostKilo(new BigDecimal(20));
 		foodEntityPojo.setDescription("Food test");
 
 		AddEditFoodRequestPojo requestPojo = new AddEditFoodRequestPojo();
@@ -72,6 +75,9 @@ class CrudFoodControllerTest extends ProjectIntegrationTest {
 		foodEntityPojo.setCholesterol(new BigDecimal(13));
 		foodEntityPojo.setUnityGrams(new BigDecimal(120));
 		foodEntityPojo.setQuantityGrams(new BigDecimal(110));
+		foodEntityPojo.setCostCalorie(new BigDecimal(0.01));
+		foodEntityPojo.setCostProtein(new BigDecimal(0.02));
+		foodEntityPojo.setCostKilo(new BigDecimal(20));
 		foodEntityPojo.setDescription("Food test");
 
 		AddEditFoodRequestPojo requestPojo = new AddEditFoodRequestPojo();
@@ -121,6 +127,9 @@ class CrudFoodControllerTest extends ProjectIntegrationTest {
 		foodEntityPojo1.setCholesterol(new BigDecimal(13));
 		foodEntityPojo1.setUnityGrams(new BigDecimal(120));
 		foodEntityPojo1.setQuantityGrams(new BigDecimal(110));
+		foodEntityPojo1.setCostCalorie(new BigDecimal(0.01));
+		foodEntityPojo1.setCostProtein(new BigDecimal(0.02));
+		foodEntityPojo1.setCostKilo(new BigDecimal(20));
 		foodEntityPojo1.setDescription("Food test");
 		
 		FoodEntityPojo foodEntityPojo2 = new FoodEntityPojo();;
@@ -135,6 +144,9 @@ class CrudFoodControllerTest extends ProjectIntegrationTest {
 		foodEntityPojo2.setCholesterol(new BigDecimal(13));
 		foodEntityPojo2.setUnityGrams(new BigDecimal(120));
 		foodEntityPojo2.setQuantityGrams(new BigDecimal(110));
+		foodEntityPojo2.setCostCalorie(new BigDecimal(0.01));
+		foodEntityPojo2.setCostProtein(new BigDecimal(0.02));
+		foodEntityPojo2.setCostKilo(new BigDecimal(20));
 		foodEntityPojo2.setDescription("Food test 2");
 		
 		List<FoodEntityPojo> foods = new ArrayList<>(Arrays.asList(foodEntityPojo1, foodEntityPojo2));
