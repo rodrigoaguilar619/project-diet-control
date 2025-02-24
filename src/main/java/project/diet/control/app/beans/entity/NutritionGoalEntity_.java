@@ -25,20 +25,5 @@ public abstract class NutritionGoalEntity_ {
 	public static SingularAttribute<NutritionGoalEntity, BigDecimal> cholesterol;
 	public static SingularAttribute<NutritionGoalEntity, BigDecimal> sodium;
 
-	public static final String CARBOHYDRATES = "carbohydrates";
-	public static final String PROTEINS = "proteins";
-	public static final String FAT = "fat";
-	public static final String ID = "id";
-	public static final String CALORIES = "calories";
-	public static final String FAT_MONO = "fatMono";
-	public static final String FAT_POLI = "fatPoli";
-	public static final String FAT_SAT = "fatSat";
-	public static final String FAT_TRANS = "fatTrans";
-	public static final String CARB_SUGAR = "carbSugar";
-	public static final String CARB_SUGAR_ADDED = "carbSugarAdded";
-	public static final String FIBER = "fiber";
-	public static final String CHOLESTEROL = "cholesterol";
-	public static final String SODIUM = "sodium";
-
 }
 

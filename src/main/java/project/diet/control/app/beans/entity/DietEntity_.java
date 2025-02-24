@@ -31,27 +31,5 @@ public abstract class DietEntity_ {
 	public static SingularAttribute<DietEntity, BigDecimal> totalCostProtein;
 	public static SingularAttribute<DietEntity, BigDecimal> totalCostCalorie;
 	public static SingularAttribute<DietEntity, BigDecimal> totalCostGram;
-
-	public static final String TOTAL_CARBOHYDRATES = "totalCarbohydrates";
-	public static final String TOTAL_FAT = "totalFat";
-	public static final String RECIPE = "recipe";
-	public static final String IS_BASE = "isBase";
-	public static final String TOTAL_CALORIES = "totalCalories";
-	public static final String ID_RECIPE = "idRecipe";
-	public static final String TOTAL_PROTEINS = "totalProteins";
-	public static final String DIET_FOODS = "dietFoods";
-	public static final String TOTAL_QUANTITY_GRAMS = "totalQuantityGrams";
-	public static final String TOTAL_FAT_MONO = "totalFatMono";
-	public static final String TOTAL_FAT_POLI = "totalFatPoli";
-	public static final String TOTAL_FAT_SAT = "totalFatSat";
-	public static final String TOTAL_FAT_TRANS = "totalFatTrans";
-	public static final String TOTAL_CARB_SUGAR = "totalCarbSugar";
-	public static final String TOTAL_CARB_SUGAR_ADDED = "totalCarbSugarAdded";
-	public static final String TOTAL_FIBER = "totalFiber";
-	public static final String TOTAL_CHOLESTEROL = "totalCholesterol";
-	public static final String TOTAL_SODIUM = "totalSodium";
-	public static final String TOTAL_COST_PROTEIN = "totalCostProtein";
-	public static final String TOTAL_COST_CALORIE = "totalCostCalorie";
-	public static final String TOTAL_COST_GRAM = "totalCostGram";
 }
 
