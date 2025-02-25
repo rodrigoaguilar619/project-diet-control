@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
 import lib.base.backend.persistance.GenericPersistence;
+import lib.base.backend.vo.CrudOptionsEnum;
 import lombok.RequiredArgsConstructor;
 import project.diet.control.app.beans.entity.FoodEntity;
 import project.diet.control.app.beans.pojos.entity.FoodEntityPojo;
@@ -36,10 +36,10 @@ public class CrudFoodBusiness extends MainBusiness {
 		
 		buildPojoToEntityUtil.generateFoodEntity(foodEntity, foodEntityPojo);
 		
-		if (crudOptionsEnum.getId() == CrudOptionsEnum.SAVE.getId()) {
+		if (crudOptionsEnum == CrudOptionsEnum.SAVE) {
 			genericPersistance.save(foodEntity);
 		}
-		else if (crudOptionsEnum.getId() == CrudOptionsEnum.UPDATE.getId()) {
+		else if (crudOptionsEnum == CrudOptionsEnum.UPDATE) {
 			genericPersistance.update(foodEntity);
 		}
 		

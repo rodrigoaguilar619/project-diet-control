@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.persistance.GenericPersistence;
+import lib.base.backend.vo.CrudOptionsEnum;
 import lombok.RequiredArgsConstructor;
 import project.diet.control.app.beans.entity.NutritionGoalEntity;
 import project.diet.control.app.beans.pojos.entity.NutritionGoalEntityPojo;
@@ -28,10 +28,10 @@ public class NutritionGoalsBusiness extends MainBusiness {
 		
 		nutritionGoalEntity = buildPojoToEntityUtil.generateNutritionGoalEntity(nutritionGoalEntity, nutritionGoalEntityPojo);
 		
-		if (crudOptionsEnum.getId() == CrudOptionsEnum.SAVE.getId()) {
+		if (crudOptionsEnum == CrudOptionsEnum.SAVE) {
 			genericPersistance.save(nutritionGoalEntity);
 		}
-		else if (crudOptionsEnum.getId() == CrudOptionsEnum.UPDATE.getId()) {
+		else if (crudOptionsEnum == CrudOptionsEnum.UPDATE) {
 			genericPersistance.update(nutritionGoalEntity);
 		}
 		
