@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import lib.base.backend.enumerators.CrudOptionsEnum;
 import lib.base.backend.exception.data.BusinessException;
 import lib.base.backend.persistance.GenericPersistence;
+import lib.base.backend.vo.CrudOptionsEnum;
 import lombok.RequiredArgsConstructor;
 import project.diet.control.app.beans.entity.DietEntity;
 import project.diet.control.app.beans.entity.DietFoodEntity;
@@ -44,10 +44,10 @@ public class CrudDietBusiness extends MainBusiness {
 			dietFoods.add(dietFood);
 		}
 		
-		if (crudOptionsEnum.getId() == CrudOptionsEnum.SAVE.getId()) {
+		if (crudOptionsEnum == CrudOptionsEnum.SAVE) {
 			genericPersistance.save(dietEntity);
 		}
-		else if (crudOptionsEnum.getId() == CrudOptionsEnum.UPDATE.getId()) {
+		else if (crudOptionsEnum == CrudOptionsEnum.UPDATE) {
 			dietRepository.deleteDietFoods(dietEntityPojo.getIdRecipe());
 			genericPersistance.update(dietEntity);
 		}
